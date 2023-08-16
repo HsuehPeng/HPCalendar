@@ -34,7 +34,7 @@ final class MetaDataProviderTests: XCTestCase {
 		}
 	}
 	
-	func test_firstDateOffSet_getFirstDateWeekDayForGivenDate() {
+	func test_firstDateOffSet_getFirstDateWeekDayOffset() {
 		let (sut, _) = makeSut()
 		
 		(1...12).forEach { month in
@@ -43,6 +43,18 @@ final class MetaDataProviderTests: XCTestCase {
 			let dateOffset = sut.firstDateOffSet(for: testingDates[index])
 					
 			XCTAssertEqual(dateOffset, dateOffsetTestingMonth)
+		}
+	}
+	
+	func test_nextMonthOffSet_getNextMonthWeekDayOffset() {
+		let (sut, _) = makeSut()
+		
+		(1...12).forEach { month in
+			let index = month - 1
+			let nextMonthDateOffsetTestingMonth = nextMonthWeekDayOffSetStubs()[index]
+			let nextMonthDateOffset = sut.nextMonthWeekDayOffSet(for: testingDates[index])
+					
+			XCTAssertEqual(nextMonthDateOffset, nextMonthDateOffsetTestingMonth)
 		}
 	}
 	
@@ -92,6 +104,10 @@ final class MetaDataProviderTests: XCTestCase {
 	
 	private func firstDateOffSetStubs() -> [Int] {
 		return [1, 4, 4, 7, 2, 5, 7, 3, 6, 1, 4, 6]
+	}
+	
+	private func nextMonthWeekDayOffSetStubs() -> [Int] {
+		return [4, 4, 1, 6, 3, 1, 5, 2, 0, 4, 2, 6]
 	}
 
 }

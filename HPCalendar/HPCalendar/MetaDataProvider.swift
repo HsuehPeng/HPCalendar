@@ -27,4 +27,15 @@ public class MetaDataProvider {
 		return calendar.component(.weekday, from: firstDateOfMonth)
 	}
 	
+	public func nextMonthWeekDayOffSet(for date: Date) -> Int {
+		guard let lastDayInMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: getFirstDateOfMonth(for: date)) else {
+			return 0
+		}
+		
+		let additionalDays = 7 - calendar.component(.weekday, from: lastDayInMonth)
+		guard additionalDays > 0 else { return 0 }
+		
+		return additionalDays
+	}
+	
 }
