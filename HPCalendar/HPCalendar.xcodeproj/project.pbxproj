@@ -12,6 +12,8 @@
 		B823B6AB2A8C8EF60043DC9F /* HPCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = B823B69F2A8C8EF60043DC9F /* HPCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B823B6B62A8CC3CF0043DC9F /* MetaDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6B52A8CC3CF0043DC9F /* MetaDataProvider.swift */; };
 		B823B6B82A8CC54A0043DC9F /* CalendarDataSourceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6B72A8CC54A0043DC9F /* CalendarDataSourceTests.swift */; };
+		B823B6BA2A8CE8A80043DC9F /* CalendarDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6B92A8CE8A80043DC9F /* CalendarDataSource.swift */; };
+		B823B6BC2A8CE8CA0043DC9F /* HPDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6BB2A8CE8CA0043DC9F /* HPDay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +34,8 @@
 		B823B6B42A8C9F5D0043DC9F /* HPCalendar.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = file; path = HPCalendar.xctestplan; sourceTree = SOURCE_ROOT; };
 		B823B6B52A8CC3CF0043DC9F /* MetaDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetaDataProvider.swift; sourceTree = "<group>"; };
 		B823B6B72A8CC54A0043DC9F /* CalendarDataSourceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataSourceTests.swift; sourceTree = "<group>"; };
+		B823B6B92A8CE8A80043DC9F /* CalendarDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarDataSource.swift; sourceTree = "<group>"; };
+		B823B6BB2A8CE8CA0043DC9F /* HPDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +80,8 @@
 			children = (
 				B823B69F2A8C8EF60043DC9F /* HPCalendar.h */,
 				B823B6B52A8CC3CF0043DC9F /* MetaDataProvider.swift */,
+				B823B6B92A8CE8A80043DC9F /* CalendarDataSource.swift */,
+				B823B6BB2A8CE8CA0043DC9F /* HPDay.swift */,
 			);
 			path = HPCalendar;
 			sourceTree = "<group>";
@@ -200,7 +206,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B823B6BA2A8CE8A80043DC9F /* CalendarDataSource.swift in Sources */,
 				B823B6B62A8CC3CF0043DC9F /* MetaDataProvider.swift in Sources */,
+				B823B6BC2A8CE8CA0043DC9F /* HPDay.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
