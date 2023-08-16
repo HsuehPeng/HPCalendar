@@ -23,9 +23,7 @@ class DayLoader {
 final class DayLoaderTests: XCTestCase {
 	
 	func test_getFirstDateOfMonth_generateFirstDateOfMonthByGivenDate() {
-		var calendar = Calendar(identifier: .gregorian)
-		calendar.timeZone = .gmt
-		let sut = DayLoader(calendar: calendar)
+		let (sut, calendar) = makeSut()
 		
 		let today = Date()
 		let firstDateOfCurrentMonth = getFirstDateOfMonth(for: today, calendar: calendar)
@@ -35,6 +33,13 @@ final class DayLoaderTests: XCTestCase {
 	}
 	
 	// MARK: - Helpers
+	
+	private func makeSut() -> (DayLoader, Calendar) {
+		var calendar = Calendar(identifier: .gregorian)
+		calendar.timeZone = .gmt
+		let sut = DayLoader(calendar: calendar)
+		return (sut, calendar)
+	}
 	
 	private func getFirstDateOfMonth(for date: Date, calendar: Calendar) -> Date {
 		let components = calendar.dateComponents([.year, .month], from: date)
