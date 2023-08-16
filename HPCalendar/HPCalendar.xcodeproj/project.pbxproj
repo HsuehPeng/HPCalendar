@@ -79,9 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				B823B69F2A8C8EF60043DC9F /* HPCalendar.h */,
-				B823B6B52A8CC3CF0043DC9F /* MetaDataProvider.swift */,
-				B823B6B92A8CE8A80043DC9F /* CalendarDataSource.swift */,
-				B823B6BB2A8CE8CA0043DC9F /* HPDay.swift */,
+				B823B6BD2A8CFA180043DC9F /* HPCalendarData */,
 			);
 			path = HPCalendar;
 			sourceTree = "<group>";
@@ -94,6 +92,16 @@
 				B823B6B72A8CC54A0043DC9F /* CalendarDataSourceTests.swift */,
 			);
 			path = HPCalendarTests;
+			sourceTree = "<group>";
+		};
+		B823B6BD2A8CFA180043DC9F /* HPCalendarData */ = {
+			isa = PBXGroup;
+			children = (
+				B823B6B92A8CE8A80043DC9F /* CalendarDataSource.swift */,
+				B823B6B52A8CC3CF0043DC9F /* MetaDataProvider.swift */,
+				B823B6BB2A8CE8CA0043DC9F /* HPDay.swift */,
+			);
+			path = HPCalendarData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
