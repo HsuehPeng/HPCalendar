@@ -9,6 +9,15 @@
     }
   ],
   "defaultOptions" : {
+    "codeCoverage" : {
+      "targets" : [
+        {
+          "containerPath" : "container:HPCalendar.xcodeproj",
+          "identifier" : "B823B69B2A8C8EF60043DC9F",
+          "name" : "HPCalendar"
+        }
+      ]
+    },
     "testExecutionOrdering" : "random"
   },
   "testTargets" : [

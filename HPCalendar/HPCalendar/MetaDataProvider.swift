@@ -17,25 +17,28 @@ public class MetaDataProvider {
 		return calendar.date(from: components) ?? date
 	}
 	
-	public func numbersOfDaysInMonth(for date: Date) -> Int {
-		guard let numbersOfDaysRange = calendar.range(of: .day, in: .month, for: date) else { return 0 }
-		return numbersOfDaysRange.count
-	}
-	
 	public func firstDateOffSet(for date: Date) -> Int {
 		let firstDateOfMonth = getFirstDateOfMonth(for: date)
 		return calendar.component(.weekday, from: firstDateOfMonth)
 	}
 	
+	public func getLastDateOfMonth(for date: Date) -> Date {
+		let lastDayInMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: getFirstDateOfMonth(for: date))
+		return lastDayInMonth ?? date
+	}
+	
 	public func nextMonthWeekDayOffSet(for date: Date) -> Int {
-		guard let lastDayInMonth = calendar.date(byAdding: DateComponents(month: 1, day: -1), to: getFirstDateOfMonth(for: date)) else {
-			return 0
-		}
+		let lastDateOfMonth = getLastDateOfMonth(for: date)
 		
-		let additionalDays = 7 - calendar.component(.weekday, from: lastDayInMonth)
+		let additionalDays = 7 - calendar.component(.weekday, from: lastDateOfMonth)
 		guard additionalDays > 0 else { return 0 }
 		
 		return additionalDays
+	}
+	
+	public func numbersOfDaysInMonth(for date: Date) -> Int {
+		guard let numbersOfDaysRange = calendar.range(of: .day, in: .month, for: date) else { return 0 }
+		return numbersOfDaysRange.count
 	}
 	
 }
