@@ -24,6 +24,11 @@ class MetaDataProvider {
 		return numbersOfDaysRange.count
 	}
 	
+	func firstDateOffSet(for date: Date) -> Int {
+		let firstDateOfMonth = getFirstDateOfMonth(for: date)
+		return calendar.component(.weekday, from: firstDateOfMonth)
+	}
+	
 }
 
 final class MetaDataProviderTests: XCTestCase {
@@ -46,6 +51,15 @@ final class MetaDataProviderTests: XCTestCase {
 		XCTAssertEqual(daysOfMonth, daysOfTestingMonth)
 	}
 	
+	func test_firstDateOffSet_getFirstDateWeekDayForGivenDate() {
+		let (sut, _) = makeSut()
+
+		let dateOffsetTestingMonth = firstDateOffSet()
+		let dateOffset = sut.firstDateOffSet(for: testingDate)
+				
+		XCTAssertEqual(dateOffset, dateOffsetTestingMonth)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut() -> (MetaDataProvider, Calendar) {
@@ -63,6 +77,10 @@ final class MetaDataProviderTests: XCTestCase {
 	
 	private func daysOfMonthStub() -> Int {
 		return 31
+	}
+	
+	private func firstDateOffSet() -> Int {
+		return 3
 	}
 
 }
