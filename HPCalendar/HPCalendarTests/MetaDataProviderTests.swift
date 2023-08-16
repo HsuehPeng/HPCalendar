@@ -6,30 +6,7 @@
 //
 
 import XCTest
-
-class MetaDataProvider {
-	let calendar: Calendar
-	
-	init(calendar: Calendar) {
-		self.calendar = calendar
-	}
-	
-	func getFirstDateOfMonth(for date: Date) -> Date {
-		let components = calendar.dateComponents([.year, .month], from: date)
-		return calendar.date(from: components) ?? date
-	}
-	
-	func numbersOfDaysInMonth(for date: Date) -> Int {
-		guard let numbersOfDaysRange = calendar.range(of: .day, in: .month, for: date) else { return 0 }
-		return numbersOfDaysRange.count
-	}
-	
-	func firstDateOffSet(for date: Date) -> Int {
-		let firstDateOfMonth = getFirstDateOfMonth(for: date)
-		return calendar.component(.weekday, from: firstDateOfMonth)
-	}
-	
-}
+import HPCalendar
 
 final class MetaDataProviderTests: XCTestCase {
 	
