@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "374745AA-A33A-4FF8-B94A-559C864FDAD7",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:HPCalendar.xcodeproj",
+        "identifier" : "B823B6A32A8C8EF60043DC9F",
+        "name" : "HPCalendarTests"
+      }
+    }
+  ],
+  "version" : 1
+}
