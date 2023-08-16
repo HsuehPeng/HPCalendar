@@ -18,6 +18,12 @@ class MetaDataProvider {
 		let components = calendar.dateComponents([.year, .month], from: date)
 		return calendar.date(from: components) ?? date
 	}
+	
+	func numbersOfDaysInMonth(for date: Date) -> Int {
+		guard let numbersOfDaysRange = calendar.range(of: .day, in: .month, for: date) else { return 0 }
+		return numbersOfDaysRange.count
+	}
+	
 }
 
 final class MetaDataProviderTests: XCTestCase {
@@ -29,6 +35,15 @@ final class MetaDataProviderTests: XCTestCase {
 		let firstDateOfMonth = sut.getFirstDateOfMonth(for: testingDate)
 				
 		XCTAssertEqual(firstDateOfMonth, firstDateOfTestingMonth)
+	}
+	
+	func test_numbersOfDaysInMonth_getNumbersOfDaysInGivenDate() {
+		let (sut, _) = makeSut()
+
+		let daysOfTestingMonth = daysOfMonthStub()
+		let daysOfMonth = sut.numbersOfDaysInMonth(for: testingDate)
+				
+		XCTAssertEqual(daysOfMonth, daysOfTestingMonth)
 	}
 	
 	// MARK: - Helpers
@@ -44,6 +59,10 @@ final class MetaDataProviderTests: XCTestCase {
 		
 	private func firstDateOfMonthStub() -> Date {
 		return Date(timeIntervalSince1970: 1690848000)
+	}
+	
+	private func daysOfMonthStub() -> Int {
+		return 31
 	}
 
 }
