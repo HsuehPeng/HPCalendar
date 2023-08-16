@@ -11,8 +11,8 @@ public class CalendarDataSource {
 	private let metaDataProvider: MetaDataProvider
 	private let calendar: Calendar
 	
-	public init(metaDataProvider: MetaDataProvider, calendar: Calendar) {
-		self.metaDataProvider = metaDataProvider
+	public init(calendar: Calendar) {
+		self.metaDataProvider = MetaDataProvider(calendar: calendar)
 		self.calendar = calendar
 	}
 	

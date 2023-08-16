@@ -6,7 +6,7 @@
 //
 
 import XCTest
-import HPCalendar
+@testable import HPCalendar
 
 final class MetaDataProviderTests: XCTestCase {
 	

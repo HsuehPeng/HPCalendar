@@ -24,7 +24,7 @@ final class CalendarDataSourceTests: XCTestCase {
 	private func makeSut() -> CalendarDataSource {
 		var calendar = Calendar(identifier: .gregorian)
 		calendar.timeZone = .gmt
-		let sut = CalendarDataSource(metaDataProvider: MetaDataProvider(calendar: calendar), calendar: calendar)
+		let sut = CalendarDataSource(calendar: calendar)
 		
 		return sut
 	}
