@@ -7,16 +7,16 @@
 
 import Foundation
 
-public class CalendarDataSource {
+class CalendarDataSource {
 	private let metaDataProvider: MetaDataProvider
 	private let calendar: Calendar
 	
-	public init(calendar: Calendar) {
+	init(calendar: Calendar) {
 		self.metaDataProvider = MetaDataProvider(calendar: calendar)
 		self.calendar = calendar
 	}
 	
-	public func generateDaysInMonth(for date: Date) -> [HPDay] {
+	func generateDaysInMonth(for date: Date) -> [HPDay] {
 		let numberOfDaysInMonth = metaDataProvider.numbersOfDaysInMonth(for: date)
 		let firstDateOfMonth = metaDataProvider.getFirstDateOfMonth(for: date)
 		let lastDateOfMonth = metaDataProvider.getLastDateOfMonth(for: date)
