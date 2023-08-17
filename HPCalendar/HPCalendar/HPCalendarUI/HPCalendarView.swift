@@ -32,6 +32,13 @@ class HPCalendarView: UIView, UICollectionViewDataSource {
 	convenience init(frame: CGRect, viewModel: HPCalendarViewModel) {
 		self.init(frame: frame)
 		self.viewModel = viewModel
+		
+		configureCollectionView()
+	}
+	
+	// MARK: - Helpers
+	
+	private func configureCollectionView() {
 		collectionView.dataSource = self
 		collectionView.register(HPCalendarCell.self, forCellWithReuseIdentifier: HPCalendarCell.reuseId)
 	}
