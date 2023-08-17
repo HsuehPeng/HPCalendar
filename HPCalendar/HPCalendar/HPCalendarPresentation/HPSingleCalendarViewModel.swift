@@ -8,6 +8,8 @@
 protocol HPCalendarViewModel {
 	var baseDate: Date { get set }
 	var days: [HPDay] { get set }
+	
+	func headerText() -> String
 }
 
 class HPSingleCalendarViewModel: HPCalendarViewModel {
@@ -20,6 +22,10 @@ class HPSingleCalendarViewModel: HPCalendarViewModel {
 	}
 	
 	var days: [HPDay]
+	
+	func headerText() -> String {
+		return ""
+	}
 	
 	init(dataSource: CalendarDataSource, baseDate: Date = Date()) {
 		self.dataSource = dataSource

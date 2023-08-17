@@ -10,6 +10,12 @@ import UIKit
 class HPCalendarView: UIView, UICollectionViewDataSource {
 	// MARK: - Properties
 	
+	let headerView: HPCalendarHeaderView = {
+		let view = HPCalendarHeaderView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		return view
+	}()
+	
 	private let flowLayout: UICollectionViewFlowLayout = {
 		let layout = UICollectionViewFlowLayout()
 		return layout
@@ -20,7 +26,7 @@ class HPCalendarView: UIView, UICollectionViewDataSource {
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		return collectionView
 	}()
-	
+		
 	private var viewModel: HPCalendarViewModel? {
 		didSet {
 			collectionView.reloadData()
@@ -33,6 +39,7 @@ class HPCalendarView: UIView, UICollectionViewDataSource {
 		self.init(frame: frame)
 		self.viewModel = viewModel
 		
+		headerView.dateLabel.text = viewModel.headerText()
 		configureCollectionView()
 	}
 	

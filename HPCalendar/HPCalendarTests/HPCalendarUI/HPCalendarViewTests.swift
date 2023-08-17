@@ -18,6 +18,12 @@ final class HPCalendarViewTests: XCTestCase {
 		XCTAssertEqual(vm.days.count, numbersOfCalendarCell)
 	}
 	
+	func test_headerView_renderCorrectDateFormate() {
+		let (sut, vm) = makeSut()
+		
+		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText())
+	}
+	
 	func test_collectionViewCell_renderCorrectDateNumber() {
 		let (sut, vm) = makeSut()
 		
@@ -28,8 +34,8 @@ final class HPCalendarViewTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut() -> (HPCalendarView, MockHPCalendarVM) {
-		let vm = MockHPCalendarVM(baseDate: Date())
+	private func makeSut(date: Date = Date()) -> (HPCalendarView, MockHPCalendarVM) {
+		let vm = MockHPCalendarVM(baseDate: date)
 		let sut = HPCalendarView(frame: .zero, viewModel: vm)
 		return (sut, vm)
 	}
@@ -38,6 +44,10 @@ final class HPCalendarViewTests: XCTestCase {
 		var baseDate: Date
 		
 		var days: [HPDay]
+		
+		func headerText() -> String {
+			return "March 2023"
+		}
 		
 		init(baseDate: Date, days: [HPDay] = Array(repeating: HPDay(date: Date(), number: "1", isWithInMonth: true), count: 35)) {
 			self.baseDate = baseDate
