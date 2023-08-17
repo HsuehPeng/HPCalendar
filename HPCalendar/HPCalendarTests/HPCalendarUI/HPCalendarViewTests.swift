@@ -18,7 +18,7 @@ final class HPCalendarViewTests: XCTestCase {
 		XCTAssertEqual(vm.days.count, numbersOfCalendarCell)
 	}
 	
-	func test_headerView_renderCorrectDateFormate() {
+	func test_init_renderCorrectHeaderTextOnCreation() {
 		let (sut, vm) = makeSut()
 		
 		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
@@ -39,7 +39,7 @@ final class HPCalendarViewTests: XCTestCase {
 	func test_collectionViewCell_renderCorrectDateNumber() {
 		let (sut, vm) = makeSut()
 		
-		for i in 0...34 {
+		for i in 0...35 {
 			XCTAssertEqual(sut.calendarCellDateNumber(at: i), vm.days[i].number)
 		}
 	}
