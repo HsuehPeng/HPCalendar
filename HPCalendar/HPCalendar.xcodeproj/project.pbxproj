@@ -83,6 +83,7 @@
 				B823B69F2A8C8EF60043DC9F /* HPCalendar.h */,
 				B823B6BD2A8CFA180043DC9F /* HPCalendarData */,
 				B823B6BF2A8D02520043DC9F /* HPCalendarPresentation */,
+				B83D2B252A8DE6EC0078E177 /* HPCalendarUI */,
 			);
 			path = HPCalendar;
 			sourceTree = "<group>";
@@ -93,6 +94,7 @@
 				B823B6B42A8C9F5D0043DC9F /* HPCalendar.xctestplan */,
 				B823B6C02A8D026D0043DC9F /* HPDalendarData */,
 				B823B6C12A8D02840043DC9F /* HPCalendarPresentation */,
+				B83D2B262A8DE7070078E177 /* HPCalendarUI */,
 			);
 			path = HPCalendarTests;
 			sourceTree = "<group>";
@@ -129,6 +131,20 @@
 				B823B6C22A8D04970043DC9F /* HPCalendarViewModelTests.swift */,
 			);
 			path = HPCalendarPresentation;
+			sourceTree = "<group>";
+		};
+		B83D2B252A8DE6EC0078E177 /* HPCalendarUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HPCalendarUI;
+			sourceTree = "<group>";
+		};
+		B83D2B262A8DE7070078E177 /* HPCalendarUI */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = HPCalendarUI;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
