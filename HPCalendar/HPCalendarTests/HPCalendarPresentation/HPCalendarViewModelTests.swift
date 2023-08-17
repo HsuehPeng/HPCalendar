@@ -8,24 +8,6 @@
 import XCTest
 @testable import HPCalendar
 
-class HPCalendarViewModel {
-	private let dataSource: CalendarDataSource
-	
-	var baseDate: Date {
-		didSet {
-			days = dataSource.generateDaysInMonth(for: baseDate)
-		}
-	}
-	
-	var days: [HPDay]
-	
-	init(dataSource: CalendarDataSource, baseDate: Date = Date()) {
-		self.dataSource = dataSource
-		self.baseDate = baseDate
-		self.days = dataSource.generateDaysInMonth(for: baseDate)
-	}
-}
-
 final class HPCalendarViewModelTests: XCTestCase {
 	
 	func test_init_setBaseDate() {
