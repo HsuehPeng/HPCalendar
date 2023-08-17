@@ -57,7 +57,7 @@ final class HPCalendarViewTests: XCTestCase {
 		 
 		var days: [HPDay] = Array(repeating: HPDay(date: Date(), number: "1", isWithInMonth: true), count: 35)
 		
-		var onSetHeaderText: ((String) -> Void)?
+		var onSetBaseDate: (() -> Void)?
 		
 		var headerText: String {
 			return headerTexts[headerTextsIndex]
@@ -66,13 +66,13 @@ final class HPCalendarViewTests: XCTestCase {
 		func setNextBaseDate() {
 			guard headerTextsIndex < headerTexts.count else { return }
 			headerTextsIndex += 1
-			onSetHeaderText?(headerText)
+			onSetBaseDate?()
 		}
 		
 		func setPreviousBaseDate() {
 			guard headerTextsIndex > 0 else { return }
 			headerTextsIndex -= 1
-			onSetHeaderText?(headerText)
+			onSetBaseDate?()
 		}
 		
 		// MARK: Helpers

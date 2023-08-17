@@ -61,8 +61,9 @@ class HPCalendarView: UIView, UICollectionViewDataSource {
 	}
 	
 	private func bindViewModel() {
-		viewModel.onSetHeaderText = { [weak self] headerText in
-			self?.headerView.dateLabel.text = headerText
+		viewModel.onSetBaseDate = { [weak self] in
+			self?.headerView.dateLabel.text = self?.viewModel.headerText
+			self?.collectionView.reloadData()
 		}
 	}
 	

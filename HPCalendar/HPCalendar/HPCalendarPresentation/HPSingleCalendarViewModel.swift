@@ -9,7 +9,7 @@ protocol HPCalendarViewModel {
 	var baseDate: Date { get set }
 	var days: [HPDay] { get set }
 	var headerText: String { get }
-	var onSetHeaderText: ((String) -> Void)? { get set }
+	var onSetBaseDate: (() -> Void)? { get set }
 	
 	func setNextBaseDate()
 	func setPreviousBaseDate()
@@ -23,13 +23,13 @@ class HPSingleCalendarViewModel: HPCalendarViewModel {
 	var baseDate: Date {
 		didSet {
 			days = dataSource.generateDaysInMonth(for: baseDate)
-			onSetHeaderText?(headerText)
+			onSetBaseDate?()
 		}
 	}
 	
 	var days: [HPDay]
 	
-	var onSetHeaderText: ((String) -> Void)?
+	var onSetBaseDate: (() -> Void)?
 	
 	var headerText: String {
 		return dateFormater.string(from: baseDate)
