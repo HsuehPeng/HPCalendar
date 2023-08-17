@@ -46,6 +46,8 @@ class CalendarDataSource {
 	private func generateNextMonthDay(by date: Date) -> [HPDay] {
 		let additionalDays = metaDataProvider.nextMonthWeekDayOffSet(for: date)
 		
+		guard additionalDays > 0 else { return [] }
+		
 		var days: [HPDay] = []
 		
 		for i in 1...additionalDays {
