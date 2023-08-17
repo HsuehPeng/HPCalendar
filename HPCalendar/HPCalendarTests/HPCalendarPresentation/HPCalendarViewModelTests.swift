@@ -35,6 +35,16 @@ final class HPCalendarViewModelTests: XCTestCase {
 		XCTAssertEqual(sut.baseDate, nextBaseDate)
 	}
 	
+	func test_setPreviousBaseDate_baseDateChangeToPreviousBaseDate() {
+		let currentDate = Date()
+		let sut = makeSut(baseDate: currentDate)
+		
+		let preBaseDate = setPreviousBaseDate(for: currentDate)
+		sut.setPreviousBaseDate()
+		
+		XCTAssertEqual(sut.baseDate, preBaseDate)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut(baseDate: Date = Date()) -> HPCalendarViewModel {
@@ -62,6 +72,12 @@ final class HPCalendarViewModelTests: XCTestCase {
 		let calendar = makeCalendarTestHelper()
 		let nextBaseDate = calendar.date(byAdding: .month, value: 1, to: baseDate)
 		return nextBaseDate!
+	}
+	
+	private func setPreviousBaseDate(for baseDate: Date) -> Date {
+		let calendar = makeCalendarTestHelper()
+		let previousBaseDate = calendar.date(byAdding: .month, value: -1, to: baseDate)
+		return previousBaseDate!
 	}
 	
 	private var dateFormateTestHelper: String {
