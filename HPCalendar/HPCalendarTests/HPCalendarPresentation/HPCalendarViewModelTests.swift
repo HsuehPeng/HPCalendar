@@ -22,7 +22,7 @@ final class HPCalendarViewModelTests: XCTestCase {
 		let (sut, _) = makeSut(baseDate: currentDate)
 		let dateFormatter = makeDateFormatterTestHelper(formate: dateFormateTestHelper)
 
-		XCTAssertEqual(sut.headerText(), dateFormatter.string(from: currentDate))
+		XCTAssertEqual(sut.headerText, dateFormatter.string(from: currentDate))
 	}
 	
 	func test_didSetBaseDate_updateDaysWhenSetBaseDate() {
@@ -38,10 +38,10 @@ final class HPCalendarViewModelTests: XCTestCase {
 	// MARK: - Helpers
 	
 	private func makeSut(baseDate: Date = Date()) -> (HPCalendarViewModel, CalendarDataSourceSpy) {
-		var calendar = makeCalendarTestHelper()
+		let calendar = makeCalendarTestHelper()
 		let dataSource = CalendarDataSourceSpy(calendar: calendar)
 		let dateFormater = makeDateFormatterTestHelper(formate: dateFormateTestHelper)
-		let sut = HPSingleCalendarViewModel(dataSource: dataSource, baseDate: baseDate, dateFormater: dateFormater)
+		let sut = HPSingleCalendarViewModel(dataSource: dataSource, baseDate: baseDate, dateFormater: dateFormater, calendar: calendar)
 		
 		return (sut, dataSource)
 	}

@@ -24,6 +24,14 @@ extension HPCalendarView {
 		return cell.dateLabel.text ?? "A"
 	}
 	
+	func simnulateHeaderViewTapNextButton() {
+		headerView.nextButton.simulateTap()
+	}
+	
+	func simnulateHeaderViewTapPreviousButton() {
+		headerView.previousButton.simulateTap()
+	}
+	
 	private var calendarSection: Int {
 		return 0
 	}

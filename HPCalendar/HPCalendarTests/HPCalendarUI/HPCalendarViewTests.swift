@@ -21,8 +21,20 @@ final class HPCalendarViewTests: XCTestCase {
 	func test_headerView_renderCorrectDateFormate() {
 		let (sut, vm) = makeSut()
 		
-		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText())
+		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
 	}
+	
+	func test_headerView_changeHeaderViewDateLabelTextWhenTapNextMonthAndPreviousMonthButton() {
+		let (sut, vm) = makeSut()
+		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
+
+		sut.simnulateHeaderViewTapNextButton()
+		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
+
+		sut.simnulateHeaderViewTapPreviousButton()
+		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
+	}
+
 	
 	func test_collectionViewCell_renderCorrectDateNumber() {
 		let (sut, vm) = makeSut()
@@ -41,17 +53,35 @@ final class HPCalendarViewTests: XCTestCase {
 	}
 	
 	class MockHPCalendarVM: HPCalendarViewModel {
-		var baseDate: Date
+		var baseDate: Date 
+		 
+		var days: [HPDay] = Array(repeating: HPDay(date: Date(), number: "1", isWithInMonth: true), count: 35)
 		
-		var days: [HPDay]
+		var onSetHeaderText: ((String) -> Void)?
 		
-		func headerText() -> String {
-			return "March 2023"
+		var headerText: String {
+			return headerTexts[headerTextsIndex]
 		}
 		
-		init(baseDate: Date, days: [HPDay] = Array(repeating: HPDay(date: Date(), number: "1", isWithInMonth: true), count: 35)) {
+		func setNextBaseDate() {
+			guard headerTextsIndex < headerTexts.count else { return }
+			headerTextsIndex += 1
+			onSetHeaderText?(headerText)
+		}
+		
+		func setPreviousBaseDate() {
+			guard headerTextsIndex > 0 else { return }
+			headerTextsIndex -= 1
+			onSetHeaderText?(headerText)
+		}
+		
+		// MARK: Helpers
+		
+		private var headerTexts: [String] = ["August 2023", "September 2023"]
+		private var headerTextsIndex = 0
+		
+		init(baseDate: Date) {
 			self.baseDate = baseDate
-			self.days = days
 		}
 	}
 	
