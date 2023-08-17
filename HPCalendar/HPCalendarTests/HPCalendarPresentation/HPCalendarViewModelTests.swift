@@ -17,6 +17,14 @@ final class HPCalendarViewModelTests: XCTestCase {
 		XCTAssertEqual(sut.baseDate, currentDate)
 	}
 	
+	func test_init_renderCorrectHeaderDate() {
+		let currentDate = Date()
+		let (sut, _) = makeSut(baseDate: currentDate)
+		let dateFormatter = makeDateFormatterTestHelper(formate: dateFormateTestHelper)
+
+		XCTAssertEqual(sut.headerText(), dateFormatter.string(from: currentDate))
+	}
+	
 	func test_didSetBaseDate_updateDaysWhenSetBaseDate() {
 		var (sut, dataSource) = makeSut()
 		
@@ -30,12 +38,29 @@ final class HPCalendarViewModelTests: XCTestCase {
 	// MARK: - Helpers
 	
 	private func makeSut(baseDate: Date = Date()) -> (HPCalendarViewModel, CalendarDataSourceSpy) {
-		var calendar = Calendar(identifier: .gregorian)
-		calendar.timeZone = .gmt
+		var calendar = makeCalendarTestHelper()
 		let dataSource = CalendarDataSourceSpy(calendar: calendar)
-		let sut = HPSingleCalendarViewModel(dataSource: dataSource, baseDate: baseDate)
+		let dateFormater = makeDateFormatterTestHelper(formate: dateFormateTestHelper)
+		let sut = HPSingleCalendarViewModel(dataSource: dataSource, baseDate: baseDate, dateFormater: dateFormater)
 		
 		return (sut, dataSource)
+	}
+	
+	private func makeCalendarTestHelper() -> Calendar {
+		var calendar = Calendar(identifier: .gregorian)
+		calendar.timeZone = .gmt
+		return calendar
+	}
+	
+	private func makeDateFormatterTestHelper(formate: String) -> DateFormatter {
+		let dateFormater = DateFormatter()
+		dateFormater.calendar = makeCalendarTestHelper()
+		dateFormater.dateFormat = formate
+		return dateFormater
+	}
+	
+	private var dateFormateTestHelper: String {
+		return "MMMM yyyy"
 	}
 	
 	class CalendarDataSourceSpy: CalendarDataSource {

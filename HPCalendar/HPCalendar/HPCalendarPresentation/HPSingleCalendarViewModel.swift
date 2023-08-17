@@ -14,6 +14,7 @@ protocol HPCalendarViewModel {
 
 class HPSingleCalendarViewModel: HPCalendarViewModel {
 	private let dataSource: CalendarDataSource
+	private let dateFormater: DateFormatter
 	
 	var baseDate: Date {
 		didSet {
@@ -24,12 +25,13 @@ class HPSingleCalendarViewModel: HPCalendarViewModel {
 	var days: [HPDay]
 	
 	func headerText() -> String {
-		return ""
+		return dateFormater.string(from: baseDate)
 	}
 	
-	init(dataSource: CalendarDataSource, baseDate: Date = Date()) {
+	init(dataSource: CalendarDataSource, baseDate: Date = Date(), dateFormater: DateFormatter) {
 		self.dataSource = dataSource
 		self.baseDate = baseDate
+		self.dateFormater = dateFormater
 		self.days = dataSource.generateDaysInMonth(for: baseDate)
 	}
 }
