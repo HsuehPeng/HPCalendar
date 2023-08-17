@@ -43,8 +43,8 @@ class HPSingleCalendarViewModel: HPCalendarViewModel {
 		baseDate = calendar.date(byAdding: .month, value: -1, to: baseDate) ?? baseDate
 	}
 	
-	init(dataSource: CalendarDataSource, baseDate: Date = Date(), dateFormater: DateFormatter, calendar: Calendar) {
-		self.dataSource = dataSource
+	init(baseDate: Date = Date(), dateFormater: DateFormatter, calendar: Calendar) {
+		self.dataSource = CalendarDataSource(calendar: calendar)
 		self.baseDate = baseDate
 		self.dateFormater = dateFormater
 		self.calendar = calendar
