@@ -18,7 +18,7 @@ final class HPCalendarViewModelTests: XCTestCase {
 	}
 	
 	func test_didSetBaseDate_updateDaysWhenSetBaseDate() {
-		let (sut, dataSource) = makeSut()
+		var (sut, dataSource) = makeSut()
 		
 		XCTAssertEqual(dataSource.setDaysCount, 1)
 		
@@ -33,7 +33,7 @@ final class HPCalendarViewModelTests: XCTestCase {
 		var calendar = Calendar(identifier: .gregorian)
 		calendar.timeZone = .gmt
 		let dataSource = CalendarDataSourceSpy(calendar: calendar)
-		let sut = HPCalendarViewModel(dataSource: dataSource, baseDate: baseDate)
+		let sut = HPSingleCalendarViewModel(dataSource: dataSource, baseDate: baseDate)
 		
 		return (sut, dataSource)
 	}

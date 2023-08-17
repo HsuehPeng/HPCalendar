@@ -5,7 +5,12 @@
 //  Created by Hsueh Peng Tseng on 2023/8/17.
 //
 
-class HPCalendarViewModel {
+protocol HPCalendarViewModel {
+	var baseDate: Date { get set }
+	var days: [HPDay] { get set }
+}
+
+class HPSingleCalendarViewModel: HPCalendarViewModel {
 	private let dataSource: CalendarDataSource
 	
 	var baseDate: Date {
