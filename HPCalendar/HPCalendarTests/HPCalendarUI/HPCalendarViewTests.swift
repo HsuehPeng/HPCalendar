@@ -34,12 +34,11 @@ final class HPCalendarViewTests: XCTestCase {
 		sut.simnulateHeaderViewTapPreviousButton()
 		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
 	}
-
 	
 	func test_collectionViewCell_renderCorrectDateNumber() {
 		let (sut, vm) = makeSut()
 		
-		for i in 0...35 {
+		for i in 0...(numbersOfCalendarCell-1) {
 			XCTAssertEqual(sut.calendarCellDateNumber(at: i), vm.days[i].number)
 		}
 	}
