@@ -95,7 +95,7 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		return "MMMM yyyy"
 	}
 	
-	class HPDayLoaderSpy: HPDayLoader {
+	private class HPDayLoaderSpy: HPDayLoader {
 		var generateDaysCount = 0
 		
 		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
@@ -104,7 +104,7 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		}
 	}
 	
-	class HPCalendarManagerSpy: HPCalendarManager {
+	private class HPCalendarManagerSpy: HPCalendarManager {
 		enum Message {
 			case addTimeUnit
 			case minusTimeUnit
