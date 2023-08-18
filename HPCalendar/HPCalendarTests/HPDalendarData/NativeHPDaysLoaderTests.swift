@@ -8,13 +8,13 @@
 import XCTest
 @testable import HPCalendar
 
-final class CalendarDataSourceTests: XCTestCase {
+final class NativeHPDaysLoaderTests: XCTestCase {
 	
 	func test_generateDaysInMonth_getDaysCountByGivenMonth() {
 		let sut = makeSut()
 		
 		let currentDate = Date()
-		let days = sut.generateDaysInMonth(for: currentDate)
+		let days = sut.generateHPDaysInMonth(for: currentDate)
 		
 		XCTAssertEqual(days.count, numbersOfCalendarCell)
 	}
