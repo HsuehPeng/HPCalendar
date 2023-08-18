@@ -7,7 +7,7 @@
 
 import Foundation
 
-class CalendarDataSource {
+class NativeHPDaysLoader: HPDayLoader {
 	private let metaDataProvider: MetaDataProvider
 	private let calendar: Calendar
 	
@@ -16,7 +16,7 @@ class CalendarDataSource {
 		self.calendar = calendar
 	}
 	
-	func generateDaysInMonth(for date: Date) -> [HPDay] {
+	func generateHPDaysInMonth(for date: Date) -> [HPDay] {
 		let numberOfDaysInMonth = metaDataProvider.numbersOfDaysInMonth(for: date)
 		let firstDateOfMonth = metaDataProvider.getFirstDateOfMonth(for: date)
 		let lastDateOfMonth = metaDataProvider.getLastDateOfMonth(for: date)
@@ -30,6 +30,8 @@ class CalendarDataSource {
 		
 		return generatePreviousMonthDay(by: firstDateOfMonth) + days + generateNextMonthDay(by: lastDateOfMonth)
 	}
+	
+	// MARK: - Helpers
 	
 	private func generatePreviousMonthDay(by date: Date) -> [HPDay] {
 		let initialOffset = metaDataProvider.firstDateOffSet(for: date)

@@ -16,7 +16,7 @@ protocol HPCalendarViewModel {
 }
 
 class HPSingleCalendarViewModel: HPCalendarViewModel {
-	private let dataSource: CalendarDataSource
+	private let dataSource: NativeHPDaysLoader
 	private let dateFormater: DateFormatter
 	private let calendar: Calendar
 	
@@ -44,7 +44,7 @@ class HPSingleCalendarViewModel: HPCalendarViewModel {
 	}
 	
 	init(baseDate: Date = Date(), dateFormater: DateFormatter, calendar: Calendar) {
-		self.dataSource = CalendarDataSource(calendar: calendar)
+		self.dataSource = NativeHPDaysLoader(calendar: calendar)
 		self.baseDate = baseDate
 		self.dateFormater = dateFormater
 		self.calendar = calendar

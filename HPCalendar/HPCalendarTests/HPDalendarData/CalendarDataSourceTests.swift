@@ -21,10 +21,10 @@ final class CalendarDataSourceTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut() -> CalendarDataSource {
+	private func makeSut() -> NativeHPDaysLoader {
 		var calendar = Calendar(identifier: .gregorian)
 		calendar.timeZone = .gmt
-		let sut = CalendarDataSource(calendar: calendar)
+		let sut = NativeHPDaysLoader(calendar: calendar)
 		
 		return sut
 	}
