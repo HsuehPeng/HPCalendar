@@ -14,8 +14,8 @@ final class HPCalendarManagerTests: XCTestCase {
 		let currentDate = Date()
 		let sut = makeSut()
 		
-		let addedDate = sut.addTimeUnit(with: .month, to: currentDate)
-		let testedDate = addTimeUnit(for: currentDate, by: .month)
+		let addedDate = sut.addTimeUnit(with: timeUnit, to: currentDate)
+		let testedDate = addTimeUnit(for: currentDate, by: timeUnit)
 		
 		XCTAssertEqual(addedDate, testedDate)
 	}
@@ -24,8 +24,8 @@ final class HPCalendarManagerTests: XCTestCase {
 		let currentDate = Date()
 		let sut = makeSut()
 		
-		let minusedDate = sut.minusTimeUnit(with: .month, to: currentDate)
-		let testedDate = minusTimeUnit(for: currentDate, by: .month)
+		let minusedDate = sut.minusTimeUnit(with: timeUnit, to: currentDate)
+		let testedDate = minusTimeUnit(for: currentDate, by: timeUnit)
 		
 		XCTAssertEqual(minusedDate, testedDate)
 	}
@@ -34,8 +34,8 @@ final class HPCalendarManagerTests: XCTestCase {
 		let currentDate = Date()
 		let sut = makeSut()
 		
-		let transformedDateString = sut.transformToFormattedDate(from: currentDate, by: dateFormateHelper)
-		let testedDateString = formattedDateString(from: currentDate, by: dateFormateHelper)
+		let transformedDateString = sut.transformToFormattedDate(from: currentDate, by: dateFormate)
+		let testedDateString = formattedDateString(from: currentDate, by: dateFormate)
 		
 		XCTAssertEqual(transformedDateString, testedDateString)
 	}
@@ -66,9 +66,11 @@ final class HPCalendarManagerTests: XCTestCase {
 		return dateFormmater.string(from: date)
 	}
 	
-	private var dateFormateHelper: String {
+	private var dateFormate: String {
 		return "MM"
 	}
+	
+	private let timeUnit: Calendar.Component = .month
 }
 
 
