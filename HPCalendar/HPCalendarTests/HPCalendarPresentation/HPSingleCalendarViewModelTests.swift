@@ -19,10 +19,9 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 	
 	func test_init_renderCorrectHeaderDate() {
 		let currentDate = Date()
-		let (sut, _, _) = makeSut(baseDate: currentDate)
-		let dateFormatter = makeDateFormatterTestHelper()
+		let (sut, _, manager) = makeSut(baseDate: currentDate)
 
-		XCTAssertEqual(sut.headerText, dateFormatter.string(from: currentDate))
+		XCTAssertEqual(sut.headerText, manager.transformToFormattedDate(from: currentDate, by: headerDateFormateHelper))
 	}
 	
 	func test_generateHPDays_dayLoaderGenerateHPDaysCallCount() {
@@ -82,13 +81,6 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		let sut = HPSingleCalendarViewModel(baseDate: baseDate, dayLoader: daysLoader, calendarManager: calendarManager, headerTextFormate: headerDateFormateHelper)
 
 		return (sut, daysLoader, calendarManager)
-	}
-	
-	private func makeDateFormatterTestHelper() -> DateFormatter {
-		let formatter = DateFormatter()
-		formatter.calendar = makeTestCalendar()
-		formatter.dateFormat = headerDateFormateHelper
-		return formatter
 	}
 	
 	private var headerDateFormateHelper: String {
