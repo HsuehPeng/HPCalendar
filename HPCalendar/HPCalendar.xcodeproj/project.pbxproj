@@ -113,7 +113,7 @@
 			isa = PBXGroup;
 			children = (
 				B823B6B42A8C9F5D0043DC9F /* HPCalendar.xctestplan */,
-				B823B6C02A8D026D0043DC9F /* HPDalendarData */,
+				B823B6C02A8D026D0043DC9F /* HPCalendarFeature */,
 				B823B6C12A8D02840043DC9F /* HPCalendarPresentation */,
 				B83D2B262A8DE7070078E177 /* HPCalendarUI */,
 			);
@@ -138,13 +138,13 @@
 			path = HPCalendarPresentation;
 			sourceTree = "<group>";
 		};
-		B823B6C02A8D026D0043DC9F /* HPDalendarData */ = {
+		B823B6C02A8D026D0043DC9F /* HPCalendarFeature */ = {
 			isa = PBXGroup;
 			children = (
 				B823B6B72A8CC54A0043DC9F /* NativeHPDaysLoaderTests.swift */,
 				B823B6A92A8C8EF60043DC9F /* MetaDataProviderTests.swift */,
 			);
-			path = HPDalendarData;
+			path = HPCalendarFeature;
 			sourceTree = "<group>";
 		};
 		B823B6C12A8D02840043DC9F /* HPCalendarPresentation */ = {
