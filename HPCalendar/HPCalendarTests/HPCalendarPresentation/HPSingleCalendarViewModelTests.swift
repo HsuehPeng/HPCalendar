@@ -8,7 +8,7 @@
 import XCTest
 @testable import HPCalendar
 
-final class HPCalendarViewModelTests: XCTestCase {
+final class HPSingleCalendarViewModelTests: XCTestCase {
 	
 	func test_init_setBaseDate() {
 		let currentDate = Date()
@@ -47,7 +47,7 @@ final class HPCalendarViewModelTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(baseDate: Date = Date()) -> HPCalendarViewModel {
+	private func makeSut(baseDate: Date = Date()) -> HPSingleCalendarViewModel {
 		let calendar = makeCalendarTestHelper()
 		let dateFormater = makeDateFormatterTestHelper(formate: dateFormateTestHelper)
 		let sut = HPSingleCalendarViewModel(baseDate: baseDate, dateFormater: dateFormater, calendar: calendar)

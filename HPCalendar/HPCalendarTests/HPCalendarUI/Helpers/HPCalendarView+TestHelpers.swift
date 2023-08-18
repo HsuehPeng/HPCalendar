@@ -8,7 +8,7 @@
 import UIKit
 @testable import HPCalendar
 
-extension HPCalendarView {
+extension HPSingleSelectionCalendarView {
 	func numbersOfCalendarCell() -> Int {
 		return collectionView.numberOfItems(inSection: calendarSection)
 	}

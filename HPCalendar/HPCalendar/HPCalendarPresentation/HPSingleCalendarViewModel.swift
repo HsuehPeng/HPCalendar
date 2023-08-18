@@ -5,24 +5,14 @@
 //  Created by Hsueh Peng Tseng on 2023/8/17.
 //
 
-protocol HPCalendarViewModel {
-	var baseDate: Date { get set }
-	var days: [HPDay] { get set }
-	var headerText: String { get }
-	var onSetBaseDate: (() -> Void)? { get set }
-	
-	func setNextBaseDate()
-	func setPreviousBaseDate()
-}
-
-class HPSingleCalendarViewModel: HPCalendarViewModel {
-	private let dataSource: NativeHPDaysLoader
+class HPSingleCalendarViewModel {
+	private let dayLoader: NativeHPDaysLoader
 	private let dateFormater: DateFormatter
 	private let calendar: Calendar
 	
 	var baseDate: Date {
 		didSet {
-			days = dataSource.generateDaysInMonth(for: baseDate)
+			days = dayLoader.generateHPDaysInMonth(for: baseDate)
 			onSetBaseDate?()
 		}
 	}
@@ -44,10 +34,10 @@ class HPSingleCalendarViewModel: HPCalendarViewModel {
 	}
 	
 	init(baseDate: Date = Date(), dateFormater: DateFormatter, calendar: Calendar) {
-		self.dataSource = NativeHPDaysLoader(calendar: calendar)
+		self.dayLoader = NativeHPDaysLoader(calendar: calendar)
 		self.baseDate = baseDate
 		self.dateFormater = dateFormater
 		self.calendar = calendar
-		self.days = dataSource.generateDaysInMonth(for: baseDate)
+		self.days = dayLoader.generateHPDaysInMonth(for: baseDate)
 	}
 }

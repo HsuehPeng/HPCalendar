@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HPCalendarView: UIView, UICollectionViewDataSource {
+class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
 	// MARK: - Properties
 	
 	lazy var headerView: HPCalendarHeaderView = {
@@ -32,7 +32,7 @@ class HPCalendarView: UIView, UICollectionViewDataSource {
 		return collectionView
 	}()
 		
-	private var viewModel: HPCalendarViewModel {
+	private var viewModel: HPSingleCalendarViewModel {
 		didSet {
 			collectionView.reloadData()
 		}
@@ -40,7 +40,7 @@ class HPCalendarView: UIView, UICollectionViewDataSource {
 	
 	// MARK: - LifeCycle
 	
-	init(frame: CGRect, viewModel: HPCalendarViewModel) {
+	init(frame: CGRect, viewModel: HPSingleCalendarViewModel) {
 		self.viewModel = viewModel
 		super.init(frame: frame)
 		
