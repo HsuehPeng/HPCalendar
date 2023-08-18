@@ -96,18 +96,6 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		formatter.dateFormat = headerDateFormateHelper
 		return formatter
 	}
-		
-	private func setNextBaseDate(for baseDate: Date) -> Date {
-		let calendar = makeCalendarTestHelper()
-		let nextBaseDate = calendar.date(byAdding: .month, value: 1, to: baseDate)
-		return nextBaseDate!
-	}
-	
-	private func setPreviousBaseDate(for baseDate: Date) -> Date {
-		let calendar = makeCalendarTestHelper()
-		let previousBaseDate = calendar.date(byAdding: .month, value: -1, to: baseDate)
-		return previousBaseDate!
-	}
 	
 	private var headerDateFormateHelper: String {
 		return "MMMM yyyy"
