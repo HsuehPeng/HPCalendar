@@ -6,10 +6,10 @@
 //
 
 class HPSingleCalendarViewModel {
-	private let dayLoader: NativeHPDaysLoader
-	private let dateFormater: DateFormatter
-	private let calendar: Calendar
-	
+	private let dayLoader: HPDayLoader
+	private let calendarManager: HPCalendarManager
+	private let headerTextFormate: String
+
 	var baseDate: Date {
 		didSet {
 			days = dayLoader.generateHPDaysInMonth(for: baseDate)
@@ -22,22 +22,22 @@ class HPSingleCalendarViewModel {
 	var onSetBaseDate: (() -> Void)?
 	
 	var headerText: String {
-		return dateFormater.string(from: baseDate)
+		return calendarManager.transformToFormattedDate(from: baseDate, by: headerTextFormate)
 	}
 	
 	func setNextBaseDate() {
-		baseDate = calendar.date(byAdding: .month, value: 1, to: baseDate) ?? baseDate
+		baseDate = calendarManager.addTimeUnit(with: .month, to: baseDate)
 	}
 	
 	func setPreviousBaseDate() {
-		baseDate = calendar.date(byAdding: .month, value: -1, to: baseDate) ?? baseDate
+		baseDate = calendarManager.minusTimeUnit(with: .month, to: baseDate)
 	}
 	
-	init(baseDate: Date = Date(), dateFormater: DateFormatter, calendar: Calendar) {
-		self.dayLoader = NativeHPDaysLoader(calendar: calendar)
+	init(baseDate: Date = Date(), dayLoader: HPDayLoader, calendarManager: HPCalendarManager, headerTextFormate: String) {
 		self.baseDate = baseDate
-		self.dateFormater = dateFormater
-		self.calendar = calendar
+		self.dayLoader = dayLoader
+		self.calendarManager = calendarManager
+		self.headerTextFormate = headerTextFormate
 		self.days = dayLoader.generateHPDaysInMonth(for: baseDate)
 	}
 }

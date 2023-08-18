@@ -12,22 +12,30 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 	
 	func test_init_setBaseDate() {
 		let currentDate = Date()
-		let sut = makeSut(baseDate: currentDate)
+		let (sut, _) = makeSut(baseDate: currentDate)
 		
 		XCTAssertEqual(sut.baseDate, currentDate)
 	}
 	
 	func test_init_renderCorrectHeaderDate() {
 		let currentDate = Date()
-		let sut = makeSut(baseDate: currentDate)
-		let dateFormatter = makeDateFormatterTestHelper(formate: dateFormateTestHelper)
+		let (sut, _) = makeSut(baseDate: currentDate)
+		let dateFormatter = makeDateFormatterTestHelper()
 
 		XCTAssertEqual(sut.headerText, dateFormatter.string(from: currentDate))
 	}
 	
+	func test_generateHPDays_dayLoaderGenerateHPDaysCallCount() {
+		let (sut, dayLoader) = makeSut()
+		XCTAssertEqual(dayLoader.generateDaysCount, 1)
+		
+		sut.baseDate = Date()
+		XCTAssertEqual(dayLoader.generateDaysCount, 2)
+	}
+	
 	func test_setNextBaseDate_baseDateChangeToNextBaseDate() {
 		let currentDate = Date()
-		let sut = makeSut(baseDate: currentDate)
+		let (sut, _) = makeSut(baseDate: currentDate)
 		
 		let nextBaseDate = setNextBaseDate(for: currentDate)
 		sut.setNextBaseDate()
@@ -37,7 +45,7 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 	
 	func test_setPreviousBaseDate_baseDateChangeToPreviousBaseDate() {
 		let currentDate = Date()
-		let sut = makeSut(baseDate: currentDate)
+		let (sut, _) = makeSut(baseDate: currentDate)
 		
 		let preBaseDate = setPreviousBaseDate(for: currentDate)
 		sut.setPreviousBaseDate()
@@ -47,12 +55,13 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(baseDate: Date = Date()) -> HPSingleCalendarViewModel {
+	private func makeSut(baseDate: Date = Date()) -> (HPSingleCalendarViewModel, HPDayLoaderSpy) {
+		let daysLoader = HPDayLoaderSpy()
 		let calendar = makeCalendarTestHelper()
-		let dateFormater = makeDateFormatterTestHelper(formate: dateFormateTestHelper)
-		let sut = HPSingleCalendarViewModel(baseDate: baseDate, dateFormater: dateFormater, calendar: calendar)
-		
-		return sut
+		let calendarManager = HPCalendarManager(calendar: calendar)
+		let sut = HPSingleCalendarViewModel(baseDate: baseDate, dayLoader: daysLoader, calendarManager: calendarManager, headerTextFormate: headerDateFormateHelper)
+
+		return (sut, daysLoader)
 	}
 	
 	private func makeCalendarTestHelper() -> Calendar {
@@ -61,13 +70,13 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		return calendar
 	}
 	
-	private func makeDateFormatterTestHelper(formate: String) -> DateFormatter {
-		let dateFormater = DateFormatter()
-		dateFormater.calendar = makeCalendarTestHelper()
-		dateFormater.dateFormat = formate
-		return dateFormater
+	private func makeDateFormatterTestHelper() -> DateFormatter {
+		let formatter = DateFormatter()
+		formatter.calendar = makeCalendarTestHelper()
+		formatter.dateFormat = headerDateFormateHelper
+		return formatter
 	}
-	
+		
 	private func setNextBaseDate(for baseDate: Date) -> Date {
 		let calendar = makeCalendarTestHelper()
 		let nextBaseDate = calendar.date(byAdding: .month, value: 1, to: baseDate)
@@ -80,8 +89,17 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		return previousBaseDate!
 	}
 	
-	private var dateFormateTestHelper: String {
+	private var headerDateFormateHelper: String {
 		return "MMMM yyyy"
+	}
+	
+	class HPDayLoaderSpy: HPDayLoader {
+		var generateDaysCount = 0
+		
+		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
+			generateDaysCount += 1
+			return []
+		}
 	}
 
 }

@@ -46,13 +46,20 @@ final class HPSingleSelectionCalendarViewTests: XCTestCase {
 	// MARK: - Helpers
 	
 	private func makeSut(date: Date = Date()) -> (HPSingleSelectionCalendarView, HPSingleCalendarViewModel) {
-		let dateFormatter = DateFormatter()
-		dateFormatter.dateFormat = "MM"
 		let calendar = Calendar(identifier: .gregorian)
-		let vm = HPSingleCalendarViewModel(baseDate: date, dateFormater: dateFormatter, calendar: calendar)
+		let dayLoader = HPDayLoaderDummy()
+		let calendarManager = HPCalendarManager(calendar: calendar)
+		let headerTextFormate = "MM"
+		let vm = HPSingleCalendarViewModel(baseDate: date, dayLoader: dayLoader, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
 		let sut = HPSingleSelectionCalendarView(frame: .zero, viewModel: vm)
 		return (sut, vm)
 	}
 
 	var numbersOfCalendarCell = 35
+	
+	class HPDayLoaderDummy: HPDayLoader {
+		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
+			return Array(repeating: HPDay(date: Date(), number: "1", isWithInMonth: true), count: 35)
+		}
+	}
 }
