@@ -31,6 +31,12 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		
 		sut.baseDate = Date()
 		XCTAssertEqual(dayLoader.generateDaysCount, 2)
+		
+		sut.setNextBaseDate()
+		XCTAssertEqual(dayLoader.generateDaysCount, 3)
+		
+		sut.setPreviousBaseDate()
+		XCTAssertEqual(dayLoader.generateDaysCount, 4)
 	}
 	
 	func test_setNextBaseDate_baseDateChangeToNextBaseDate() {
