@@ -43,24 +43,18 @@ final class HPCalendarManagerTests: XCTestCase {
 	// MARK: - Helpers
 	
 	private func makeSut() -> HPCalendarManager {
-		let manager = HPCalendarManager(calendar: makeCalendarTestHelper())
+		let manager = HPCalendarManager(calendar: makeTestCalendar())
 		return manager
 	}
 	
-	private func makeCalendarTestHelper() -> Calendar {
-		var calendar = Calendar(identifier: .gregorian)
-		calendar.timeZone = .gmt
-		return calendar
-	}
-	
 	private func addTimeUnit(for baseDate: Date, by unit: Calendar.Component) -> Date {
-		let calendar = makeCalendarTestHelper()
+		let calendar = makeTestCalendar()
 		let nextBaseDate = calendar.date(byAdding: unit, value: 1, to: baseDate)
 		return nextBaseDate!
 	}
 
 	private func minusTimeUnit(for baseDate: Date, by unit: Calendar.Component) -> Date {
-		let calendar = makeCalendarTestHelper()
+		let calendar = makeTestCalendar()
 		let previousBaseDate = calendar.date(byAdding: unit, value: -1, to: baseDate)
 		return previousBaseDate!
 	}
@@ -68,7 +62,7 @@ final class HPCalendarManagerTests: XCTestCase {
 	private func formattedDateString(from date: Date, by formate: String) -> String {
 		let dateFormmater = DateFormatter()
 		dateFormmater.dateFormat = formate
-		dateFormmater.calendar = makeCalendarTestHelper()
+		dateFormmater.calendar = makeTestCalendar()
 		return dateFormmater.string(from: date)
 	}
 	

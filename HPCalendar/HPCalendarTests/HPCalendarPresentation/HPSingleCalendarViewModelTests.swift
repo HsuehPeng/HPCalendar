@@ -77,22 +77,16 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 	
 	private func makeSut(baseDate: Date = Date()) -> (HPSingleCalendarViewModel, HPDayLoaderSpy, HPCalendarManagerSpy) {
 		let daysLoader = HPDayLoaderSpy()
-		let calendar = makeCalendarTestHelper()
+		let calendar = makeTestCalendar()
 		let calendarManager = HPCalendarManagerSpy(calendar: calendar)
 		let sut = HPSingleCalendarViewModel(baseDate: baseDate, dayLoader: daysLoader, calendarManager: calendarManager, headerTextFormate: headerDateFormateHelper)
 
 		return (sut, daysLoader, calendarManager)
 	}
 	
-	private func makeCalendarTestHelper() -> Calendar {
-		var calendar = Calendar(identifier: .gregorian)
-		calendar.timeZone = .gmt
-		return calendar
-	}
-	
 	private func makeDateFormatterTestHelper() -> DateFormatter {
 		let formatter = DateFormatter()
-		formatter.calendar = makeCalendarTestHelper()
+		formatter.calendar = makeTestCalendar()
 		formatter.dateFormat = headerDateFormateHelper
 		return formatter
 	}
