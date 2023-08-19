@@ -22,6 +22,11 @@ class HPCalendarManager {
 		return formatter.string(from: date)
 	}
 	
+	func getFirstSecondOfDate(from date: Date) -> Date {
+		let dayComponents = calendar.dateComponents([.year, .month, .day], from: date)
+		return calendar.date(from: dayComponents) ?? date
+	}
+	
 	init(calendar: Calendar) {
 		self.calendar = calendar
 	}

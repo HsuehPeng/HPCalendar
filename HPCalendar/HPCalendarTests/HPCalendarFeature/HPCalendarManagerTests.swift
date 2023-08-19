@@ -40,6 +40,16 @@ final class HPCalendarManagerTests: XCTestCase {
 		XCTAssertEqual(transformedDateString, testedDateString)
 	}
 	
+	func test_getFirstSecondOfDate_deliversFirstSecondeOfGivenDate() {
+		let currentDate = Date()
+		let sut = makeSut()
+		
+		let firstSecondeOfDate = sut.getFirstSecondOfDate(from: currentDate)
+		let testedFirstSecondeOfDate = getFirstSecondOfDate(from: currentDate)
+		
+		XCTAssertEqual(firstSecondeOfDate, testedFirstSecondeOfDate)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut() -> HPCalendarManager {
@@ -64,6 +74,12 @@ final class HPCalendarManagerTests: XCTestCase {
 		dateFormmater.dateFormat = formate
 		dateFormmater.calendar = makeTestCalendar()
 		return dateFormmater.string(from: date)
+	}
+	
+	private func getFirstSecondOfDate(from date: Date) -> Date {
+		let calendar = makeTestCalendar()
+		let dayComponents = calendar.dateComponents([.year, .month, .day], from: date)
+		return calendar.date(from: dayComponents)!
 	}
 	
 	private var dateFormate: String {
