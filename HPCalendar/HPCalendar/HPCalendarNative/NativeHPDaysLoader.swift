@@ -11,8 +11,8 @@ class NativeHPDaysLoader: HPDayLoader {
 	private let metaDataProvider: MetaDataProvider
 	private let calendar: Calendar
 	
-	init(calendar: Calendar) {
-		self.metaDataProvider = MetaDataProvider(calendar: calendar)
+	init(calendar: Calendar, metaDataProvider: MetaDataProvider) {
+		self.metaDataProvider = metaDataProvider
 		self.calendar = calendar
 	}
 	
@@ -36,6 +36,8 @@ class NativeHPDaysLoader: HPDayLoader {
 	private func generatePreviousMonthDay(by date: Date) -> [HPDay] {
 		let initialOffset = metaDataProvider.firstDateOffSet(for: date)
 		var days: [HPDay] = []
+		
+		guard initialOffset > 1 else { return [] }
 		
 		for i in (1...initialOffset-1).reversed() {
 			let previousDate = calendar.date(byAdding: .day, value: -i, to: date) ?? date
