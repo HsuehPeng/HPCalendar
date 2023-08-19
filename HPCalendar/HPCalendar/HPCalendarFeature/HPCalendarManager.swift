@@ -8,6 +8,10 @@
 class HPCalendarManager {
 	private let calendar: Calendar
 	
+	var today: Date {
+		return Date()
+	}
+	
 	func addTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
 		return calendar.date(byAdding: component, value: 1, to: date) ?? date
 	}

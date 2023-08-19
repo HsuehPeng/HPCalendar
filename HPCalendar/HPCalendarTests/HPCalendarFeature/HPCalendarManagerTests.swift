@@ -10,6 +10,12 @@ import XCTest
 
 final class HPCalendarManagerTests: XCTestCase {
 	
+	func test_today_isCorrectToday() {
+		let sut = makeSut()
+		
+		XCTAssertEqual(sut.today, Date())
+	}
+	
 	func test_addTimeUnit_addCorrectUnitToDate() {
 		let currentDate = Date()
 		let sut = makeSut()
