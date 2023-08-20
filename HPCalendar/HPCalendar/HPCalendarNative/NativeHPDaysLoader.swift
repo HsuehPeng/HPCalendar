@@ -30,9 +30,10 @@ class NativeHPDaysLoader: HPDayLoader {
 		
 		return generatePreviousMonthDay(by: firstDateOfMonth) + days + generateNextMonthDay(by: lastDateOfMonth)
 	}
-	
-	// MARK: - Helpers
-	
+
+}
+
+extension NativeHPDaysLoader {
 	private func generatePreviousMonthDay(by date: Date) -> [HPDay] {
 		let initialOffset = metaDataProvider.firstDateOffSet(for: date)
 		var days: [HPDay] = []
