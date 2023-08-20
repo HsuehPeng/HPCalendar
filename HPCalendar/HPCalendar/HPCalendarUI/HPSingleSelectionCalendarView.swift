@@ -70,12 +70,15 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
 	// MARK: - UICollectionViewDataSource
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return HPCalendarPolicy.numbersOfCell
+		return viewModel.days.count
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCalendarCell.reuseId, for: indexPath) as? HPCalendarCell else { return UICollectionViewCell() }
-		cell.dateLabel.text = viewModel.days[indexPath.item].number
+		let day = viewModel.days[indexPath.item]
+		cell.dateLabel.text = day.number
+		cell.dateLabel.textColor = day.isWithInMonth ? HPCalendarPolicy.withinMonthTextColor : HPCalendarPolicy.notWithinMonthTextColor
+		cell.dateLabel.textColor = day.isToday ? HPCalendarPolicy.todayTextColor : cell.dateLabel.textColor
 		return cell
 	}
 }

@@ -42,6 +42,26 @@ final class HPSingleSelectionCalendarViewTests: XCTestCase {
 		}
 	}
 	
+	func test_HPCalendarCell_renderCorrectDateLabelTextColor() {
+		let (sut, _) = makeSut()
+				
+		for i in 0..<2 {
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarPolicy.notWithinMonthTextColor)
+		}
+		
+		for i in 2..<3 {
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarPolicy.todayTextColor)
+		}
+		
+		for i in 3..<33 {
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarPolicy.withinMonthTextColor)
+		}
+		
+		for i in 33..<35 {
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarPolicy.notWithinMonthTextColor)
+		}
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut(date: Date = Date()) -> (HPSingleSelectionCalendarView, HPSingleCalendarViewModel) {
@@ -71,7 +91,15 @@ final class HPSingleSelectionCalendarViewTests: XCTestCase {
 		
 		override func load(for date: Date) -> [HPSingleSelectionDay] {
 			generateDaysCount += 1
-			return Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: true, isToday: true), count: HPCalendarPolicy.numbersOfCell)
+			
+			let notWithinMonthDayBeforeCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false), count: 2)
+			let todayDay = [HPSingleSelectionDay(date: Date(), number: "2", isWithInMonth: true, isToday: true)]
+			let withinMonthDays = Array(repeating: HPSingleSelectionDay(date: Date(), number: "3", isWithInMonth: true, isToday: false), count: 30)
+			let notWithinMonthDayAfterCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "4", isWithInMonth: false, isToday: false), count: 2)
+			
+			let hpSingleSelectionDays = notWithinMonthDayBeforeCurrentMonth + todayDay + withinMonthDays + notWithinMonthDayAfterCurrentMonth
+			
+			return hpSingleSelectionDays
 		}
 	}
 }

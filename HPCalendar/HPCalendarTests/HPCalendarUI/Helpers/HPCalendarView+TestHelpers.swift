@@ -24,6 +24,11 @@ extension HPSingleSelectionCalendarView {
 		return cell.dateLabel.text ?? "A"
 	}
 	
+	func calendarCellDateLabelTextColor(at item: Int) -> UIColor {
+		guard let cell = cellForItemAt(at: item) as? HPCalendarCell else { return .clear }
+		return cell.dateLabel.textColor ?? .clear
+	}
+	
 	func simnulateHeaderViewTapNextButton() {
 		headerView.nextButton.simulateTap()
 	}
