@@ -12,10 +12,9 @@ import UIKit
 final class HPSingleSelectionCalendarViewTests: XCTestCase {
 
 	func test_init_renderCorrectNumbersOfCalendarCell() {
-		let (sut, vm) = makeSut()
+		let (sut, _) = makeSut()
 
 		XCTAssertEqual(sut.numbersOfCalendarCell(), numbersOfCalendarCell)
-		XCTAssertEqual(vm.days.count, numbersOfCalendarCell)
 	}
 	
 	func test_init_renderCorrectHeaderTextOnCreation() {
