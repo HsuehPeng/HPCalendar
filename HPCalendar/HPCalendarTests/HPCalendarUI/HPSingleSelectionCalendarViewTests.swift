@@ -48,18 +48,31 @@ final class HPSingleSelectionCalendarViewTests: XCTestCase {
 	private func makeSut(date: Date = Date()) -> (HPSingleSelectionCalendarView, HPSingleCalendarViewModel) {
 		let calendar = Calendar(identifier: .gregorian)
 		let dayLoader = HPDayLoaderDummy()
+		let hpdayLoaderAdapterSpy = HPDayLoaderAdapterSpy(adaptee: dayLoader) { hpday in
+			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false)
+		}
+		
 		let calendarManager = HPCalendarManager(calendar: calendar)
 		let headerTextFormate = "MM"
-		let vm = HPSingleCalendarViewModel(baseDate: date, dayLoader: dayLoader, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
+		let vm = HPSingleCalendarViewModel(baseDate: date, dayLoader: hpdayLoaderAdapterSpy, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
 		let sut = HPSingleSelectionCalendarView(frame: .zero, viewModel: vm)
 		return (sut, vm)
 	}
 
 	var numbersOfCalendarCell = 35
 	
-	class HPDayLoaderDummy: HPDayLoader {
+	private class HPDayLoaderDummy: HPDayLoader {
 		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
-			return Array(repeating: HPDay(date: Date(), number: "1", isWithInMonth: true), count: 35)
+			return []
+		}
+	}
+	
+	private class HPDayLoaderAdapterSpy: HPDayLoaderAdapter<HPSingleSelectionDay> {
+		var generateDaysCount = 0
+		
+		override func load(for date: Date) -> [HPSingleSelectionDay] {
+			generateDaysCount += 1
+			return Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: true, isToday: true), count: 35)
 		}
 	}
 }

@@ -15,6 +15,8 @@
 		B823B6BA2A8CE8A80043DC9F /* NativeHPDaysLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6B92A8CE8A80043DC9F /* NativeHPDaysLoader.swift */; };
 		B823B6BC2A8CE8CA0043DC9F /* HPDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6BB2A8CE8CA0043DC9F /* HPDay.swift */; };
 		B823B6C32A8D04970043DC9F /* HPSingleCalendarViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6C22A8D04970043DC9F /* HPSingleCalendarViewModelTests.swift */; };
+		B82EEE512A91F96800488E1C /* HPDayLoaderAdapter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE502A91F96800488E1C /* HPDayLoaderAdapter.swift */; };
+		B82EEE532A91FB5F00488E1C /* HPSingleSelectionDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE522A91FB5F00488E1C /* HPSingleSelectionDay.swift */; };
 		B83D2B282A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift */; };
 		B83D2B2A2A8DE93E0078E177 /* HPSingleCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B292A8DE93E0078E177 /* HPSingleCalendarViewModel.swift */; };
 		B83D2B2C2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B2B2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift */; };
@@ -50,6 +52,8 @@
 		B823B6B92A8CE8A80043DC9F /* NativeHPDaysLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NativeHPDaysLoader.swift; sourceTree = "<group>"; };
 		B823B6BB2A8CE8CA0043DC9F /* HPDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDay.swift; sourceTree = "<group>"; };
 		B823B6C22A8D04970043DC9F /* HPSingleCalendarViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleCalendarViewModelTests.swift; sourceTree = "<group>"; };
+		B82EEE502A91F96800488E1C /* HPDayLoaderAdapter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDayLoaderAdapter.swift; sourceTree = "<group>"; };
+		B82EEE522A91FB5F00488E1C /* HPSingleSelectionDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionDay.swift; sourceTree = "<group>"; };
 		B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarViewTests.swift; sourceTree = "<group>"; };
 		B83D2B292A8DE93E0078E177 /* HPSingleCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleCalendarViewModel.swift; sourceTree = "<group>"; };
 		B83D2B2B2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarView.swift; sourceTree = "<group>"; };
@@ -138,6 +142,8 @@
 			isa = PBXGroup;
 			children = (
 				B83D2B292A8DE93E0078E177 /* HPSingleCalendarViewModel.swift */,
+				B82EEE502A91F96800488E1C /* HPDayLoaderAdapter.swift */,
+				B82EEE522A91FB5F00488E1C /* HPSingleSelectionDay.swift */,
 			);
 			path = HPCalendarPresentation;
 			sourceTree = "<group>";
@@ -322,6 +328,8 @@
 				B823B6B62A8CC3CF0043DC9F /* MetaDataProvider.swift in Sources */,
 				B83D2B2C2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift in Sources */,
 				B83D2B372A8E06C30078E177 /* HPCalendarHeaderView.swift in Sources */,
+				B82EEE532A91FB5F00488E1C /* HPSingleSelectionDay.swift in Sources */,
+				B82EEE512A91F96800488E1C /* HPDayLoaderAdapter.swift in Sources */,
 				B83D2B2E2A8DF7560078E177 /* HPCalendarCell.swift in Sources */,
 				B83D2B2A2A8DE93E0078E177 /* HPSingleCalendarViewModel.swift in Sources */,
 				B88006862A8F850D00D10191 /* HPCalendarManager.swift in Sources */,
