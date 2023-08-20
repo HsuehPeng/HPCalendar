@@ -147,6 +147,7 @@
 		B823B6BF2A8D02520043DC9F /* HPCalendarPresentation */ = {
 			isa = PBXGroup;
 			children = (
+				B82EEE502A91F96800488E1C /* HPDayLoaderAdapter.swift */,
 				B82EEE542A92062D00488E1C /* SingleSelection */,
 			);
 			path = HPCalendarPresentation;
@@ -174,7 +175,6 @@
 			isa = PBXGroup;
 			children = (
 				B83D2B292A8DE93E0078E177 /* HPSingleCalendarViewModel.swift */,
-				B82EEE502A91F96800488E1C /* HPDayLoaderAdapter.swift */,
 				B82EEE522A91FB5F00488E1C /* HPSingleSelectionDay.swift */,
 			);
 			path = SingleSelection;
