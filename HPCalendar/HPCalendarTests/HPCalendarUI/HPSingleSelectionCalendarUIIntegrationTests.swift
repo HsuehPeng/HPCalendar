@@ -9,7 +9,7 @@ import XCTest
 import UIKit
 @testable import HPCalendar
 
-final class HPSingleSelectionCalendarViewTests: XCTestCase {
+final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 
 	func test_init_renderCorrectNumbersOfCalendarCell() {
 		let (sut, _) = makeSut()

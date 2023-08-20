@@ -19,7 +19,7 @@
 		B82EEE532A91FB5F00488E1C /* HPSingleSelectionDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE522A91FB5F00488E1C /* HPSingleSelectionDay.swift */; };
 		B82EEE582A9207EB00488E1C /* HPCalendarPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE572A9207EB00488E1C /* HPCalendarPolicy.swift */; };
 		B82EEE5B2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE5A2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift */; };
-		B83D2B282A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift */; };
+		B83D2B282A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift */; };
 		B83D2B2A2A8DE93E0078E177 /* HPSingleCalendarViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B292A8DE93E0078E177 /* HPSingleCalendarViewModel.swift */; };
 		B83D2B2C2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B2B2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift */; };
 		B83D2B2E2A8DF7560078E177 /* HPSingleSelectionCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B2D2A8DF7560078E177 /* HPSingleSelectionCalendarCell.swift */; };
@@ -58,7 +58,7 @@
 		B82EEE522A91FB5F00488E1C /* HPSingleSelectionDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionDay.swift; sourceTree = "<group>"; };
 		B82EEE572A9207EB00488E1C /* HPCalendarPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCalendarPolicy.swift; sourceTree = "<group>"; };
 		B82EEE5A2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarUIConfiguration.swift; sourceTree = "<group>"; };
-		B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarViewTests.swift; sourceTree = "<group>"; };
+		B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarUIIntegrationTests.swift; sourceTree = "<group>"; };
 		B83D2B292A8DE93E0078E177 /* HPSingleCalendarViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleCalendarViewModel.swift; sourceTree = "<group>"; };
 		B83D2B2B2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarView.swift; sourceTree = "<group>"; };
 		B83D2B2D2A8DF7560078E177 /* HPSingleSelectionCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarCell.swift; sourceTree = "<group>"; };
@@ -203,7 +203,7 @@
 			isa = PBXGroup;
 			children = (
 				B83D2B332A8DF9290078E177 /* Helpers */,
-				B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift */,
+				B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift */,
 			);
 			path = HPCalendarUI;
 			sourceTree = "<group>";
@@ -368,7 +368,7 @@
 				B823B6B82A8CC54A0043DC9F /* NativeHPDaysLoaderTests.swift in Sources */,
 				B8FA479E2A8E206D00212FA4 /* UIControl+TestHelpers.swift in Sources */,
 				B823B6C32A8D04970043DC9F /* HPSingleCalendarViewModelTests.swift in Sources */,
-				B83D2B282A8DE8D70078E177 /* HPSingleSelectionCalendarViewTests.swift in Sources */,
+				B83D2B282A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift in Sources */,
 				B83D2B352A8DF9430078E177 /* HPCalendarView+TestHelpers.swift in Sources */,
 				B880068B2A8F988400D10191 /* SharedTestHelpers.swift in Sources */,
 				B823B6AA2A8C8EF60043DC9F /* MetaDataProviderTests.swift in Sources */,
