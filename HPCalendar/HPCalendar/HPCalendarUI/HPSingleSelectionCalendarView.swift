@@ -70,7 +70,7 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
 	// MARK: - UICollectionViewDataSource
 	
 	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-		return 35
+		return HPCalendarPolicy.numbersOfCell
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

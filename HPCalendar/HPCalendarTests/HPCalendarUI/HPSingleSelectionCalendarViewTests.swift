@@ -59,7 +59,7 @@ final class HPSingleSelectionCalendarViewTests: XCTestCase {
 		return (sut, vm)
 	}
 
-	var numbersOfCalendarCell = 35
+	var numbersOfCalendarCell = HPCalendarPolicy.numbersOfCell
 	
 	private class HPDayLoaderDummy: HPDayLoader {
 		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
@@ -72,7 +72,7 @@ final class HPSingleSelectionCalendarViewTests: XCTestCase {
 		
 		override func load(for date: Date) -> [HPSingleSelectionDay] {
 			generateDaysCount += 1
-			return Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: true, isToday: true), count: 35)
+			return Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: true, isToday: true), count: HPCalendarPolicy.numbersOfCell)
 		}
 	}
 }
