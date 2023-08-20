@@ -32,11 +32,11 @@ final class NativeHPDaysLoaderTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut() -> NativeHPDaysLoader {
+	private func makeSut() -> NativeHPDayLoader {
 		var calendar = Calendar(identifier: .gregorian)
 		calendar.timeZone = .gmt
 		let metaDataProvider = MetaDataProviderStub(calendar: calendar)
-		let sut = NativeHPDaysLoader(calendar: calendar, metaDataProvider: metaDataProvider)
+		let sut = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
 		
 		return sut
 	}

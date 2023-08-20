@@ -7,7 +7,7 @@
 
 import Foundation
 
-class NativeHPDaysLoader: HPDayLoader {
+class NativeHPDayLoader: HPDayLoader {
 	private let metaDataProvider: MetaDataProvider
 	private let calendar: Calendar
 	
@@ -33,7 +33,7 @@ class NativeHPDaysLoader: HPDayLoader {
 
 }
 
-extension NativeHPDaysLoader {
+extension NativeHPDayLoader {
 	private func generatePreviousMonthDay(by date: Date) -> [HPDay] {
 		let initialOffset = metaDataProvider.firstDateOffSet(for: date)
 		var days: [HPDay] = []
