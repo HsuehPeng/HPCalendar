@@ -57,7 +57,7 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
 	
 	private func configureCollectionView() {
 		collectionView.dataSource = self
-		collectionView.register(HPCalendarCell.self, forCellWithReuseIdentifier: HPCalendarCell.reuseId)
+		collectionView.register(HPSingleSelectionCalendarCell.self, forCellWithReuseIdentifier: HPSingleSelectionCalendarCell.reuseId)
 	}
 	
 	private func bindViewModel() {
@@ -74,11 +74,11 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
 	}
 	
 	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCalendarCell.reuseId, for: indexPath) as? HPCalendarCell else { return UICollectionViewCell() }
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return UICollectionViewCell() }
 		let day = viewModel.days[indexPath.item]
 		cell.dateLabel.text = day.number
-		cell.dateLabel.textColor = day.isWithInMonth ? HPCalendarPolicy.withinMonthTextColor : HPCalendarPolicy.notWithinMonthTextColor
-		cell.dateLabel.textColor = day.isToday ? HPCalendarPolicy.todayTextColor : cell.dateLabel.textColor
+		cell.dateLabel.textColor = day.isWithInMonth ? HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor : HPSingleSelectionCalendarUIConfiguration.notWithinMonthTextColor
+		cell.dateLabel.textColor = day.isToday ? HPSingleSelectionCalendarUIConfiguration.todayTextColor : cell.dateLabel.textColor
 		return cell
 	}
 }

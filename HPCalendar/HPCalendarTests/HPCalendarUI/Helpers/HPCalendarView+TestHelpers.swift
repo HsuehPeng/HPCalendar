@@ -20,12 +20,12 @@ extension HPSingleSelectionCalendarView {
 	}
 	
 	func calendarCellDateNumber(at item: Int) -> String {
-		guard let cell = cellForItemAt(at: item) as? HPCalendarCell else { return "A" }
+		guard let cell = cellForItemAt(at: item) as? HPSingleSelectionCalendarCell else { return "A" }
 		return cell.dateLabel.text ?? "A"
 	}
 	
 	func calendarCellDateLabelTextColor(at item: Int) -> UIColor {
-		guard let cell = cellForItemAt(at: item) as? HPCalendarCell else { return .clear }
+		guard let cell = cellForItemAt(at: item) as? HPSingleSelectionCalendarCell else { return .clear }
 		return cell.dateLabel.textColor ?? .clear
 	}
 	

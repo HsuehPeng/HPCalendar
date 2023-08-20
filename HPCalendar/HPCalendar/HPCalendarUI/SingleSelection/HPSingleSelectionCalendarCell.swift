@@ -7,10 +7,10 @@
 
 import UIKit
 
-class HPCalendarCell: UICollectionViewCell {
+class HPSingleSelectionCalendarCell: UICollectionViewCell {
 	// MARK: - Properties
 	
-	static let reuseId = "\(HPCalendarCell.self)"
+	static let reuseId = "\(HPSingleSelectionCalendarCell.self)"
 	
 	let dateLabel: UILabel = {
 		let label = UILabel()
