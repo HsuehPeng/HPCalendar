@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
+class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
 	// MARK: - Properties
 	
 	lazy var headerView: HPCalendarHeaderView = {
@@ -57,6 +57,7 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
 	
 	private func configureCollectionView() {
 		collectionView.dataSource = self
+		collectionView.delegate = self
 		collectionView.register(HPSingleSelectionCalendarCell.self, forCellWithReuseIdentifier: HPSingleSelectionCalendarCell.reuseId)
 	}
 	
@@ -81,4 +82,13 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource {
 		cell.dateLabel.textColor = day.isToday ? HPSingleSelectionCalendarUIConfiguration.todayTextColor : cell.dateLabel.textColor
 		return cell
 	}
+	
+	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return }
+		guard viewModel.days[indexPath.item].isWithInMonth else { return }
+		
+		cell.selectionView.backgroundColor = HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor
+		cell.dateLabel.textColor = .white
+	}
+	
 }

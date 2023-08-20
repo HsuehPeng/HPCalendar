@@ -211,9 +211,9 @@
 		B83D2B332A8DF9290078E177 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				B83D2B342A8DF9430078E177 /* HPCalendarView+TestHelpers.swift */,
 				B8FA479B2A8E205200212FA4 /* UIButton+TestHelpers.swift */,
 				B8FA479D2A8E206D00212FA4 /* UIControl+TestHelpers.swift */,
+				B83D2B342A8DF9430078E177 /* HPCalendarView+TestHelpers.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";

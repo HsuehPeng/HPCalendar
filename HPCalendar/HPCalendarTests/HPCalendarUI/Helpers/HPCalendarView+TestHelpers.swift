@@ -13,19 +13,19 @@ extension HPSingleSelectionCalendarView {
 		return collectionView.numberOfItems(inSection: calendarSection)
 	}
 	
-	func cellForItemAt(at item: Int) -> UICollectionViewCell? {
+	func cellForItemAt(at item: Int) -> HPSingleSelectionCalendarCell {
 		let ds = collectionView.dataSource
 		let index = IndexPath(item: item, section: calendarSection)
-		return ds?.collectionView(collectionView, cellForItemAt: index)
+		return ds?.collectionView(collectionView, cellForItemAt: index) as! HPSingleSelectionCalendarCell
 	}
 	
 	func calendarCellDateNumber(at item: Int) -> String {
-		guard let cell = cellForItemAt(at: item) as? HPSingleSelectionCalendarCell else { return "A" }
+		let cell = cellForItemAt(at: item)
 		return cell.dateLabel.text ?? "A"
 	}
 	
 	func calendarCellDateLabelTextColor(at item: Int) -> UIColor {
-		guard let cell = cellForItemAt(at: item) as? HPSingleSelectionCalendarCell else { return .clear }
+		let cell = cellForItemAt(at: item)
 		return cell.dateLabel.textColor ?? .clear
 	}
 	
@@ -35,6 +35,17 @@ extension HPSingleSelectionCalendarView {
 	
 	func simnulateHeaderViewTapPreviousButton() {
 		headerView.previousButton.simulateTap()
+	}
+	
+	func simulateSelectHpCalendarCell(at item: Int) {
+		let delegate = collectionView.delegate
+		let index = IndexPath(item: item, section: calendarSection)
+		delegate?.collectionView?(collectionView, didSelectItemAt: index)
+	}
+	
+	func calendarCellSelectionViewColor(at item: Int) -> UIColor {
+		let cell = cellForItemAt(at: item)
+		return cell.selectionView.backgroundColor ?? .brown
 	}
 	
 	private var calendarSection: Int {

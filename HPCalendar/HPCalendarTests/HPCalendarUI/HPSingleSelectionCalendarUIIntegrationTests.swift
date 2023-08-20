@@ -62,6 +62,85 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 		}
 	}
 	
+	func test_selectHPCalendarCell_doNothingWhenSelectCellThatIsNotInCurrentMonth() {
+		let (sut, _) = makeSut()
+		
+		sut.simulateSelectHpCalendarCell(at: beforeCurrentMonthIndex)
+		
+		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: beforeCurrentMonthIndex), UIColor.clear)
+		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: beforeCurrentMonthIndex), HPSingleSelectionCalendarUIConfiguration.notWithinMonthTextColor)
+	}
+	
+	func test_selectHPCalendarCell_verifyCellUIWhenSelectCellThatIsInCurrentMonth() {
+//		let (sut, _) = makeSut()
+//
+//		sut.simulateSelectHpCalendarCell(at: currentMonthIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: currentMonthIndex), HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: currentMonthIndex), .white)
+	}
+	
+	func test_selectHPCalendarCell_verifyCellUIWhenSelectCellTwiceThatIsInCurrentMonth() {
+//		let (sut, _) = makeSut()
+//
+//		sut.simulateSelectHpCalendarCell(at: currentMonthIndex)
+//		sut.simulateSelectHpCalendarCell(at: currentMonthIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: currentMonthIndex), UIColor.clear)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: currentMonthIndex), HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor)
+	}
+	
+	func test_selectHPCalendarCell_verifyCellUIWhenSelectCellThatIsToday() {
+//		let (sut, _) = makeSut()
+//
+//		sut.simulateSelectHpCalendarCell(at: todayIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: todayIndex), HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: todayIndex), .white)
+	}
+	
+	func test_selectHPCalendarCell_verifyCellUIWhenSelectCellTwiceThatIsIsToday() {
+//		let (sut, _) = makeSut()
+//
+//		sut.simulateSelectHpCalendarCell(at: todayIndex)
+//		sut.simulateSelectHpCalendarCell(at: todayIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: todayIndex), UIColor.clear)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: todayIndex), HPSingleSelectionCalendarUIConfiguration.todayTextColor)
+	}
+	
+	func test_selectHPCalendarCell_verifyCellUIWhenSelectACellFirstAndSelectionAnotherCell() {
+//		let (sut, _) = makeSut()
+//
+//		sut.simulateSelectHpCalendarCell(at: currentMonthIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: currentMonthIndex), HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: currentMonthIndex), .white)
+//
+//		sut.simulateSelectHpCalendarCell(at: anotherCurrentMonthIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: currentMonthIndex), UIColor.clear)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: currentMonthIndex), HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor)
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: anotherCurrentMonthIndex), HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: anotherCurrentMonthIndex), .white)
+	}
+
+	func test_selectHPCalendarCell_verifyCellUIWhenSelectTodayCellFirstAndSelectionAnotherCell() {
+//		let (sut, _) = makeSut()
+//
+//		sut.simulateSelectHpCalendarCell(at: todayIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: todayIndex), HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: todayIndex), .white)
+//
+//		sut.simulateSelectHpCalendarCell(at: anotherCurrentMonthIndex)
+//
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: todayIndex), UIColor.clear)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: todayIndex), HPSingleSelectionCalendarUIConfiguration.todayTextColor)
+//		XCTAssertEqual(sut.calendarCellSelectionViewColor(at: anotherCurrentMonthIndex), HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor)
+//		XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: anotherCurrentMonthIndex), .white)
+	}
+	
 	// MARK: - Helpers
 	
 	private func makeSut(date: Date = Date()) -> (HPSingleSelectionCalendarView, HPSingleCalendarViewModel) {
@@ -79,6 +158,11 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 	}
 
 	var numbersOfCalendarCell = HPCalendarPolicy.numbersOfCell
+	
+	let beforeCurrentMonthIndex = 0
+	let currentMonthIndex = 10
+	let anotherCurrentMonthIndex = 11
+	let todayIndex = 2
 	
 	private class HPDayLoaderDummy: HPDayLoader {
 		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
