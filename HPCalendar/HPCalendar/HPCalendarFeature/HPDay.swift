@@ -7,8 +7,8 @@
 
 import Foundation
 
-public struct HPDay: Equatable {
-	public let date: Date
-	public let number: String
-	public let isWithInMonth: Bool
+struct HPDay: Equatable {
+	let date: Date
+	let number: String
+	let isWithInMonth: Bool
 }
