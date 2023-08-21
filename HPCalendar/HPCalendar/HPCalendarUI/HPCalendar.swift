@@ -7,8 +7,8 @@
 
 import Foundation
 
-public class HPCalendar {
-	public func make(frame: CGRect) -> HPSingleSelectionCalendarView {
+public final class HPCalendar {
+	public static func make(frame: CGRect) -> HPSingleSelectionCalendarView {
 		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
