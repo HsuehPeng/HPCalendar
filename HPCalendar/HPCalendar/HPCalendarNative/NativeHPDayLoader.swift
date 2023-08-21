@@ -28,7 +28,11 @@ class NativeHPDayLoader: HPDayLoader {
 			return generateDay(for: date, isWithinMonth: true)
 		}
 		
-		return generatePreviousMonthDay(by: firstDateOfMonth) + days + generateNextMonthDay(by: lastDateOfMonth)
+		let previousMonthHPDays = generatePreviousMonthDay(by: firstDateOfMonth)
+		let nextMonthDaysCount = HPCalendarPolicy.numbersOfCell - previousMonthHPDays.count - days.count
+		let nextMonthHPDays = generateNextMonthDay(from: lastDateOfMonth, nextMonthDayCount: nextMonthDaysCount)
+		
+		return previousMonthHPDays + days + nextMonthHPDays
 	}
 
 }
@@ -48,14 +52,10 @@ extension NativeHPDayLoader {
 		return days
 	}
 	
-	private func generateNextMonthDay(by date: Date) -> [HPDay] {
-		let additionalDays = metaDataProvider.nextMonthWeekDayOffSet(for: date)
-		
-		guard additionalDays > 0 else { return [] }
-		
+	private func generateNextMonthDay(from date: Date, nextMonthDayCount: Int) -> [HPDay] {
 		var days: [HPDay] = []
 		
-		for i in 1...additionalDays {
+		for i in 1...nextMonthDayCount {
 			let nextDate = calendar.date(byAdding: .day, value: i, to: date) ?? date
 			days.append(generateDay(for: nextDate, isWithinMonth: false))
 		}

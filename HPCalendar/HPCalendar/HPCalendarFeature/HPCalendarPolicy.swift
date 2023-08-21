@@ -8,5 +8,5 @@
 import UIKit
 
 final class HPCalendarPolicy {
-	static let numbersOfCell = 35
+	static let numbersOfCell = 42
 }
