@@ -34,6 +34,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	
 	private let flowLayout: UICollectionViewFlowLayout = {
 		let layout = UICollectionViewFlowLayout()
+		layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
 		return layout
 	}()
 	
@@ -65,6 +66,12 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	public override func layoutSubviews() {
+		super.layoutSubviews()
+		
+		flowLayout.itemSize = cellSize(in: self.bounds)
+	}
+	
 	// MARK: - Helpers
 	
 	private func configureCollectionView() {
@@ -78,6 +85,13 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 			self?.headerView.dateLabel.text = self?.viewModel.headerText
 			self?.collectionView.reloadData()
 		}
+	}
+	
+	private func cellSize(in bounds: CGRect) -> CGSize {
+		return CGSize(
+			width:   collectionView.bounds.width / 7.0,
+			height: (collectionView.bounds.height) / 6.0
+		)
 	}
 	
 	// MARK: - UICollectionViewDataSource
