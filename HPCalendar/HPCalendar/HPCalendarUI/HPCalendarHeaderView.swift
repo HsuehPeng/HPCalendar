@@ -28,6 +28,15 @@ class HPCalendarHeaderView: UIView {
 		return button
 	}()
 	
+	private let hStack: UIStackView = {
+		let stackView = UIStackView()
+		stackView.axis = .horizontal
+		stackView.alignment = .center
+		stackView.distribution = .equalSpacing
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		return stackView
+	}()
+	
 	var onNextButtonTapped: (() -> Void)
 	var onPreviousButtonTapped: (() -> Void)
 	
@@ -43,10 +52,23 @@ class HPCalendarHeaderView: UIView {
 		self.onNextButtonTapped = onNextButtonTapped
 		self.onPreviousButtonTapped = onPreviousButtonTapped
 		super.init(frame: frame)
+		
+		setupUI()
 	}
 	
 	required init?(coder: NSCoder) {
 		fatalError("init(coder:) has not been implemented")
+	}
+	
+	private func setupUI() {
+		self.addSubview(hStack)
+		
+		NSLayoutConstraint.activate([
+			hStack.topAnchor.constraint(equalTo: self.topAnchor),
+			hStack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
+			hStack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+			hStack.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+		])
 	}
 	
 }
