@@ -7,7 +7,7 @@
 
 import UIKit
 
-class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
 	// MARK: - Properties
 	
 	lazy var headerView: HPCalendarHeaderView = {
@@ -70,11 +70,11 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, UIColle
 	
 	// MARK: - UICollectionViewDataSource
 	
-	func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+	public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
 		return viewModel.days.count
 	}
 	
-	func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return UICollectionViewCell() }
 		let day = viewModel.days[indexPath.item]
 		cell.dateLabel.text = day.number
@@ -83,7 +83,7 @@ class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, UIColle
 		return cell
 	}
 	
-	func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+	public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return }
 		guard viewModel.days[indexPath.item].isWithInMonth else { return }
 		
