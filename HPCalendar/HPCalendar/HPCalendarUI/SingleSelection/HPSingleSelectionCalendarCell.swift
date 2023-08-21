@@ -16,6 +16,7 @@ class HPSingleSelectionCalendarCell: UICollectionViewCell {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
 		view.backgroundColor = .clear
+		view.layer.cornerRadius = 8
 		return view
 	}()
 	

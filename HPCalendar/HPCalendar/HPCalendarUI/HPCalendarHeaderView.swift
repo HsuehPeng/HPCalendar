@@ -62,6 +62,7 @@ class HPCalendarHeaderView: UIView {
 	
 	private func setupUI() {
 		self.addSubview(hStack)
+		hStack.addArrangedSubviews(subviews: [dateLabel, nextButton, previousButton])
 		
 		NSLayoutConstraint.activate([
 			hStack.topAnchor.constraint(equalTo: self.topAnchor),

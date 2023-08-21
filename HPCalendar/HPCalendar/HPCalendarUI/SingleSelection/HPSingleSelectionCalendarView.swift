@@ -21,6 +21,17 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		return view
 	}()
 	
+	let weekDayHStack: UIStackView = {
+		let stackView = UIStackView()
+		stackView.axis = .horizontal
+		stackView.spacing = 0
+		stackView.distribution = .equalSpacing
+		stackView.alignment = .fill
+		stackView.translatesAutoresizingMaskIntoConstraints = false
+		stackView.backgroundColor = .lightGray
+		return stackView
+	}()
+	
 	private let flowLayout: UICollectionViewFlowLayout = {
 		let layout = UICollectionViewFlowLayout()
 		return layout
@@ -44,6 +55,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		self.viewModel = viewModel
 		super.init(frame: frame)
 		
+		setupUI()
 		headerView.dateLabel.text = viewModel.headerText
 		configureCollectionView()
 		bindViewModel()
@@ -90,5 +102,5 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		cell.selectionView.backgroundColor = HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor
 		cell.dateLabel.textColor = .white
 	}
-	
 }
+
