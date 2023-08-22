@@ -29,7 +29,7 @@ class NativeHPDayLoader: HPDayLoader {
 		}
 		
 		let previousMonthHPDays = generatePreviousMonthDay(by: firstDateOfMonth)
-		let nextMonthDaysCount = HPCalendarPolicy.numbersOfCell - previousMonthHPDays.count - days.count
+		let nextMonthDaysCount = metaDataProvider.numbersOfDaysShownInPage - previousMonthHPDays.count - days.count
 		let nextMonthHPDays = generateNextMonthDay(from: lastDateOfMonth, nextMonthDayCount: nextMonthDaysCount)
 		
 		return previousMonthHPDays + days + nextMonthHPDays

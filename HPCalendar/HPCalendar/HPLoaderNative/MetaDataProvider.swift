@@ -12,6 +12,10 @@ class MetaDataProvider {
 		self.calendar = calendar
 	}
 	
+	var numbersOfDaysShownInPage: Int {
+		return HPCalendarPolicy.numbersOfCell
+	}
+	
 	func getFirstDateOfMonth(for date: Date) -> Date {
 		let components = calendar.dateComponents([.year, .month], from: date)
 		return calendar.date(from: components) ?? date

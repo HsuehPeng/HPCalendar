@@ -11,36 +11,38 @@ import XCTest
 final class NativeHPDaysLoaderTests: XCTestCase {
 	
 	func test_generateDaysInMonth_getDaysCountByGivenMonth() {
-//		let sut = makeSut()
-//
-//		let days = sut.generateHPDaysInMonth(for: Date())
-//		
-//		XCTAssertEqual(days.count, HPDaysArrayStub.count)
+		let sut = makeSut()
+
+		let days = sut.generateHPDaysInMonth(for: currentDate)
+		
+		XCTAssertEqual(days.count, HPDaysArrayStub.count)
 	}
 	
 	func test_generateDaysInMonth_getCorrectHPDays() {
-//		let sut = makeSut()
-//
-//		let days = sut.generateHPDaysInMonth(for: Date())
-//		
-//		for i in 0..<days.count {
-//			XCTAssertEqual(days[i].date, HPDaysArrayStub[i].date)
-//			XCTAssertEqual(days[i].isWithInMonth, HPDaysArrayStub[i].isWithInMonth)
-//			XCTAssertEqual(days[i].number, HPDaysArrayStub[i].number)
-//		}
+		let sut = makeSut()
+
+		let days = sut.generateHPDaysInMonth(for: currentDate)
+		
+		for i in 0..<days.count {
+			XCTAssertEqual(days[i].date, HPDaysArrayStub[i].date)
+			XCTAssertEqual(days[i].isWithInMonth, HPDaysArrayStub[i].isWithInMonth)
+			XCTAssertEqual(days[i].number, HPDaysArrayStub[i].number)
+		}
 	}
 	
 	// MARK: - Helpers
 	
 	private func makeSut() -> NativeHPDayLoader {
 		let calendar = makeTestCalendar()
-		let metaDataProvider = MetaDataProviderStub(calendar: calendar)
+		let metaDataProvider = MetaDataProviderStub(calendar: calendar, onlyDateInMonth: onlyDateInMonth)
 		let sut = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
 		
 		return sut
 	}
 	
-	private static let onlyDateInMonth = Date(timeIntervalSince1970: 86400)
+	private let currentDate = Date()
+	
+	private let onlyDateInMonth = Date(timeIntervalSince1970: 86400)
 	
 	private func dateNumberFormate(for date: Date) -> String {
 		let formatter = DateFormatter()
@@ -51,11 +53,13 @@ final class NativeHPDaysLoaderTests: XCTestCase {
 	}
 	
 	private lazy var HPDaysArrayStub = [HPDay(date: Date(timeIntervalSince1970: 0), number: dateNumberFormate(for: Date(timeIntervalSince1970: 0)), isWithInMonth: false),
-								HPDay(date: Date(timeIntervalSince1970: 86400), number: dateNumberFormate(for: Date(timeIntervalSince1970: 86400)), isWithInMonth: true),
+								HPDay(date: onlyDateInMonth, number: dateNumberFormate(for: onlyDateInMonth), isWithInMonth: true),
 								HPDay(date: Date(timeIntervalSince1970: 172800), number: dateNumberFormate(for: Date(timeIntervalSince1970: 172800)), isWithInMonth: false)
 	]
 	
 	class MetaDataProviderStub: MetaDataProvider {
+		override var numbersOfDaysShownInPage: Int { return 3 }
+		
 		override func numbersOfDaysInMonth(for date: Date) -> Int {
 			return 1
 		}
@@ -70,6 +74,13 @@ final class NativeHPDaysLoaderTests: XCTestCase {
 		
 		override func firstDateOffSet(for date: Date) -> Int {
 			2
+		}
+		
+		let onlyDateInMonth: Date
+		
+		init(calendar: Calendar, onlyDateInMonth: Date) {
+			self.onlyDateInMonth = onlyDateInMonth
+			super.init(calendar: calendar)
 		}
 	}
 	
