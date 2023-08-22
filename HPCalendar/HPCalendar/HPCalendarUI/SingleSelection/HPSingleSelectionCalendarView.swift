@@ -25,21 +25,34 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		let stackView = UIStackView()
 		stackView.axis = .horizontal
 		stackView.spacing = 0
-		stackView.distribution = .equalSpacing
+		stackView.distribution = .fillEqually
 		stackView.alignment = .fill
 		stackView.translatesAutoresizingMaskIntoConstraints = false
-		stackView.backgroundColor = .lightGray
 		return stackView
+	}()
+	
+	lazy var weekDaysLabel: [UILabel] = {
+		let weekDaysString = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
+		var labels = [UILabel]()
+		
+		for day in weekDaysString {
+			labels.append(makeWeekDayLabel(weekDay: day))
+		}
+		
+		return labels
 	}()
 	
 	private let flowLayout: UICollectionViewFlowLayout = {
 		let layout = UICollectionViewFlowLayout()
-		layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: -16)
+		layout.minimumInteritemSpacing = 0
+		layout.minimumLineSpacing = 0
+		layout.sectionInset = UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
 		return layout
 	}()
 	
 	lazy var collectionView: UICollectionView = {
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
+		collectionView.isScrollEnabled = false
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
 		return collectionView
 	}()
@@ -89,7 +102,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	
 	private func cellSize(in bounds: CGRect) -> CGSize {
 		return CGSize(
-			width:   collectionView.bounds.width / 7.0,
+			width:   (collectionView.bounds.width - 32) / 7.0,
 			height: (collectionView.bounds.height) / 6.0
 		)
 	}
@@ -117,4 +130,3 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		cell.dateLabel.textColor = .white
 	}
 }
-

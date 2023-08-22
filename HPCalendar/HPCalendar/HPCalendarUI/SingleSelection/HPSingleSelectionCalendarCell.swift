@@ -15,14 +15,17 @@ class HPSingleSelectionCalendarCell: UICollectionViewCell {
 	let selectionView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.backgroundColor = .clear
+		view.backgroundColor = .blue
 		view.layer.cornerRadius = 8
+		view.isHidden = true
 		return view
 	}()
 	
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
+		label.textAlignment = .center
+		label.font = UIFont.systemFont(ofSize: 13)
 		return label
 	}()
 	
@@ -30,7 +33,6 @@ class HPSingleSelectionCalendarCell: UICollectionViewCell {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		
 		setupUI()
 	}
 	
@@ -45,10 +47,10 @@ class HPSingleSelectionCalendarCell: UICollectionViewCell {
 		contentView.addSubview(dateLabel)
 		
 		NSLayoutConstraint.activate([
-			selectionView.topAnchor.constraint(equalTo: contentView.topAnchor),
-			selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-			selectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-			selectionView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor)
+			selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 8),
+			selectionView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -8),
+			selectionView.heightAnchor.constraint(equalTo: selectionView.widthAnchor, multiplier: 1),
+			selectionView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor)
 		])
 		
 		NSLayoutConstraint.activate([

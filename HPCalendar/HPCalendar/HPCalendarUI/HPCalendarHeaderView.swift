@@ -11,6 +11,7 @@ class HPCalendarHeaderView: UIView {
 	let dateLabel: UILabel = {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
+		label.textAlignment = .center
 		return label
 	}()
 	
@@ -18,6 +19,8 @@ class HPCalendarHeaderView: UIView {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
+		button.setImage(UIImage(named: "Icon_32px_Forward"), for: .normal)
+		button.backgroundColor = .red
 		return button
 	}()
 	
@@ -25,6 +28,8 @@ class HPCalendarHeaderView: UIView {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.addTarget(self, action: #selector(didTapPreviousButton), for: .touchUpInside)
+		button.setImage(UIImage(named: "Icon_32px_Back"), for: .normal)
+		button.backgroundColor = .red
 		return button
 	}()
 	
@@ -32,7 +37,7 @@ class HPCalendarHeaderView: UIView {
 		let stackView = UIStackView()
 		stackView.axis = .horizontal
 		stackView.alignment = .center
-		stackView.distribution = .equalSpacing
+		stackView.distribution = .fillProportionally
 		stackView.translatesAutoresizingMaskIntoConstraints = false
 		return stackView
 	}()
@@ -62,7 +67,17 @@ class HPCalendarHeaderView: UIView {
 	
 	private func setupUI() {
 		self.addSubview(hStack)
-		hStack.addArrangedSubviews(subviews: [dateLabel, nextButton, previousButton])
+		hStack.addArrangedSubviews(subviews: [previousButton, dateLabel, nextButton])
+		
+		NSLayoutConstraint.activate([
+			previousButton.widthAnchor.constraint(equalToConstant: 32),
+			previousButton.heightAnchor.constraint(equalToConstant: 32)
+		])
+		
+		NSLayoutConstraint.activate([
+			nextButton.widthAnchor.constraint(equalToConstant: 32),
+			nextButton.heightAnchor.constraint(equalToConstant: 32)
+		])
 		
 		NSLayoutConstraint.activate([
 			hStack.topAnchor.constraint(equalTo: self.topAnchor),
