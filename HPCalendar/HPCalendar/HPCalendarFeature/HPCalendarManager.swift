@@ -12,7 +12,12 @@ class HPCalendarManager {
 		return Date()
 	}
 	
-	var selectedDate: Date?
+	var onSelectedDate: ((Date?) -> Void)?
+	var selectedDate: Date? {
+		didSet {
+			onSelectedDate?(selectedDate)
+		}
+	}
 	
 	func addTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
 		return calendar.date(byAdding: component, value: 1, to: date) ?? date

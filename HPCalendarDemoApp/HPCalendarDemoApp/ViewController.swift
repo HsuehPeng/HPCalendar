@@ -8,13 +8,18 @@
 import UIKit
 import HPCalendar
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, HPCalendarDelegate {
+	func calendar(_ calendar: HPCalendar, didSelectDate date: Date?) {
+		print(date)
+	}
+	
+	let calendar = HPCalendar()
+	lazy var calendarView = calendar.make(frame: CGRect(x: 0, y: 200, width: view.frame.width - 50, height: view.frame.height / 2.5))
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		let calendar = HPCalendar()
-		let calendarView = calendar.make(frame: CGRect(x: 0, y: 200, width: view.frame.width, height: view.frame.height / 2))
+		calendar.delegate = self
 		view.addSubview(calendarView)
 	}
 
