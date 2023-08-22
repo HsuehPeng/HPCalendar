@@ -122,7 +122,7 @@
 			children = (
 				B823B69F2A8C8EF60043DC9F /* HPCalendar.h */,
 				B823B6BD2A8CFA180043DC9F /* HPCalendarFeature */,
-				B88D03A52A8F65DC002877ED /* HPCalendarNative */,
+				B88D03A52A8F65DC002877ED /* HPLoaderNative */,
 				B823B6BF2A8D02520043DC9F /* HPCalendarPresentation */,
 				B83D2B252A8DE6EC0078E177 /* HPCalendarUI */,
 			);
@@ -246,13 +246,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		B88D03A52A8F65DC002877ED /* HPCalendarNative */ = {
+		B88D03A52A8F65DC002877ED /* HPLoaderNative */ = {
 			isa = PBXGroup;
 			children = (
 				B823B6B92A8CE8A80043DC9F /* NativeHPDayLoader.swift */,
 				B823B6B52A8CC3CF0043DC9F /* MetaDataProvider.swift */,
 			);
-			path = HPCalendarNative;
+			path = HPLoaderNative;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

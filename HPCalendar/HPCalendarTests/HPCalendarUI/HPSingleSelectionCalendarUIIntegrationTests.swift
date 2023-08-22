@@ -147,7 +147,7 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 		let calendar = Calendar(identifier: .gregorian)
 		let dayLoader = HPDayLoaderDummy()
 		let hpdayLoaderAdapterSpy = HPDayLoaderAdapterSpy(adaptee: dayLoader) { hpday in
-			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false)
+			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
 		}
 		
 		let calendarManager = HPCalendarManager(calendar: calendar)
@@ -176,10 +176,10 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 		override func load(for date: Date) -> [HPSingleSelectionDay] {
 			generateDaysCount += 1
 			
-			let notWithinMonthDayBeforeCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false), count: 5)
-			let todayDay = [HPSingleSelectionDay(date: Date(), number: "2", isWithInMonth: true, isToday: true)]
-			let withinMonthDays = Array(repeating: HPSingleSelectionDay(date: Date(), number: "3", isWithInMonth: true, isToday: false), count: 30)
-			let notWithinMonthDayAfterCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "4", isWithInMonth: false, isToday: false), count: 6)
+			let notWithinMonthDayBeforeCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false), count: 5)
+			let todayDay = [HPSingleSelectionDay(date: Date(), number: "2", isWithInMonth: true, isToday: true, isSelected: false)]
+			let withinMonthDays = Array(repeating: HPSingleSelectionDay(date: Date(), number: "3", isWithInMonth: true, isToday: false, isSelected: false), count: 30)
+			let notWithinMonthDayAfterCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "4", isWithInMonth: false, isToday: false, isSelected: false), count: 6)
 			
 			let hpSingleSelectionDays = notWithinMonthDayBeforeCurrentMonth + todayDay + withinMonthDays + notWithinMonthDayAfterCurrentMonth
 			

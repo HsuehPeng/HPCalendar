@@ -77,7 +77,7 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 	private func makeSut(baseDate: Date = Date()) -> (HPSingleCalendarViewModel, HPDayLoaderAdapterSpy, HPCalendarManagerSpy) {
 		let daysLoader = HPDayLoaderDummy()
 		let daysLoaderAdapter = HPDayLoaderAdapterSpy(adaptee: daysLoader) { hpday in
-			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false)
+			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
 		}
 		let calendar = makeTestCalendar()
 		let calendarManager = HPCalendarManagerSpy(calendar: calendar)

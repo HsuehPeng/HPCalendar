@@ -71,10 +71,6 @@ final class NativeHPDaysLoaderTests: XCTestCase {
 		override func firstDateOffSet(for date: Date) -> Int {
 			2
 		}
-		
-		override func nextMonthWeekDayOffSet(for date: Date) -> Int {
-			1
-		}
 	}
 	
 }
