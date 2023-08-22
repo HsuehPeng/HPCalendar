@@ -12,6 +12,8 @@ class HPCalendarManager {
 		return Date()
 	}
 	
+	var selectedDate: Date?
+	
 	func addTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
 		return calendar.date(byAdding: component, value: 1, to: date) ?? date
 	}

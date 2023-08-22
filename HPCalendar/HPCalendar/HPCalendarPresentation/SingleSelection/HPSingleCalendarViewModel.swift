@@ -33,6 +33,17 @@ class HPSingleCalendarViewModel {
 		baseDate = calendarManager.minusTimeUnit(with: .month, to: baseDate)
 	}
 	
+	func setSelectedDate(_ date: Date) {
+		if calendarManager.selectedDate == date {
+			calendarManager.selectedDate = nil
+		} else {
+			calendarManager.selectedDate = date
+		}
+		
+		days = dayLoader.load(for: baseDate)
+		onSetBaseDate?()
+	}
+	
 	init(baseDate: Date = Date(), dayLoader: HPDayLoaderAdapter<HPSingleSelectionDay>, calendarManager: HPCalendarManager, headerTextFormate: String) {
 		self.baseDate = baseDate
 		self.dayLoader = dayLoader

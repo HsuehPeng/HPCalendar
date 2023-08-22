@@ -119,14 +119,14 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		cell.dateLabel.text = day.number
 		cell.dateLabel.textColor = day.isWithInMonth ? HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor : HPSingleSelectionCalendarUIConfiguration.notWithinMonthTextColor
 		cell.dateLabel.textColor = day.isToday ? HPSingleSelectionCalendarUIConfiguration.todayTextColor : cell.dateLabel.textColor
+		cell.selectionView.isHidden = day.isSelected ? false : true
 		return cell
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return }
 		guard viewModel.days[indexPath.item].isWithInMonth else { return }
 		
-		cell.selectionView.backgroundColor = HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor
-		cell.dateLabel.textColor = .white
+		let day = viewModel.days[indexPath.item]
+		viewModel.setSelectedDate(day.date)
 	}
 }

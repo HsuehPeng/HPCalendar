@@ -12,4 +12,5 @@ struct HPSingleSelectionDay {
 	let number: String
 	let isWithInMonth: Bool
 	let isToday: Bool
+	let isSelected: Bool
 }
