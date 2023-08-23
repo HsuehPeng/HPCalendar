@@ -102,7 +102,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	
 	private func cellSize(in bounds: CGRect) -> CGSize {
 		return CGSize(
-			width:   (collectionView.bounds.width - 32) / 7.0,
+			width: (collectionView.bounds.width - 32) / 7.0,
 			height: (collectionView.bounds.height) / 6.0
 		)
 	}
@@ -116,17 +116,15 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return UICollectionViewCell() }
 		let day = viewModel.days[indexPath.item]
-		cell.dateLabel.text = day.number
-		cell.dateLabel.textColor = day.isWithInMonth ? HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor : HPSingleSelectionCalendarUIConfiguration.notWithinMonthTextColor
-		cell.dateLabel.textColor = day.isToday ? HPSingleSelectionCalendarUIConfiguration.todayTextColor : cell.dateLabel.textColor
-		cell.selectionView.isHidden = day.isSelected ? false : true
+		cell.day = day
 		return cell
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		guard viewModel.days[indexPath.item].isWithInMonth else { return }
-		
 		let day = viewModel.days[indexPath.item]
+		
+		guard day.isWithInMonth else { return }
+		
 		viewModel.setSelectedDate(day.date)
 	}
 }

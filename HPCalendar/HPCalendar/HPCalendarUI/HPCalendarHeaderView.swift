@@ -12,6 +12,7 @@ class HPCalendarHeaderView: UIView {
 		let label = UILabel()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		label.textAlignment = .center
+		label.font = UIFont.systemFont(ofSize: 15, weight: .medium)
 		return label
 	}()
 	
@@ -19,8 +20,7 @@ class HPCalendarHeaderView: UIView {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.addTarget(self, action: #selector(didTapNextButton), for: .touchUpInside)
-		button.setImage(UIImage(named: "Icon_32px_Forward"), for: .normal)
-		button.backgroundColor = .red
+		button.setImage(UIImage(named: "Icon_32px_Forward", in: Bundle(for: HPCalendar.self), with: .none), for: .normal)
 		return button
 	}()
 	
@@ -28,8 +28,7 @@ class HPCalendarHeaderView: UIView {
 		let button = UIButton()
 		button.translatesAutoresizingMaskIntoConstraints = false
 		button.addTarget(self, action: #selector(didTapPreviousButton), for: .touchUpInside)
-		button.setImage(UIImage(named: "Icon_32px_Back"), for: .normal)
-		button.backgroundColor = .red
+		button.setImage(UIImage(named: "Icon_32px_Back", in: Bundle(for: HPCalendar.self), with: .none), for: .normal)
 		return button
 	}()
 	
