@@ -5,12 +5,10 @@
 //  Created by Hsueh Peng Tseng on 2023/8/18.
 //
 
-class HPCalendarManager {
+
+
+class HPSingleSelectionManager {
 	private let calendar: Calendar
-	
-	var today: Date {
-		return Date()
-	}
 	
 	var onSelectedDate: ((Date?) -> Void)?
 	var selectedDate: Date? {

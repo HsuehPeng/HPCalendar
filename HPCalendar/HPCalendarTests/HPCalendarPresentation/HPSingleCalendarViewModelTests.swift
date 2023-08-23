@@ -10,13 +10,6 @@ import XCTest
 
 final class HPSingleCalendarViewModelTests: XCTestCase {
 	
-	func test_init_setBaseDate() {
-		let currentDate = Date()
-		let (sut, _, _) = makeSut(baseDate: currentDate)
-		
-		XCTAssertEqual(sut.baseDate, currentDate)
-	}
-	
 	func test_init_renderCorrectHeaderDate() {
 		let currentDate = Date()
 		let (sut, _, manager) = makeSut(baseDate: currentDate)
@@ -81,7 +74,7 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		}
 		let calendar = makeTestCalendar()
 		let calendarManager = HPCalendarManagerSpy(calendar: calendar)
-		let sut = HPSingleCalendarViewModel(baseDate: baseDate, dayLoader: daysLoaderAdapter, calendarManager: calendarManager, headerTextFormate: headerDateFormateHelper)
+		let sut = HPSingleCalendarViewModel(dayLoader: daysLoaderAdapter, calendarManager: calendarManager, headerTextFormate: headerDateFormateHelper)
 
 		return (sut, daysLoaderAdapter, calendarManager)
 	}
@@ -105,7 +98,7 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		}
 	}
 	
-	private class HPCalendarManagerSpy: HPCalendarManager {
+	private class HPCalendarManagerSpy: HPSingleSelectionManager {
 		enum Message {
 			case addTimeUnit
 			case minusTimeUnit

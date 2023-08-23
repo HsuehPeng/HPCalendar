@@ -150,9 +150,9 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
 		}
 		
-		let calendarManager = HPCalendarManager(calendar: calendar)
+		let calendarManager = HPSingleSelectionManager(calendar: calendar)
 		let headerTextFormate = "MM"
-		let vm = HPSingleCalendarViewModel(baseDate: date, dayLoader: hpdayLoaderAdapterSpy, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
+		let vm = HPSingleCalendarViewModel(dayLoader: hpdayLoaderAdapterSpy, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
 		let sut = HPSingleSelectionCalendarView(frame: .zero, viewModel: vm)
 		return (sut, vm)
 	}

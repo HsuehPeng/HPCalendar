@@ -19,7 +19,8 @@ public final class HPCalendar {
 		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
-		let calendarManager = HPCalendarManager(calendar: calendar)
+		
+		let calendarManager = HPSingleSelectionManager(calendar: calendar)
 		calendarManager.onSelectedDate = { [weak self] date in
 			guard let self = self else { return }
 			delegate?.calendar(self, didSelectDate: date)

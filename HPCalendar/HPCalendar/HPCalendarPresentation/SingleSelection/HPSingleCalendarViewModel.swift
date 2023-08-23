@@ -7,10 +7,10 @@
 
 class HPSingleCalendarViewModel {
 	private let dayLoader: HPDayLoaderAdapter<HPSingleSelectionDay>
-	private let calendarManager: HPCalendarManager
+	private let calendarManager: HPSingleSelectionManager
 	private let headerTextFormate: String
 
-	var baseDate: Date {
+	var baseDate: Date = Date() {
 		didSet {
 			days = dayLoader.load(for: baseDate)
 			onSetBaseDate?()
@@ -44,8 +44,7 @@ class HPSingleCalendarViewModel {
 		onSetBaseDate?()
 	}
 	
-	init(baseDate: Date = Date(), dayLoader: HPDayLoaderAdapter<HPSingleSelectionDay>, calendarManager: HPCalendarManager, headerTextFormate: String) {
-		self.baseDate = baseDate
+	init(dayLoader: HPDayLoaderAdapter<HPSingleSelectionDay>, calendarManager: HPSingleSelectionManager, headerTextFormate: String) {
 		self.dayLoader = dayLoader
 		self.calendarManager = calendarManager
 		self.headerTextFormate = headerTextFormate
