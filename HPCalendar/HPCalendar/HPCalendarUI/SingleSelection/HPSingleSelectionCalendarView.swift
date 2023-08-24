@@ -21,26 +21,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		return view
 	}()
 	
-	let weekDayHStack: UIStackView = {
-		let stackView = UIStackView()
-		stackView.axis = .horizontal
-		stackView.spacing = 0
-		stackView.distribution = .fillEqually
-		stackView.alignment = .fill
-		stackView.translatesAutoresizingMaskIntoConstraints = false
-		return stackView
-	}()
-	
-	lazy var weekDaysLabel: [UILabel] = {
-		let weekDaysString = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"]
-		var labels = [UILabel]()
-		
-		for day in weekDaysString {
-			labels.append(makeWeekDayLabel(weekDay: day))
-		}
-		
-		return labels
-	}()
+	let weekDayHStack = WeekDayHStackView()
 	
 	private let flowLayout: UICollectionViewFlowLayout = {
 		let layout = UICollectionViewFlowLayout()
@@ -141,7 +122,6 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 			headerView.heightAnchor.constraint(equalToConstant: 40)
 		])
 		
-		weekDayHStack.addArrangedSubviews(subviews: weekDaysLabel)
 		NSLayoutConstraint.activate([
 			weekDayHStack.topAnchor.constraint(equalTo: headerView.bottomAnchor),
 			weekDayHStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
@@ -155,15 +135,5 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 			collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
 			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
-	}
-	
-	func makeWeekDayLabel(weekDay: String) -> UILabel {
-		let label = UILabel()
-		label.text = weekDay
-		label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
-		label.textAlignment = .center
-		label.textColor = HPCalendarCellUIConfiguration.withinMonthTextColor.toUIColor()
-		label.translatesAutoresizingMaskIntoConstraints = false
-		return label
 	}
 }

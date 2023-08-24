@@ -16,6 +16,7 @@
 		B8033C022A9741E60019F6AC /* HPCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C012A9741E60019F6AC /* HPCalendarCellViewModel.swift */; };
 		B8033C042A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C032A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift */; };
 		B8033C062A9743940019F6AC /* HPSingleSelectionCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C052A9743940019F6AC /* HPSingleSelectionCalendarCellViewModel.swift */; };
+		B8033C092A9755B90019F6AC /* WeekDayHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C082A9755B90019F6AC /* WeekDayHStackView.swift */; };
 		B823B6A52A8C8EF60043DC9F /* HPCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B823B69C2A8C8EF60043DC9F /* HPCalendar.framework */; };
 		B823B6AA2A8C8EF60043DC9F /* MetaDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6A92A8C8EF60043DC9F /* MetaDataProviderTests.swift */; };
 		B823B6AB2A8C8EF60043DC9F /* HPCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = B823B69F2A8C8EF60043DC9F /* HPCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -65,6 +66,7 @@
 		B8033C012A9741E60019F6AC /* HPCalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCalendarCellViewModel.swift; sourceTree = "<group>"; };
 		B8033C032A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRangeSelectionCalendarCellViewModel.swift; sourceTree = "<group>"; };
 		B8033C052A9743940019F6AC /* HPSingleSelectionCalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarCellViewModel.swift; sourceTree = "<group>"; };
+		B8033C082A9755B90019F6AC /* WeekDayHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayHStackView.swift; sourceTree = "<group>"; };
 		B823B69C2A8C8EF60043DC9F /* HPCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HPCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B823B69F2A8C8EF60043DC9F /* HPCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPCalendar.h; sourceTree = "<group>"; };
 		B823B6A42A8C8EF60043DC9F /* HPCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HPCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,16 @@
 				B8033BF92A95FF520019F6AC /* HPRangeSelectionCalendarView.swift */,
 			);
 			path = RangeSelection;
+			sourceTree = "<group>";
+		};
+		B8033C072A9755A20019F6AC /* SharedUI */ = {
+			isa = PBXGroup;
+			children = (
+				B83D2B362A8E06C30078E177 /* HPCalendarHeaderView.swift */,
+				B8033C082A9755B90019F6AC /* WeekDayHStackView.swift */,
+				B83D2B2D2A8DF7560078E177 /* HPCalendarCell.swift */,
+			);
+			path = SharedUI;
 			sourceTree = "<group>";
 		};
 		B823B6922A8C8EF60043DC9F = {
@@ -247,10 +259,9 @@
 			children = (
 				B82EEF032A949F8900488E1C /* HPCalendar.xcassets */,
 				B82EEE602A934F1000488E1C /* Helpers */,
+				B8033C072A9755A20019F6AC /* SharedUI */,
 				B8033BF82A95FF340019F6AC /* RangeSelection */,
 				B82EEE592A9215BA00488E1C /* SingleSelection */,
-				B83D2B362A8E06C30078E177 /* HPCalendarHeaderView.swift */,
-				B83D2B2D2A8DF7560078E177 /* HPCalendarCell.swift */,
 				B8033BFF2A9741BA0019F6AC /* RGBColor.swift */,
 				B82EEE5A2A92162600488E1C /* HPCalendarCellUIConfiguration.swift */,
 				B82EEE5C2A92713B00488E1C /* HPCalendar.swift */,
@@ -417,6 +428,7 @@
 				B8033BFE2A973DF50019F6AC /* RGBColor+Extension.swift in Sources */,
 				B823B6BA2A8CE8A80043DC9F /* NativeHPDayLoader.swift in Sources */,
 				B82EEE622A934F2100488E1C /* UIStackView+Extension.swift in Sources */,
+				B8033C092A9755B90019F6AC /* WeekDayHStackView.swift in Sources */,
 				B8033BF52A95FEAF0019F6AC /* HPRangeSelectionManager.swift in Sources */,
 				B88D03A42A8F6519002877ED /* HPDayLoader.swift in Sources */,
 				B823B6B62A8CC3CF0043DC9F /* MetaDataProvider.swift in Sources */,
