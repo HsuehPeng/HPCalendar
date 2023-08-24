@@ -90,7 +90,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	private func configureCollectionView() {
 		collectionView.dataSource = self
 		collectionView.delegate = self
-		collectionView.register(HPSingleSelectionCalendarCell.self, forCellWithReuseIdentifier: HPSingleSelectionCalendarCell.reuseId)
+		collectionView.register(HPCalendarCell.self, forCellWithReuseIdentifier: HPCalendarCell.reuseId)
 	}
 	
 	private func bindViewModel() {
@@ -114,7 +114,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return UICollectionViewCell() }
+		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCalendarCell.reuseId, for: indexPath) as? HPCalendarCell else { return UICollectionViewCell() }
 		let day = viewModel.days[indexPath.item]
 		let cellViewModel = HPSingleSelectionCalendarCellViewModel(day: day)
 		cell.viewModel = cellViewModel

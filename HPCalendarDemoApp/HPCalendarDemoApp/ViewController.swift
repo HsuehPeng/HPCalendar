@@ -18,7 +18,7 @@ class ViewController: UIViewController, HPCalendarDelegate {
 	}
 	
 	let calendar = HPCalendar()
-	lazy var calendarView = calendar.makeSingleCalendar(frame: CGRect(x: 0, y: 200, width: view.frame.width - 50, height: view.frame.height / 2.5))
+	lazy var calendarView = calendar.makeRangeCalendar(frame: CGRect(x: 0, y: 200, width: view.frame.width - 50, height: view.frame.height / 2.5))
 
 	override func viewDidLoad() {
 		super.viewDidLoad()

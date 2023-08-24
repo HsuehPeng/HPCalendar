@@ -1,16 +1,16 @@
 //
-//  HPRangeSelectionCalendarCell.swift
+//  HPCalendarCell.swift
 //  HPCalendar
 //
-//  Created by Hsueh Peng Tseng on 2023/8/23.
+//  Created by Hsueh Peng Tseng on 2023/8/17.
 //
 
 import UIKit
 
-class HPRangeSelectionCalendarCell: UICollectionViewCell {
+class HPCalendarCell: UICollectionViewCell {
 	// MARK: - Properties
 	
-	static let reuseId = "\(HPRangeSelectionCalendarCell.self)"
+	static let reuseId = "\(HPCalendarCell.self)"
 	
 	let selectionView: UIView = {
 		let view = UIView()

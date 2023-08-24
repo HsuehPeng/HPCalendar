@@ -13,10 +13,10 @@ extension HPSingleSelectionCalendarView {
 		return collectionView.numberOfItems(inSection: calendarSection)
 	}
 	
-	func cellForItemAt(at item: Int) -> HPSingleSelectionCalendarCell {
+	func cellForItemAt(at item: Int) -> HPCalendarCell {
 		let ds = collectionView.dataSource
 		let index = IndexPath(item: item, section: calendarSection)
-		return ds?.collectionView(collectionView, cellForItemAt: index) as! HPSingleSelectionCalendarCell
+		return ds?.collectionView(collectionView, cellForItemAt: index) as! HPCalendarCell
 	}
 	
 	func calendarCellDateNumber(at item: Int) -> String {
