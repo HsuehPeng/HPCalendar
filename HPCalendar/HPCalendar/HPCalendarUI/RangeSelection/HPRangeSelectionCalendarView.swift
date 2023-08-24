@@ -162,7 +162,7 @@ public class HPRangeSelectionCalendarView: UIView, UICollectionViewDataSource, U
 		label.text = weekDay
 		label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
 		label.textAlignment = .center
-		label.textColor = HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor.toUIColor()
+		label.textColor = HPCalendarCellUIConfiguration.withinMonthTextColor.toUIColor()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}

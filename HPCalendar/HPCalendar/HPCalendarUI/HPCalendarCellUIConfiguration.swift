@@ -7,7 +7,7 @@
 
 import UIKit
 
-final class HPSingleSelectionCalendarUIConfiguration {
+final class HPCalendarCellUIConfiguration {
 	static let withinMonthTextColor = RGBColor(red: 0.07, green: 0.07, blue: 0.07)
 	static let notWithinMonthTextColor = RGBColor(red: 0.61, green: 0.64, blue: 0.67)
 	static let todayTextColor = RGBColor(red: 0.07, green: 0.45, blue: 0.87)

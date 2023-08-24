@@ -15,7 +15,7 @@ class HPRangeSelectionCalendarCell: UICollectionViewCell {
 	let selectionView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.backgroundColor = HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor.toUIColor()
+		view.backgroundColor = HPCalendarCellUIConfiguration.calendarCellSelectionColor.toUIColor()
 		view.layer.cornerRadius = 8
 		view.isHidden = true
 		return view

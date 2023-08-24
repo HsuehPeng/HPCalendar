@@ -1,12 +1,14 @@
 //
-//  HPRangeSelectionCalendarCellViewModel.swift
+//  HPSingleSelectionCalendarCellViewModel.swift
 //  HPCalendar
 //
 //  Created by Hsueh Peng Tseng on 2023/8/24.
 //
 
-class HPRangeSelectionCalendarCellViewModel: HPCalendarCellViewModel {
-	let day: HPRangeSelectionDay
+import Foundation
+
+class HPSingleSelectionCalendarCellViewModel: HPCalendarCellViewModel {
+	let day: HPSingleSelectionDay
 	
 	var dateNumber: String {
 		return day.number
@@ -25,7 +27,7 @@ class HPRangeSelectionCalendarCellViewModel: HPCalendarCellViewModel {
 			rgbColor = HPCalendarCellUIConfiguration.todayTextColor
 		}
 		
-		if day.isInRange {
+		if day.isSelected {
 			rgbColor = HPCalendarCellUIConfiguration.selectedTextColor
 		}
 		
@@ -33,12 +35,10 @@ class HPRangeSelectionCalendarCellViewModel: HPCalendarCellViewModel {
 	}
 	
 	var isSelectionViewHidden: Bool {
-		return !day.isInRange
+		return !day.isSelected
 	}
 	
-	
-	init(day: HPRangeSelectionDay) {
+	init(day: HPSingleSelectionDay) {
 		self.day = day
 	}
-	
 }

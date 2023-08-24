@@ -116,7 +116,8 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPSingleSelectionCalendarCell.reuseId, for: indexPath) as? HPSingleSelectionCalendarCell else { return UICollectionViewCell() }
 		let day = viewModel.days[indexPath.item]
-		cell.day = day
+		let cellViewModel = HPSingleSelectionCalendarCellViewModel(day: day)
+		cell.viewModel = cellViewModel
 		return cell
 	}
 	
@@ -161,7 +162,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		label.text = weekDay
 		label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
 		label.textAlignment = .center
-		label.textColor = HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor.toUIColor()
+		label.textColor = HPCalendarCellUIConfiguration.withinMonthTextColor.toUIColor()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}
