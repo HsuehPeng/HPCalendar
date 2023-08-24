@@ -9,10 +9,10 @@ import UIKit
 import HPCalendar
 
 class ViewController: UIViewController, HPCalendarDelegate {
-	func calendar(didSelectDateRange range: (startDate: Date, endDate: Date)) {
+	func calendar(didSelectDateRange range: (startDate: Date?, endDate: Date?)) {
 		print(range)
 	}
-	
+
 	func calendar(didSelectDate date: Date?) {
 		print(date)
 	}

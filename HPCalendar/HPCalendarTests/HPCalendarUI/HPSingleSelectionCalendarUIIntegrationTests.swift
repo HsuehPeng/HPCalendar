@@ -143,17 +143,17 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(date: Date = Date()) -> (HPSingleSelectionCalendarView, HPSingleCalendarViewModel) {
+	private func makeSut(date: Date = Date()) -> (HPCalendarView, HPCalendarViewModel) {
 		let calendar = Calendar(identifier: .gregorian)
 		let dayLoader = HPDayLoaderDummy()
 		let hpdayLoaderAdapterSpy = HPDayLoaderAdapterSpy(adaptee: dayLoader) { hpday in
-			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
+			return HPSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
 		}
 		
 		let calendarManager = HPSingleSelectionManager(calendar: calendar)
 		let headerTextFormate = "MM"
-		let vm = HPSingleCalendarViewModel(dayLoader: hpdayLoaderAdapterSpy, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
-		let sut = HPSingleSelectionCalendarView(frame: .zero, viewModel: vm)
+		let vm = HPCalendarViewModel(dayLoader: hpdayLoaderAdapterSpy, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
+		let sut = HPCalendarView(frame: .zero, viewModel: vm)
 		return (sut, vm)
 	}
 
@@ -170,16 +170,16 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 		}
 	}
 	
-	private class HPDayLoaderAdapterSpy: HPDayLoaderAdapter<HPSingleSelectionDay> {
+	private class HPDayLoaderAdapterSpy: HPDayLoaderAdapter<HPSelectionDay> {
 		var generateDaysCount = 0
 		
-		override func load(for date: Date) -> [HPSingleSelectionDay] {
+		override func load(for date: Date) -> [HPSelectionDay] {
 			generateDaysCount += 1
 			
-			let notWithinMonthDayBeforeCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false), count: 5)
-			let todayDay = [HPSingleSelectionDay(date: Date(), number: "2", isWithInMonth: true, isToday: true, isSelected: false)]
-			let withinMonthDays = Array(repeating: HPSingleSelectionDay(date: Date(), number: "3", isWithInMonth: true, isToday: false, isSelected: false), count: 30)
-			let notWithinMonthDayAfterCurrentMonth = Array(repeating: HPSingleSelectionDay(date: Date(), number: "4", isWithInMonth: false, isToday: false, isSelected: false), count: 6)
+			let notWithinMonthDayBeforeCurrentMonth = Array(repeating: HPSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false), count: 5)
+			let todayDay = [HPSelectionDay(date: Date(), number: "2", isWithInMonth: true, isToday: true, isSelected: false)]
+			let withinMonthDays = Array(repeating: HPSelectionDay(date: Date(), number: "3", isWithInMonth: true, isToday: false, isSelected: false), count: 30)
+			let notWithinMonthDayAfterCurrentMonth = Array(repeating: HPSelectionDay(date: Date(), number: "4", isWithInMonth: false, isToday: false, isSelected: false), count: 6)
 			
 			let hpSingleSelectionDays = notWithinMonthDayBeforeCurrentMonth + todayDay + withinMonthDays + notWithinMonthDayAfterCurrentMonth
 			

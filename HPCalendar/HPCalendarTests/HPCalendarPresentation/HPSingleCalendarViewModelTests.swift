@@ -67,14 +67,14 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(baseDate: Date = Date()) -> (HPSingleCalendarViewModel, HPDayLoaderAdapterSpy, HPCalendarManagerSpy) {
+	private func makeSut(baseDate: Date = Date()) -> (HPCalendarViewModel, HPDayLoaderAdapterSpy, HPCalendarManagerSpy) {
 		let daysLoader = HPDayLoaderDummy()
 		let daysLoaderAdapter = HPDayLoaderAdapterSpy(adaptee: daysLoader) { hpday in
-			return HPSingleSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
+			return HPSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
 		}
 		let calendar = makeTestCalendar()
 		let calendarManager = HPCalendarManagerSpy(calendar: calendar)
-		let sut = HPSingleCalendarViewModel(dayLoader: daysLoaderAdapter, calendarManager: calendarManager, headerTextFormate: headerDateFormateHelper)
+		let sut = HPCalendarViewModel(dayLoader: daysLoaderAdapter, calendarManager: calendarManager, headerTextFormate: headerDateFormateHelper)
 
 		return (sut, daysLoaderAdapter, calendarManager)
 	}
@@ -89,10 +89,10 @@ final class HPSingleCalendarViewModelTests: XCTestCase {
 		}
 	}
 	
-	private class HPDayLoaderAdapterSpy: HPDayLoaderAdapter<HPSingleSelectionDay> {
+	private class HPDayLoaderAdapterSpy: HPDayLoaderAdapter<HPSelectionDay> {
 		var generateDaysCount = 0
 		
-		override func load(for date: Date) -> [HPSingleSelectionDay] {
+		override func load(for date: Date) -> [HPSelectionDay] {
 			generateDaysCount += 1
 			return []
 		}

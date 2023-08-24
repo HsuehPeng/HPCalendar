@@ -1,13 +1,13 @@
 //
-//  HPSingleSelectionDay.swift
+//  HPRangeSelectionDay.swift
 //  HPCalendar
 //
-//  Created by Hsueh Peng Tseng on 2023/8/20.
+//  Created by Hsueh Peng Tseng on 2023/8/23.
 //
 
 import Foundation
 
-struct HPSingleSelectionDay {
+struct HPSelectionDay {
 	let date: Date
 	let number: String
 	let isWithInMonth: Bool

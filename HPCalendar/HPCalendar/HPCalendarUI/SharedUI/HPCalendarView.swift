@@ -7,7 +7,7 @@
 
 import UIKit
 
-public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+public class HPCalendarView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
 	// MARK: - Properties
 	
 	lazy var headerView: HPCalendarHeaderView = {
@@ -21,7 +21,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		return view
 	}()
 	
-	let weekDayHStack = WeekDayHStackView()
+	private let weekDayHStack = WeekDayHStackView()
 	
 	private let flowLayout: UICollectionViewFlowLayout = {
 		let layout = UICollectionViewFlowLayout()
@@ -38,7 +38,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		return collectionView
 	}()
 		
-	private var viewModel: HPSingleCalendarViewModel {
+	private var viewModel: HPCalendarViewModel {
 		didSet {
 			collectionView.reloadData()
 		}
@@ -46,7 +46,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	
 	// MARK: - LifeCycle
 	
-	init(frame: CGRect, viewModel: HPSingleCalendarViewModel) {
+	init(frame: CGRect, viewModel: HPCalendarViewModel) {
 		self.viewModel = viewModel
 		super.init(frame: frame)
 		
@@ -75,7 +75,7 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	}
 	
 	private func bindViewModel() {
-		viewModel.onSetBaseDate = { [weak self] in
+		viewModel.onReload = { [weak self] in
 			self?.headerView.dateLabel.text = self?.viewModel.headerText
 			self?.collectionView.reloadData()
 		}
@@ -97,20 +97,18 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPCalendarCell.reuseId, for: indexPath) as? HPCalendarCell else { return UICollectionViewCell() }
 		let day = viewModel.days[indexPath.item]
-		let cellViewModel = HPSingleSelectionCalendarCellViewModel(day: day)
-		cell.viewModel = cellViewModel
+		let vm = HPCalendarCellViewModel(day: day)
+		cell.viewModel = vm
 		return cell
 	}
 	
 	public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-		let day = viewModel.days[indexPath.item]
-		
-		guard day.isWithInMonth else { return }
-		
-		viewModel.setSelectedDate(day.date)
+		viewModel.selectedDate(at: indexPath.item)
 	}
 	
-	func setupUI() {
+	// MARK: - UI
+	
+	private func setupUI() {
 		self.addSubview(headerView)
 		self.addSubview(weekDayHStack)
 		self.addSubview(collectionView)
