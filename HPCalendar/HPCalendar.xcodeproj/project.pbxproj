@@ -12,6 +12,10 @@
 		B8033BF72A95FEE50019F6AC /* HPRangeSelectionDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BF62A95FEE50019F6AC /* HPRangeSelectionDay.swift */; };
 		B8033BFA2A95FF520019F6AC /* HPRangeSelectionCalendarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BF92A95FF520019F6AC /* HPRangeSelectionCalendarView.swift */; };
 		B8033BFC2A95FFD80019F6AC /* HPRangeSelectionCalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BFB2A95FFD80019F6AC /* HPRangeSelectionCalendarCell.swift */; };
+		B8033BFE2A973DF50019F6AC /* RGBColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BFD2A973DF50019F6AC /* RGBColor+Extension.swift */; };
+		B8033C002A9741BA0019F6AC /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BFF2A9741BA0019F6AC /* RGBColor.swift */; };
+		B8033C022A9741E60019F6AC /* HPCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C012A9741E60019F6AC /* HPCalendarCellViewModel.swift */; };
+		B8033C042A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C032A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift */; };
 		B823B6A52A8C8EF60043DC9F /* HPCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B823B69C2A8C8EF60043DC9F /* HPCalendar.framework */; };
 		B823B6AA2A8C8EF60043DC9F /* MetaDataProviderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B823B6A92A8C8EF60043DC9F /* MetaDataProviderTests.swift */; };
 		B823B6AB2A8C8EF60043DC9F /* HPCalendar.h in Headers */ = {isa = PBXBuildFile; fileRef = B823B69F2A8C8EF60043DC9F /* HPCalendar.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -25,7 +29,6 @@
 		B82EEE582A9207EB00488E1C /* HPCalendarPolicy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE572A9207EB00488E1C /* HPCalendarPolicy.swift */; };
 		B82EEE5B2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE5A2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift */; };
 		B82EEE5D2A92713B00488E1C /* HPCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE5C2A92713B00488E1C /* HPCalendar.swift */; };
-		B82EEE5F2A934D1300488E1C /* HPSingleSelectionCalendarView+UILayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE5E2A934D1300488E1C /* HPSingleSelectionCalendarView+UILayout.swift */; };
 		B82EEE622A934F2100488E1C /* UIStackView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B82EEE612A934F2100488E1C /* UIStackView+Extension.swift */; };
 		B82EEF052A94A9C300488E1C /* HPCalendar.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B82EEF032A949F8900488E1C /* HPCalendar.xcassets */; };
 		B83D2B282A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift */; };
@@ -58,6 +61,10 @@
 		B8033BF62A95FEE50019F6AC /* HPRangeSelectionDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRangeSelectionDay.swift; sourceTree = "<group>"; };
 		B8033BF92A95FF520019F6AC /* HPRangeSelectionCalendarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRangeSelectionCalendarView.swift; sourceTree = "<group>"; };
 		B8033BFB2A95FFD80019F6AC /* HPRangeSelectionCalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRangeSelectionCalendarCell.swift; sourceTree = "<group>"; };
+		B8033BFD2A973DF50019F6AC /* RGBColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGBColor+Extension.swift"; sourceTree = "<group>"; };
+		B8033BFF2A9741BA0019F6AC /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
+		B8033C012A9741E60019F6AC /* HPCalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCalendarCellViewModel.swift; sourceTree = "<group>"; };
+		B8033C032A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRangeSelectionCalendarCellViewModel.swift; sourceTree = "<group>"; };
 		B823B69C2A8C8EF60043DC9F /* HPCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = HPCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B823B69F2A8C8EF60043DC9F /* HPCalendar.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HPCalendar.h; sourceTree = "<group>"; };
 		B823B6A42A8C8EF60043DC9F /* HPCalendarTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HPCalendarTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -73,7 +80,6 @@
 		B82EEE572A9207EB00488E1C /* HPCalendarPolicy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCalendarPolicy.swift; sourceTree = "<group>"; };
 		B82EEE5A2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarUIConfiguration.swift; sourceTree = "<group>"; };
 		B82EEE5C2A92713B00488E1C /* HPCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCalendar.swift; sourceTree = "<group>"; };
-		B82EEE5E2A934D1300488E1C /* HPSingleSelectionCalendarView+UILayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HPSingleSelectionCalendarView+UILayout.swift"; sourceTree = "<group>"; };
 		B82EEE612A934F2100488E1C /* UIStackView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIStackView+Extension.swift"; sourceTree = "<group>"; };
 		B82EEF032A949F8900488E1C /* HPCalendar.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = HPCalendar.xcassets; sourceTree = "<group>"; };
 		B83D2B272A8DE8D70078E177 /* HPSingleSelectionCalendarUIIntegrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionCalendarUIIntegrationTests.swift; sourceTree = "<group>"; };
@@ -114,6 +120,7 @@
 			children = (
 				B8033BF22A95FE5F0019F6AC /* HPRangeCalendarViewModel.swift */,
 				B8033BF42A95FEAF0019F6AC /* HPRangeSelectionManager.swift */,
+				B8033C032A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift */,
 				B8033BF62A95FEE50019F6AC /* HPRangeSelectionDay.swift */,
 			);
 			path = RangeSelection;
@@ -185,6 +192,7 @@
 			isa = PBXGroup;
 			children = (
 				B82EEE502A91F96800488E1C /* HPDayLoaderAdapter.swift */,
+				B8033C012A9741E60019F6AC /* HPCalendarCellViewModel.swift */,
 				B8033BF12A95FE300019F6AC /* RangeSelection */,
 				B82EEE542A92062D00488E1C /* SingleSelection */,
 			);
@@ -221,7 +229,6 @@
 			isa = PBXGroup;
 			children = (
 				B83D2B2B2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift */,
-				B82EEE5E2A934D1300488E1C /* HPSingleSelectionCalendarView+UILayout.swift */,
 				B83D2B2D2A8DF7560078E177 /* HPSingleSelectionCalendarCell.swift */,
 				B82EEE5A2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift */,
 			);
@@ -232,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				B82EEE612A934F2100488E1C /* UIStackView+Extension.swift */,
+				B8033BFD2A973DF50019F6AC /* RGBColor+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -245,6 +253,7 @@
 				B82EEE592A9215BA00488E1C /* SingleSelection */,
 				B83D2B362A8E06C30078E177 /* HPCalendarHeaderView.swift */,
 				B82EEE5C2A92713B00488E1C /* HPCalendar.swift */,
+				B8033BFF2A9741BA0019F6AC /* RGBColor.swift */,
 			);
 			path = HPCalendarUI;
 			sourceTree = "<group>";
@@ -405,18 +414,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8033BFE2A973DF50019F6AC /* RGBColor+Extension.swift in Sources */,
 				B823B6BA2A8CE8A80043DC9F /* NativeHPDayLoader.swift in Sources */,
 				B82EEE622A934F2100488E1C /* UIStackView+Extension.swift in Sources */,
 				B8033BF52A95FEAF0019F6AC /* HPRangeSelectionManager.swift in Sources */,
 				B88D03A42A8F6519002877ED /* HPDayLoader.swift in Sources */,
 				B823B6B62A8CC3CF0043DC9F /* MetaDataProvider.swift in Sources */,
+				B8033C022A9741E60019F6AC /* HPCalendarCellViewModel.swift in Sources */,
 				B83D2B2C2A8DF7350078E177 /* HPSingleSelectionCalendarView.swift in Sources */,
+				B8033C002A9741BA0019F6AC /* RGBColor.swift in Sources */,
 				B83D2B372A8E06C30078E177 /* HPCalendarHeaderView.swift in Sources */,
 				B82EEE532A91FB5F00488E1C /* HPSingleSelectionDay.swift in Sources */,
 				B82EEE512A91F96800488E1C /* HPDayLoaderAdapter.swift in Sources */,
 				B8033BFC2A95FFD80019F6AC /* HPRangeSelectionCalendarCell.swift in Sources */,
 				B82EEE582A9207EB00488E1C /* HPCalendarPolicy.swift in Sources */,
-				B82EEE5F2A934D1300488E1C /* HPSingleSelectionCalendarView+UILayout.swift in Sources */,
 				B83D2B2E2A8DF7560078E177 /* HPSingleSelectionCalendarCell.swift in Sources */,
 				B83D2B2A2A8DE93E0078E177 /* HPSingleCalendarViewModel.swift in Sources */,
 				B82EEE5B2A92162600488E1C /* HPSingleSelectionCalendarUIConfiguration.swift in Sources */,
@@ -426,6 +437,7 @@
 				B8033BFA2A95FF520019F6AC /* HPRangeSelectionCalendarView.swift in Sources */,
 				B82EEE5D2A92713B00488E1C /* HPCalendar.swift in Sources */,
 				B8033BF32A95FE5F0019F6AC /* HPRangeCalendarViewModel.swift in Sources */,
+				B8033C042A9742100019F6AC /* HPRangeSelectionCalendarCellViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

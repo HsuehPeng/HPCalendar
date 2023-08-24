@@ -114,7 +114,8 @@ public class HPRangeSelectionCalendarView: UIView, UICollectionViewDataSource, U
 	public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 		guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HPRangeSelectionCalendarCell.reuseId, for: indexPath) as? HPRangeSelectionCalendarCell else { return UICollectionViewCell() }
 		let day = viewModel.days[indexPath.item]
-		cell.day = day
+		let cellViewModel = HPRangeSelectionCalendarCellViewModel(day: day)
+		cell.viewModel = cellViewModel
 		return cell
 	}
 	
@@ -161,7 +162,7 @@ public class HPRangeSelectionCalendarView: UIView, UICollectionViewDataSource, U
 		label.text = weekDay
 		label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
 		label.textAlignment = .center
-		label.textColor = HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor
+		label.textColor = HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor.toUIColor()
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}

@@ -127,4 +127,42 @@ public class HPSingleSelectionCalendarView: UIView, UICollectionViewDataSource, 
 		
 		viewModel.setSelectedDate(day.date)
 	}
+	
+	func setupUI() {
+		self.addSubview(headerView)
+		self.addSubview(weekDayHStack)
+		self.addSubview(collectionView)
+		
+		NSLayoutConstraint.activate([
+			headerView.topAnchor.constraint(equalTo: self.topAnchor),
+			headerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+			headerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+			headerView.heightAnchor.constraint(equalToConstant: 40)
+		])
+		
+		weekDayHStack.addArrangedSubviews(subviews: weekDaysLabel)
+		NSLayoutConstraint.activate([
+			weekDayHStack.topAnchor.constraint(equalTo: headerView.bottomAnchor),
+			weekDayHStack.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
+			weekDayHStack.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+			weekDayHStack.heightAnchor.constraint(equalToConstant: 34)
+		])
+		
+		NSLayoutConstraint.activate([
+			collectionView.topAnchor.constraint(equalTo: weekDayHStack.bottomAnchor),
+			collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+			collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+		])
+	}
+	
+	func makeWeekDayLabel(weekDay: String) -> UILabel {
+		let label = UILabel()
+		label.text = weekDay
+		label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
+		label.textAlignment = .center
+		label.textColor = HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor.toUIColor()
+		label.translatesAutoresizingMaskIntoConstraints = false
+		return label
+	}
 }

@@ -15,7 +15,7 @@ class HPSingleSelectionCalendarCell: UICollectionViewCell {
 	let selectionView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.backgroundColor = HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor
+		view.backgroundColor = HPSingleSelectionCalendarUIConfiguration.calendarCellSelectionColor.toUIColor()
 		view.layer.cornerRadius = 8
 		view.isHidden = true
 		return view
@@ -51,9 +51,9 @@ class HPSingleSelectionCalendarCell: UICollectionViewCell {
 	private func configureUI() {
 		guard let day = day else { return }
 		dateLabel.text = day.number
-		dateLabel.textColor = day.isWithInMonth ? HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor : HPSingleSelectionCalendarUIConfiguration.notWithinMonthTextColor
-		dateLabel.textColor = day.isToday ? HPSingleSelectionCalendarUIConfiguration.todayTextColor : dateLabel.textColor
-		dateLabel.textColor = day.isSelected ? HPSingleSelectionCalendarUIConfiguration.selectedTextColor : dateLabel.textColor
+		dateLabel.textColor = day.isWithInMonth ? HPSingleSelectionCalendarUIConfiguration.withinMonthTextColor.toUIColor() : HPSingleSelectionCalendarUIConfiguration.notWithinMonthTextColor.toUIColor()
+		dateLabel.textColor = day.isToday ? HPSingleSelectionCalendarUIConfiguration.todayTextColor.toUIColor() : dateLabel.textColor
+		dateLabel.textColor = day.isSelected ? HPSingleSelectionCalendarUIConfiguration.selectedTextColor.toUIColor() : dateLabel.textColor
 		selectionView.isHidden = day.isSelected ? false : true
 	}
 	
