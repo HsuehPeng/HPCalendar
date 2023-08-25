@@ -19,6 +19,7 @@ class HPCalendarCellViewModel {
 			rgbColor = HPCalendarColorConstant.withinMonthTextColor
 		} else {
 			rgbColor = HPCalendarColorConstant.notWithinMonthTextColor
+			return rgbColor
 		}
 		
 		if day.isToday {
