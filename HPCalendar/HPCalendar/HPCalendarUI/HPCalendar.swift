@@ -7,21 +7,33 @@
 
 import Foundation
 
-public protocol HPCalendarDelegate: AnyObject {
-	func calendar(didSelectDate date : Date?)
+public protocol HPRangeCalendarDelegate: AnyObject {
 	func calendar(didSelectDateRange range: (startDate: Date?, endDate: Date?))
 }
 
+public protocol HPSingleCalendarDelegate: AnyObject {
+	func calendar(didSelectDate date : Date?)
+}
+
 public final class HPCalendar {
+	public weak var singleDelegate: HPSingleCalendarDelegate?
+	public weak var rangeDelegate: HPRangeCalendarDelegate?
 	
-	public weak var delegate: HPCalendarDelegate?
-	
-	private enum CalendarType {
+	public enum CalendarType {
 		case single
 		case range
 	}
 	
-	public func makeSingleCalendar(frame: CGRect) -> HPCalendarView {
+	public func makeCalendar(frame: CGRect, calendarType: CalendarType) -> HPCalendarView {
+		switch calendarType {
+		case .single:
+			return makeSingleCalendar(frame: frame)
+		case .range:
+			return makeRangeCalendar(frame: frame)
+		}
+	}
+	
+	private func makeSingleCalendar(frame: CGRect) -> HPCalendarView {
 		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
@@ -33,7 +45,7 @@ public final class HPCalendar {
 		
 		calendarManager.onSelectedDate = { [weak self] date in
 			guard let self = self else { return }
-			self.delegate?.calendar(didSelectDate: date)
+			self.singleDelegate?.calendar(didSelectDate: date)
 		}
 		
 		calendarManager.onReloadCalendar = { [viewModel] in
@@ -42,7 +54,7 @@ public final class HPCalendar {
 		return calendarView
 	}
 	
-	public func makeRangeCalendar(frame: CGRect) -> HPCalendarView {
+	private func makeRangeCalendar(frame: CGRect) -> HPCalendarView {
 		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
@@ -54,7 +66,7 @@ public final class HPCalendar {
 
 		calendarManager.onSelectedDate = { [weak self] startDate, endDate in
 			guard let self = self else { return }
-			self.delegate?.calendar(didSelectDateRange: (startDate, endDate))
+			self.rangeDelegate?.calendar(didSelectDateRange: (startDate, endDate))
 		}
 
 		calendarManager.onReloadCalendar = { [viewModel] in

@@ -35,6 +35,7 @@ public class HPCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
 		let collectionView = UICollectionView(frame: .zero, collectionViewLayout: flowLayout)
 		collectionView.isScrollEnabled = false
 		collectionView.translatesAutoresizingMaskIntoConstraints = false
+		collectionView.backgroundColor = .clear
 		return collectionView
 	}()
 		
@@ -115,8 +116,8 @@ public class HPCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
 		
 		NSLayoutConstraint.activate([
 			headerView.topAnchor.constraint(equalTo: self.topAnchor),
-			headerView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
-			headerView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
+			headerView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+			headerView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
 			headerView.heightAnchor.constraint(equalToConstant: 40)
 		])
 		

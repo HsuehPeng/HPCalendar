@@ -16,17 +16,17 @@ class HPCalendarCellViewModel {
 		var rgbColor: RGBColor
 		
 		if day.isWithInMonth {
-			rgbColor = HPCalendarCellUIConfiguration.withinMonthTextColor
+			rgbColor = HPCalendarColorConstant.withinMonthTextColor
 		} else {
-			rgbColor = HPCalendarCellUIConfiguration.notWithinMonthTextColor
+			rgbColor = HPCalendarColorConstant.notWithinMonthTextColor
 		}
 		
 		if day.isToday {
-			rgbColor = HPCalendarCellUIConfiguration.todayTextColor
+			rgbColor = HPCalendarColorConstant.todayTextColor
 		}
 		
 		if day.isSelected {
-			rgbColor = HPCalendarCellUIConfiguration.selectedTextColor
+			rgbColor = HPCalendarColorConstant.selectedTextColor
 		}
 		
 		return rgbColor

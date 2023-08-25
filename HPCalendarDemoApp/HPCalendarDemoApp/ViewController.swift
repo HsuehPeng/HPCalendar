@@ -8,7 +8,7 @@
 import UIKit
 import HPCalendar
 
-class ViewController: UIViewController, HPCalendarDelegate {
+class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalendarDelegate {
 	func calendar(didSelectDateRange range: (startDate: Date?, endDate: Date?)) {
 		print(range)
 	}
@@ -18,12 +18,15 @@ class ViewController: UIViewController, HPCalendarDelegate {
 	}
 	
 	let calendar = HPCalendar()
-	lazy var calendarView = calendar.makeRangeCalendar(frame: CGRect(x: 0, y: 200, width: view.frame.width - 50, height: view.frame.height / 2.5))
+	
+	lazy var calendarView = calendar.makeCalendar(frame: CGRect(x: 0, y: 200, width: view.frame.width - 50, height: view.frame.height / 2.5), calendarType: .range)
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
 		// Do any additional setup after loading the view.
-		calendar.delegate = self
+		calendar.singleDelegate = self
+		calendar.rangeDelegate = self
+		
 		view.addSubview(calendarView)
 	}
 

@@ -46,19 +46,19 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 		let (sut, _) = makeSut()
 				
 		for i in 0..<5 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarCellUIConfiguration.notWithinMonthTextColor)
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.notWithinMonthTextColor)
 		}
 		
 		for i in 5..<6 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarCellUIConfiguration.todayTextColor)
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.todayTextColor)
 		}
 		
 		for i in 6..<36 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarCellUIConfiguration.withinMonthTextColor)
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.withinMonthTextColor)
 		}
 		
 		for i in 36..<42 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarCellUIConfiguration.notWithinMonthTextColor)
+			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.notWithinMonthTextColor)
 		}
 	}
 	

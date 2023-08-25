@@ -5,18 +5,6 @@
 //  Created by Hsueh Peng Tseng on 2023/8/18.
 //
 
-protocol HPCalendarManager {
-	func loadDays() -> [HPSelectionDay]
-	
-	func calendarHeaderText() -> String
-	
-	func setNextBaseDate()
-	
-	func setPreviousBaseDate()
-	
-	func setSelectedDate(_ date: Date)
-}
-
 class HPSingleSelectionManager: HPCalendarManager {
 	private let calendar: Calendar
 	private let dayLoader: HPDayLoader

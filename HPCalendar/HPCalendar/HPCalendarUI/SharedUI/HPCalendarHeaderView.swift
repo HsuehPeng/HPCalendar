@@ -80,8 +80,8 @@ class HPCalendarHeaderView: UIView {
 		
 		NSLayoutConstraint.activate([
 			hStack.topAnchor.constraint(equalTo: self.topAnchor),
-			hStack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 16),
-			hStack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -16),
+			hStack.leftAnchor.constraint(equalTo: self.leftAnchor, constant: 32),
+			hStack.rightAnchor.constraint(equalTo: self.rightAnchor, constant: -32),
 			hStack.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
 	}
