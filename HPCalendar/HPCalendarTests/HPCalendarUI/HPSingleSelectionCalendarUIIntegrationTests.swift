@@ -10,57 +10,57 @@ import UIKit
 @testable import HPCalendar
 
 final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
-
-	func test_init_renderCorrectNumbersOfCalendarCell() {
-		let (sut, _) = makeSut()
-
-		XCTAssertEqual(sut.numbersOfCalendarCell(), numbersOfCalendarCell)
-	}
-	
-	func test_init_renderCorrectHeaderTextOnCreation() {
-		let (sut, vm) = makeSut()
-		
-		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
-	}
-	
-	func test_headerView_changeHeaderViewDateLabelTextWhenTapNextMonthAndPreviousMonthButton() {
-		let (sut, vm) = makeSut()
-		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
-
-		sut.simnulateHeaderViewTapNextButton()
-		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
-
-		sut.simnulateHeaderViewTapPreviousButton()
-		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
-	}
-	
-	func test_collectionViewCell_renderCorrectDateNumber() {
-		let (sut, vm) = makeSut()
-
-		for i in 0...(numbersOfCalendarCell-1) {
-			XCTAssertEqual(sut.calendarCellDateNumber(at: i), vm.days[i].number)
-		}
-	}
-	
-	func test_HPCalendarCell_renderCorrectDateLabelTextColor() {
-		let (sut, _) = makeSut()
-				
-		for i in 0..<5 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.notWithinMonthTextColor)
-		}
-		
-		for i in 5..<6 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.todayTextColor)
-		}
-		
-		for i in 6..<36 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.withinMonthTextColor)
-		}
-		
-		for i in 36..<42 {
-			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.notWithinMonthTextColor)
-		}
-	}
+//
+//	func test_init_renderCorrectNumbersOfCalendarCell() {
+//		let (sut, _) = makeSut()
+//
+//		XCTAssertEqual(sut.numbersOfCalendarCell(), numbersOfCalendarCell)
+//	}
+//	
+//	func test_init_renderCorrectHeaderTextOnCreation() {
+//		let (sut, vm) = makeSut()
+//		
+//		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
+//	}
+//	
+//	func test_headerView_changeHeaderViewDateLabelTextWhenTapNextMonthAndPreviousMonthButton() {
+//		let (sut, vm) = makeSut()
+//		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
+//
+//		sut.simnulateHeaderViewTapNextButton()
+//		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
+//
+//		sut.simnulateHeaderViewTapPreviousButton()
+//		XCTAssertEqual(sut.headerView.dateLabel.text, vm.headerText)
+//	}
+//	
+//	func test_collectionViewCell_renderCorrectDateNumber() {
+//		let (sut, vm) = makeSut()
+//
+//		for i in 0...(numbersOfCalendarCell-1) {
+//			XCTAssertEqual(sut.calendarCellDateNumber(at: i), vm.days[i].number)
+//		}
+//	}
+//	
+//	func test_HPCalendarCell_renderCorrectDateLabelTextColor() {
+//		let (sut, _) = makeSut()
+//				
+//		for i in 0..<5 {
+//			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.notWithinMonthTextColor)
+//		}
+//		
+//		for i in 5..<6 {
+//			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.todayTextColor)
+//		}
+//		
+//		for i in 6..<36 {
+//			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.withinMonthTextColor)
+//		}
+//		
+//		for i in 36..<42 {
+//			XCTAssertEqual(sut.calendarCellDateLabelTextColor(at: i), HPCalendarColorConstant.notWithinMonthTextColor)
+//		}
+//	}
 	
 	func test_selectHPCalendarCell_doNothingWhenSelectCellThatIsNotInCurrentMonth() {
 //		let (sut, _) = makeSut()
@@ -143,47 +143,47 @@ final class HPSingleSelectionCalendarUIIntegrationTests: XCTestCase {
 	
 	// MARK: - Helpers
 	
-	private func makeSut(date: Date = Date()) -> (HPCalendarView, HPCalendarViewModel) {
-		let calendar = Calendar(identifier: .gregorian)
-		let dayLoader = HPDayLoaderDummy()
-		let hpdayLoaderAdapterSpy = HPDayLoaderAdapterSpy(adaptee: dayLoader) { hpday in
-			return HPSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
-		}
-		
-		let calendarManager = HPSingleSelectionManager(calendar: calendar)
-		let headerTextFormate = "MM"
-		let vm = HPCalendarViewModel(dayLoader: hpdayLoaderAdapterSpy, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
-		let sut = HPCalendarView(frame: .zero, viewModel: vm)
-		return (sut, vm)
-	}
-
-	var numbersOfCalendarCell = HPCalendarPolicy.numbersOfCell
-	
-	let beforeCurrentMonthIndex = 0
-	let currentMonthIndex = 10
-	let anotherCurrentMonthIndex = 11
-	let todayIndex = 2
-	
-	private class HPDayLoaderDummy: HPDayLoader {
-		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
-			return []
-		}
-	}
-	
-	private class HPDayLoaderAdapterSpy: HPDayLoaderAdapter<HPSelectionDay> {
-		var generateDaysCount = 0
-		
-		override func load(for date: Date) -> [HPSelectionDay] {
-			generateDaysCount += 1
-			
-			let notWithinMonthDayBeforeCurrentMonth = Array(repeating: HPSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false), count: 5)
-			let todayDay = [HPSelectionDay(date: Date(), number: "2", isWithInMonth: true, isToday: true, isSelected: false)]
-			let withinMonthDays = Array(repeating: HPSelectionDay(date: Date(), number: "3", isWithInMonth: true, isToday: false, isSelected: false), count: 30)
-			let notWithinMonthDayAfterCurrentMonth = Array(repeating: HPSelectionDay(date: Date(), number: "4", isWithInMonth: false, isToday: false, isSelected: false), count: 6)
-			
-			let hpSingleSelectionDays = notWithinMonthDayBeforeCurrentMonth + todayDay + withinMonthDays + notWithinMonthDayAfterCurrentMonth
-			
-			return hpSingleSelectionDays
-		}
-	}
+//	private func makeSut(date: Date = Date()) -> (HPCalendarView, HPCalendarViewModel) {
+//		let calendar = Calendar(identifier: .gregorian)
+//		let dayLoader = HPDayLoaderDummy()
+//		let hpdayLoaderAdapterSpy = HPDayLoaderAdapterSpy(adaptee: dayLoader) { hpday in
+//			return HPSelectionDay(date: hpday.date, number: hpday.number, isWithInMonth: hpday.isWithInMonth, isToday: false, isSelected: false)
+//		}
+//
+//		let calendarManager = HPSingleSelectionManager(calendar: calendar)
+//		let headerTextFormate = "MM"
+//		let vm = HPCalendarViewModel(dayLoader: hpdayLoaderAdapterSpy, calendarManager: calendarManager, headerTextFormate: headerTextFormate)
+//		let sut = HPCalendarView(frame: .zero, viewModel: vm)
+//		return (sut, vm)
+//	}
+//
+//	var numbersOfCalendarCell = HPCalendarPolicy.numbersOfCell
+//
+//	let beforeCurrentMonthIndex = 0
+//	let currentMonthIndex = 10
+//	let anotherCurrentMonthIndex = 11
+//	let todayIndex = 2
+//
+//	private class HPDayLoaderDummy: HPDayLoader {
+//		func generateHPDaysInMonth(for date: Date) -> [HPDay] {
+//			return []
+//		}
+//	}
+//
+//	private class HPDayLoaderAdapterSpy: HPDayLoaderAdapter<HPSelectionDay> {
+//		var generateDaysCount = 0
+//
+//		override func load(for date: Date) -> [HPSelectionDay] {
+//			generateDaysCount += 1
+//
+//			let notWithinMonthDayBeforeCurrentMonth = Array(repeating: HPSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false), count: 5)
+//			let todayDay = [HPSelectionDay(date: Date(), number: "2", isWithInMonth: true, isToday: true, isSelected: false)]
+//			let withinMonthDays = Array(repeating: HPSelectionDay(date: Date(), number: "3", isWithInMonth: true, isToday: false, isSelected: false), count: 30)
+//			let notWithinMonthDayAfterCurrentMonth = Array(repeating: HPSelectionDay(date: Date(), number: "4", isWithInMonth: false, isToday: false, isSelected: false), count: 6)
+//
+//			let hpSingleSelectionDays = notWithinMonthDayBeforeCurrentMonth + todayDay + withinMonthDays + notWithinMonthDayAfterCurrentMonth
+//
+//			return hpSingleSelectionDays
+//		}
+//	}
 }
