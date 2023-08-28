@@ -33,7 +33,7 @@ class HPRangeSelectionManager: HPCalendarManager {
 				date: hpday.date,
 				number: hpday.number,
 				isWithInMonth: hpday.isWithInMonth,
-				isToday: getFirstSecondOfDate(from: Date()) == hpday.date,
+				isToday: getFirstSecondOfDate(from: Date()) == getFirstSecondOfDate(from: hpday.date),
 				isSelected: isInSelectedDateRange(for: hpday.date)
 			)
 		}

@@ -39,6 +39,7 @@
 		B88006862A8F850D00D10191 /* HPSingleSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88006852A8F850D00D10191 /* HPSingleSelectionManager.swift */; };
 		B880068B2A8F988400D10191 /* SharedTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B880068A2A8F988400D10191 /* SharedTestHelpers.swift */; };
 		B88D03A42A8F6519002877ED /* HPDayLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = B88D03A32A8F6519002877ED /* HPDayLoader.swift */; };
+		B8CC01522A9C84C1009FCEDC /* HPRangeSelectionManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC01512A9C84C1009FCEDC /* HPRangeSelectionManagerTests.swift */; };
 		B8FA479C2A8E205200212FA4 /* UIButton+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA479B2A8E205200212FA4 /* UIButton+TestHelpers.swift */; };
 		B8FA479E2A8E206D00212FA4 /* UIControl+TestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8FA479D2A8E206D00212FA4 /* UIControl+TestHelpers.swift */; };
 /* End PBXBuildFile section */
@@ -88,6 +89,7 @@
 		B88006852A8F850D00D10191 /* HPSingleSelectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSingleSelectionManager.swift; sourceTree = "<group>"; };
 		B880068A2A8F988400D10191 /* SharedTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelpers.swift; sourceTree = "<group>"; };
 		B88D03A32A8F6519002877ED /* HPDayLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPDayLoader.swift; sourceTree = "<group>"; };
+		B8CC01512A9C84C1009FCEDC /* HPRangeSelectionManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRangeSelectionManagerTests.swift; sourceTree = "<group>"; };
 		B8FA479B2A8E205200212FA4 /* UIButton+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+TestHelpers.swift"; sourceTree = "<group>"; };
 		B8FA479D2A8E206D00212FA4 /* UIControl+TestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+TestHelpers.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +203,7 @@
 				B823B6C22A8D04970043DC9F /* HPCalendarViewModelTests.swift */,
 				B865E9E22A98AD1F00BA495B /* HPCalendarCellViewModelTests.swift */,
 				B865E9E42A98B00900BA495B /* HPSingleSelectionManagerTests.swift */,
+				B8CC01512A9C84C1009FCEDC /* HPRangeSelectionManagerTests.swift */,
 			);
 			path = HPCalendarPresentation;
 			sourceTree = "<group>";
@@ -429,6 +432,7 @@
 				B880068B2A8F988400D10191 /* SharedTestHelpers.swift in Sources */,
 				B823B6AA2A8C8EF60043DC9F /* MetaDataProviderTests.swift in Sources */,
 				B8FA479C2A8E205200212FA4 /* UIButton+TestHelpers.swift in Sources */,
+				B8CC01522A9C84C1009FCEDC /* HPRangeSelectionManagerTests.swift in Sources */,
 				B865E9E12A98AC4C00BA495B /* XCTestCase+MemoryLeakTracking.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
