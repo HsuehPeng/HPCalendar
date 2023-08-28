@@ -29,6 +29,7 @@ class HPCalendarViewModel {
 	}
 	
 	func selectedDate(at index: Int) {
+		guard days[index].isWithInMonth else { return }
 		let date = days[index].date
 		calendarManager.setSelectedDate(date)
 		

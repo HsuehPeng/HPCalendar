@@ -34,20 +34,27 @@ final class HPCalendarViewModelTests: XCTestCase {
 		XCTAssertEqual(manager.messages, [.setPreviousBaseDate, .setPreviousBaseDate])
 	}
 	
-	func test_selectedDate_hpCalendarManagerCallSetSelectedDateCallCount() {
+	func test_selectedDate_donNotIncreasehpCalendarManagerSetSelectedDateCallCountWhenSelectDateThatIsOutSideOfMonth() {
 		let (sut, manager) = makeSut()
 		
 		sut.selectedDate(at: 0)
+
+		XCTAssertEqual(manager.messages, [])
+	}
+	
+	func test_selectedDate_hpCalendarManagerCallSetSelectedDateCallCount() {
+		let (sut, manager) = makeSut()
+		
 		sut.selectedDate(at: 1)
 
-		XCTAssertEqual(manager.messages, [.setSelectedDate, .onReload, .setSelectedDate, .onReload])
+		XCTAssertEqual(manager.messages, [.setSelectedDate, .onReload])
 	}
 
 	func test_onReload_onReloadCallCountWhenSetDaysAndSetSelectedDate() {
 		let (sut, manager) = makeSut()
 
 		sut.days.append(HPSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false))
-		sut.selectedDate(at: 0)
+		sut.selectedDate(at: 1)
 
 		XCTAssertEqual(manager.messages, [.onReload, .setSelectedDate, .onReload])
 	}
@@ -81,7 +88,7 @@ final class HPCalendarViewModelTests: XCTestCase {
 		
 		func loadDays() -> [HPSelectionDay] {
 			return [HPSelectionDay(date: Date(), number: "0", isWithInMonth: false, isToday: false, isSelected: false),
-					HPSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false)
+					HPSelectionDay(date: Date(), number: "1", isWithInMonth: true, isToday: false, isSelected: false)
 			]
 		}
 		
