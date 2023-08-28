@@ -20,15 +20,15 @@ public final class HPCalendar {
 	public weak var rangeDelegate: HPRangeCalendarDelegate?
 	
 	public enum CalendarType {
-		case single
-		case range
+		case singleSelection
+		case rangeSelection
 	}
 	
 	public func makeCalendar(frame: CGRect, calendarType: CalendarType) -> HPCalendarView {
 		switch calendarType {
-		case .single:
+		case .singleSelection:
 			return makeSingleCalendar(frame: frame)
-		case .range:
+		case .rangeSelection:
 			return makeRangeCalendar(frame: frame)
 		}
 	}

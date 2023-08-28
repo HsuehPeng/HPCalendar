@@ -58,15 +58,12 @@ class HPRangeSelectionManager: HPCalendarManager {
 		if startDate == nil && endDate == nil {
 			selectedDate.startDate = date
 		} else if date == startDate {
-			selectedDate.startDate = nil
-			selectedDate.endDate = nil
+			selectedDate = (nil, nil)
 		} else if let start = startDate, date < start {
 			selectedDate.startDate = date
 		} else {
 			selectedDate.endDate = date
 		}
-		
-		onReloadCalendar?()
 	}
 	
 	private func isInSelectedDateRange(for date: Date) -> Bool {
