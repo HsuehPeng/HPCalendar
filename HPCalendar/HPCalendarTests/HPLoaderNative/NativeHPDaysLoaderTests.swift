@@ -37,6 +37,9 @@ final class NativeHPDaysLoaderTests: XCTestCase {
 		let metaDataProvider = MetaDataProviderStub(calendar: calendar, onlyDateInMonth: onlyDateInMonth)
 		let sut = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
 		
+		trackForMemoryLeaks(sut)
+		trackForMemoryLeaks(metaDataProvider)
+		
 		return sut
 	}
 	

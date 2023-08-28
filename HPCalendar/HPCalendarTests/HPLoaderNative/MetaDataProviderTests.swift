@@ -63,6 +63,9 @@ final class MetaDataProviderTests: XCTestCase {
 	private func makeSut() -> MetaDataProvider {
 		let calendar = makeTestCalendar()
 		let sut = MetaDataProvider(calendar: calendar)
+		
+		trackForMemoryLeaks(sut)
+		
 		return sut
 	}
 	
