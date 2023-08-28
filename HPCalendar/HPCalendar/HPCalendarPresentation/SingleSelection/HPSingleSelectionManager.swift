@@ -9,7 +9,7 @@ class HPSingleSelectionManager: HPCalendarManager {
 	private let calendar: Calendar
 	private let dayLoader: HPDayLoader
 	
-	private var baseDate: Date = Date() {
+	var baseDate: Date = Date() {
 		didSet {
 			onReloadCalendar?()
 		}
@@ -33,7 +33,7 @@ class HPSingleSelectionManager: HPCalendarManager {
 				date: hpday.date,
 				number: hpday.number,
 				isWithInMonth: hpday.isWithInMonth,
-				isToday: getFirstSecondOfDate(from: Date()) == hpday.date,
+				isToday: getFirstSecondOfDate(from: Date()) == getFirstSecondOfDate(from: hpday.date),
 				isSelected: selectedDate == hpday.date
 			)
 		}
@@ -59,6 +59,14 @@ class HPSingleSelectionManager: HPCalendarManager {
 		}
 	}
 	
+	init(calendar: Calendar, dayLoader: HPDayLoader, headerTextFormate: String) {
+		self.calendar = calendar
+		self.dayLoader = dayLoader
+		self.headerTextFormate = headerTextFormate
+	}
+}
+
+extension HPSingleSelectionManager {
 	private func addTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
 		return calendar.date(byAdding: component, value: 1, to: date) ?? date
 	}
@@ -76,11 +84,5 @@ class HPSingleSelectionManager: HPCalendarManager {
 	private func getFirstSecondOfDate(from date: Date) -> Date {
 		let dayComponents = calendar.dateComponents([.year, .month, .day], from: date)
 		return calendar.date(from: dayComponents) ?? date
-	}
-	
-	init(calendar: Calendar, dayLoader: HPDayLoader, headerTextFormate: String) {
-		self.calendar = calendar
-		self.dayLoader = dayLoader
-		self.headerTextFormate = headerTextFormate
 	}
 }

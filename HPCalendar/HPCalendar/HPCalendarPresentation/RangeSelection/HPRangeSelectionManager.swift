@@ -9,7 +9,7 @@ class HPRangeSelectionManager: HPCalendarManager {
 	private let calendar: Calendar
 	private let dayLoader: HPDayLoader
 	
-	private var baseDate: Date = Date() {
+	var baseDate: Date = Date() {
 		didSet {
 			onReloadCalendar?()
 		}

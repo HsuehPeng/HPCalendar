@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct HPSelectionDay {
+struct HPSelectionDay: Equatable {
 	let date: Date
 	let number: String
 	let isWithInMonth: Bool
