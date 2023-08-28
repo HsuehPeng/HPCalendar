@@ -61,7 +61,7 @@ final class MetaDataProviderTests: XCTestCase {
 	// MARK: - Helpers
 	
 	private func makeSut() -> MetaDataProvider {
-		var calendar = makeTestCalendar()
+		let calendar = makeTestCalendar()
 		let sut = MetaDataProvider(calendar: calendar)
 		return sut
 	}
