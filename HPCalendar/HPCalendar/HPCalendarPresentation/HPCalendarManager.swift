@@ -16,3 +16,33 @@ protocol HPCalendarManager {
 	
 	func setSelectedDate(_ date: Date)
 }
+
+extension HPCalendarManager {
+	func addTimeUnit(byAdding component: Calendar.Component, to date: Date, with calendar: Calendar) -> Date {
+		return calendar.date(byAdding: component, value: 1, to: date) ?? date
+	}
+	
+	func minusTimeUnit(byminusing component: Calendar.Component, to date: Date, with calendar: Calendar) -> Date {
+		return calendar.date(byAdding: component, value: -1, to: date) ?? date
+	}
+	
+	func transformToFormattedDate(from date: Date, by formate: String) -> String {
+		let formatter = DateFormatter()
+		formatter.dateFormat = formate
+		return formatter.string(from: date)
+	}
+	
+	func getFirstSecondOfDate(from date: Date, with calendar: Calendar) -> Date {
+		let dayComponents = calendar.dateComponents([.year, .month, .day], from: date)
+		return calendar.date(from: dayComponents) ?? date
+	}
+	
+	func isSameDay(date1: Date, date2: Date, with calendar: Calendar) -> Bool {
+		let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
+		let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
+				
+		return components1.year == components2.year &&
+			   components1.month == components2.month &&
+			   components1.day == components2.day
+	}
+}

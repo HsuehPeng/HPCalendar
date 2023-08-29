@@ -43,9 +43,9 @@ class HPRangeSelectionManager: HPCalendarManager {
 				date: hpday.date,
 				number: hpday.number,
 				isWithInMonth: hpday.isWithInMonth,
-				isToday: getFirstSecondOfDate(from: Date()) == getFirstSecondOfDate(from: hpday.date),
+				isToday: getFirstSecondOfDate(from: Date(), with: calendar) == getFirstSecondOfDate(from: hpday.date, with: calendar),
 				isSelected: isInSelectedDateRange(for: hpday.date),
-				hasEvent: events.contains { isSameDay(date1: $0.date, date2: hpday.date) }
+				hasEvent: events.contains { isSameDay(date1: $0.date, date2: hpday.date, with: calendar) }
 			)
 		}
 	}
@@ -55,11 +55,11 @@ class HPRangeSelectionManager: HPCalendarManager {
 	}
 	
 	func setNextBaseDate() {
-		baseDate = addTimeUnit(with: .month, to: baseDate)
+		baseDate = addTimeUnit(byAdding: .month, to: baseDate, with: calendar)
 	}
 	
 	func setPreviousBaseDate() {
-		baseDate = minusTimeUnit(with: .month, to: baseDate)
+		baseDate = minusTimeUnit(byminusing: .month, to: baseDate, with: calendar)
 	}
 	
 	func setSelectedDate(_ date: Date) {
@@ -94,35 +94,5 @@ class HPRangeSelectionManager: HPCalendarManager {
 		self.dayLoader = dayLoader
 		self.headerTextFormate = headerTextFormate
 		self.events = events
-	}
-}
-
-extension HPRangeSelectionManager {
-	private func addTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
-		return calendar.date(byAdding: component, value: 1, to: date) ?? date
-	}
-	
-	private func minusTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
-		return calendar.date(byAdding: component, value: -1, to: date) ?? date
-	}
-	
-	private func transformToFormattedDate(from date: Date, by formate: String) -> String {
-		let formatter = DateFormatter()
-		formatter.dateFormat = formate
-		return formatter.string(from: date)
-	}
-	
-	private func getFirstSecondOfDate(from date: Date) -> Date {
-		let dayComponents = calendar.dateComponents([.year, .month, .day], from: date)
-		return calendar.date(from: dayComponents) ?? date
-	}
-	
-	private func isSameDay(date1: Date, date2: Date) -> Bool {
-		let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
-		let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
-				
-		return components1.year == components2.year &&
-			   components1.month == components2.month &&
-			   components1.day == components2.day
 	}
 }

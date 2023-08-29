@@ -5,22 +5,6 @@
 //  Created by Hsueh Peng Tseng on 2023/8/18.
 //
 
-public protocol HPEvent {
-	var title: String { get }
-	var date: Date { get }
-}
-
-public struct SingleSelectionResult {
-	public let date: Date?
-	public let events: [HPEvent]
-}
-
-public struct RangeSelectionResult {
-	public let startDate: Date?
-	public let endDate: Date?
-	public let events: [HPEvent]
-}
-
 class HPSingleSelectionManager: HPCalendarManager {
 	private let calendar: Calendar
 	private let dayLoader: HPDayLoader
@@ -42,7 +26,7 @@ class HPSingleSelectionManager: HPCalendarManager {
 			if let selectedDate = selectedDate {
 				onSelectedDate?(SingleSelectionResult(
 					date: selectedDate,
-					events: events.filter({ isSameDay(date1: $0.date, date2: selectedDate) }).sorted(by: { $0.date < $1.date }))
+					events: events.filter({ isSameDay(date1: $0.date, date2: selectedDate, with: calendar) }).sorted(by: { $0.date < $1.date }))
 				)
 			} else {
 				onSelectedDate?(SingleSelectionResult(date: nil, events: []))
@@ -57,9 +41,9 @@ class HPSingleSelectionManager: HPCalendarManager {
 				date: hpday.date,
 				number: hpday.number,
 				isWithInMonth: hpday.isWithInMonth,
-				isToday: isSameDay(date1: Date(), date2: hpday.date),
+				isToday: isSameDay(date1: Date(), date2: hpday.date, with: calendar),
 				isSelected: selectedDate == hpday.date,
-				hasEvent: events.contains { isSameDay(date1: $0.date, date2: hpday.date) }
+				hasEvent: events.contains { isSameDay(date1: $0.date, date2: hpday.date, with: calendar) }
 			)
 		}
 	}
@@ -69,11 +53,11 @@ class HPSingleSelectionManager: HPCalendarManager {
 	}
 	
 	func setNextBaseDate() {
-		baseDate = addTimeUnit(with: .month, to: baseDate)
+		baseDate = addTimeUnit(byAdding: .month, to: baseDate, with: calendar)
 	}
 	
 	func setPreviousBaseDate() {
-		baseDate = minusTimeUnit(with: .month, to: baseDate)
+		baseDate = minusTimeUnit(byminusing: .month, to: baseDate, with: calendar)
 	}
 	
 	func setSelectedDate(_ date: Date) {
@@ -89,35 +73,5 @@ class HPSingleSelectionManager: HPCalendarManager {
 		self.dayLoader = dayLoader
 		self.headerTextFormate = headerTextFormate
 		self.events = events
-	}
-}
-
-extension HPSingleSelectionManager {
-	private func addTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
-		return calendar.date(byAdding: component, value: 1, to: date) ?? date
-	}
-	
-	private func minusTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
-		return calendar.date(byAdding: component, value: -1, to: date) ?? date
-	}
-	
-	private func transformToFormattedDate(from date: Date, by formate: String) -> String {
-		let formatter = DateFormatter()
-		formatter.dateFormat = formate
-		return formatter.string(from: date)
-	}
-	
-	private func getFirstSecondOfDate(from date: Date) -> Date {
-		let dayComponents = calendar.dateComponents([.year, .month, .day], from: date)
-		return calendar.date(from: dayComponents) ?? date
-	}
-	
-	private func isSameDay(date1: Date, date2: Date) -> Bool {
-		let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
-		let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
-				
-		return components1.year == components2.year &&
-			   components1.month == components2.month &&
-			   components1.day == components2.day
 	}
 }

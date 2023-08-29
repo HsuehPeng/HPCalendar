@@ -41,7 +41,6 @@ class HPCalendarCellViewModel {
 		return !day.hasEvent
 	}
 	
-	
 	init(day: HPSelectionDay) {
 		self.day = day
 	}
