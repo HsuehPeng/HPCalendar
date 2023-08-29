@@ -37,6 +37,10 @@ class HPCalendarCellViewModel {
 		return !day.isSelected
 	}
 	
+	var isEventDotHidden: Bool {
+		return !day.hasEvent
+	}
+	
 	
 	init(day: HPSelectionDay) {
 		self.day = day

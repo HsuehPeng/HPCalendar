@@ -53,7 +53,7 @@ final class HPCalendarViewModelTests: XCTestCase {
 	func test_onReload_onReloadCallCountWhenSetDaysAndSetSelectedDate() {
 		let (sut, manager) = makeSut()
 
-		sut.days.append(HPSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false))
+		sut.days.append(HPSelectionDay(date: Date(), number: "1", isWithInMonth: false, isToday: false, isSelected: false, hasEvent: false))
 		sut.selectedDate(at: 1)
 
 		XCTAssertEqual(manager.messages, [.onReload, .setSelectedDate, .onReload])
@@ -87,8 +87,8 @@ final class HPCalendarViewModelTests: XCTestCase {
 		var messages: [Message] = []
 		
 		func loadDays() -> [HPSelectionDay] {
-			return [HPSelectionDay(date: Date(), number: "0", isWithInMonth: false, isToday: false, isSelected: false),
-					HPSelectionDay(date: Date(), number: "1", isWithInMonth: true, isToday: false, isSelected: false)
+			return [HPSelectionDay(date: Date(), number: "0", isWithInMonth: false, isToday: false, isSelected: false, hasEvent: false),
+					HPSelectionDay(date: Date(), number: "1", isWithInMonth: true, isToday: false, isSelected: false, hasEvent: false)
 			]
 		}
 		

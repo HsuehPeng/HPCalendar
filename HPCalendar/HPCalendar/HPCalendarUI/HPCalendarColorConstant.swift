@@ -13,4 +13,5 @@ final class HPCalendarColorConstant {
 	static let todayTextColor = RGBColor(red: 0.07, green: 0.45, blue: 0.87)
 	static let selectedTextColor = RGBColor(red: 1, green: 1, blue: 1)
 	static let calendarCellSelectionColor = RGBColor(red: 0.35, green: 0.45, blue: 0.85)
+	static let eventDotColor = RGBColor(red: 0.6, green: 0.3, blue: 0.4)
 }

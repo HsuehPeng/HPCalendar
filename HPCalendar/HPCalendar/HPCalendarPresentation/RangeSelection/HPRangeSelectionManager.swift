@@ -8,6 +8,7 @@
 class HPRangeSelectionManager: HPCalendarManager {
 	private let calendar: Calendar
 	private let dayLoader: HPDayLoader
+	private let events: [HPEvent]
 	
 	var baseDate: Date = Date() {
 		didSet {
@@ -17,12 +18,21 @@ class HPRangeSelectionManager: HPCalendarManager {
 	
 	private let headerTextFormate: String
 	
-	var onSelectedDate: ((Date?, Date?) -> Void)?
+	var onSelectedDate: ((RangeSelectionResult) -> Void)?
 	var onReloadCalendar: (() -> Void)?
 	
 	var selectedDate: (startDate: Date?, endDate: Date?) {
 		didSet {
-			onSelectedDate?(selectedDate.startDate, selectedDate.endDate)
+			if let startDate = selectedDate.startDate, let endDate = selectedDate.endDate {
+				onSelectedDate?(RangeSelectionResult(
+					startDate: startDate,
+					endDate: endDate,
+					events: events.filter({ $0.date >= startDate && $0.date <= endDate }).sorted(by: { $0.date < $1.date }))
+				)
+			} else {
+				onSelectedDate?(RangeSelectionResult(startDate: selectedDate.startDate, endDate: selectedDate.endDate, events: []))
+			}
+
 			onReloadCalendar?()
 		}
 	}
@@ -34,7 +44,8 @@ class HPRangeSelectionManager: HPCalendarManager {
 				number: hpday.number,
 				isWithInMonth: hpday.isWithInMonth,
 				isToday: getFirstSecondOfDate(from: Date()) == getFirstSecondOfDate(from: hpday.date),
-				isSelected: isInSelectedDateRange(for: hpday.date)
+				isSelected: isInSelectedDateRange(for: hpday.date),
+				hasEvent: events.contains { isSameDay(date1: $0.date, date2: hpday.date) }
 			)
 		}
 	}
@@ -78,6 +89,15 @@ class HPRangeSelectionManager: HPCalendarManager {
 		return false
 	}
 	
+	init(calendar: Calendar, dayLoader: HPDayLoader, headerTextFormate: String, events: [HPEvent]) {
+		self.calendar = calendar
+		self.dayLoader = dayLoader
+		self.headerTextFormate = headerTextFormate
+		self.events = events
+	}
+}
+
+extension HPRangeSelectionManager {
 	private func addTimeUnit(with component: Calendar.Component, to date: Date) -> Date {
 		return calendar.date(byAdding: component, value: 1, to: date) ?? date
 	}
@@ -97,9 +117,12 @@ class HPRangeSelectionManager: HPCalendarManager {
 		return calendar.date(from: dayComponents) ?? date
 	}
 	
-	init(calendar: Calendar, dayLoader: HPDayLoader, headerTextFormate: String) {
-		self.calendar = calendar
-		self.dayLoader = dayLoader
-		self.headerTextFormate = headerTextFormate
+	private func isSameDay(date1: Date, date2: Date) -> Bool {
+		let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
+		let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
+				
+		return components1.year == components2.year &&
+			   components1.month == components2.month &&
+			   components1.day == components2.day
 	}
 }

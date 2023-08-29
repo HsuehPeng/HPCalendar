@@ -29,6 +29,15 @@ class HPCalendarCell: UICollectionViewCell {
 		return label
 	}()
 	
+	let eventDot: UIView = {
+		let view = UIView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.backgroundColor = HPCalendarColorConstant.eventDotColor.toUIColor()
+		view.layer.cornerRadius = 2.5
+		view.isHidden = true
+		return view
+	}()
+	
 	var viewModel: HPCalendarCellViewModel? {
 		didSet {
 			configureUI()
@@ -53,11 +62,13 @@ class HPCalendarCell: UICollectionViewCell {
 		dateLabel.text = viewModel.dateNumber
 		dateLabel.textColor = viewModel.dateTextColor.toUIColor()
 		selectionView.isHidden = viewModel.isSelectionViewHidden
+		eventDot.isHidden = viewModel.isEventDotHidden
 	}
 	
 	private func setupUI() {
 		contentView.addSubview(selectionView)
 		contentView.addSubview(dateLabel)
+		contentView.addSubview(eventDot)
 		
 		NSLayoutConstraint.activate([
 			selectionView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 6),
@@ -71,6 +82,13 @@ class HPCalendarCell: UICollectionViewCell {
 			dateLabel.centerYAnchor.constraint(equalTo: selectionView.centerYAnchor),
 			dateLabel.widthAnchor.constraint(equalTo: selectionView.widthAnchor, multiplier: 0.6),
 			dateLabel.heightAnchor.constraint(equalTo: selectionView.heightAnchor, multiplier: 0.6)
+		])
+		
+		NSLayoutConstraint.activate([
+			eventDot.centerXAnchor.constraint(equalTo: dateLabel.centerXAnchor),
+			eventDot.topAnchor.constraint(equalTo: selectionView.topAnchor),
+			eventDot.widthAnchor.constraint(equalToConstant: 5),
+			eventDot.heightAnchor.constraint(equalToConstant: 5)
 		])
 	}
 	

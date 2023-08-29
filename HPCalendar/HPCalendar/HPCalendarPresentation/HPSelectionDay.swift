@@ -13,4 +13,5 @@ struct HPSelectionDay: Equatable {
 	let isWithInMonth: Bool
 	let isToday: Bool
 	let isSelected: Bool
+	let hasEvent: Bool
 }

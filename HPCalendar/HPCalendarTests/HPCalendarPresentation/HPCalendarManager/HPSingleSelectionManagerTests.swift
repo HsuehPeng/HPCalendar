@@ -28,9 +28,9 @@ final class HPSingleSelectionManagerTests: XCTestCase {
 	func test_loadDays_returnCorrectHPSelectionDay() {
 		let sut = makeSut()
 		let testedHPSelectionDays = [
-			HPSelectionDay(date: sut.baseDate, number: "1", isWithInMonth: true, isToday: true, isSelected: false),
-			HPSelectionDay(date: addOneDay(on: sut.baseDate), number: "2", isWithInMonth: true, isToday: false, isSelected: false),
-			HPSelectionDay(date: addOneMonth(on: sut.baseDate), number: "3", isWithInMonth: false, isToday: false, isSelected: false)
+			HPSelectionDay(date: sut.baseDate, number: "1", isWithInMonth: true, isToday: true, isSelected: false, hasEvent: false),
+			HPSelectionDay(date: addOneDay(on: sut.baseDate), number: "2", isWithInMonth: true, isToday: false, isSelected: false, hasEvent: false),
+			HPSelectionDay(date: addOneMonth(on: sut.baseDate), number: "3", isWithInMonth: false, isToday: false, isSelected: false, hasEvent: false)
 		]
 		
 		let hpSelectionDays = sut.loadDays()

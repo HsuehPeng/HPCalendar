@@ -8,11 +8,11 @@
 import Foundation
 
 public protocol HPRangeCalendarDelegate: AnyObject {
-	func calendar(didSelectDateRange range: (startDate: Date?, endDate: Date?))
+	func calendar(didSelectDateRange result: RangeSelectionResult)
 }
 
 public protocol HPSingleCalendarDelegate: AnyObject {
-	func calendar(didSelectDate date : Date?)
+	func calendar(didSelectDate result: SingleSelectionResult)
 }
 
 public final class HPCalendar {
@@ -24,28 +24,28 @@ public final class HPCalendar {
 		case rangeSelection
 	}
 	
-	public func makeCalendar(frame: CGRect, calendarType: CalendarType) -> HPCalendarView {
+	public func makeCalendar(frame: CGRect, calendarType: CalendarType, with events: [HPEvent] = []) -> HPCalendarView {
 		switch calendarType {
 		case .singleSelection:
-			return makeSingleCalendar(frame: frame)
+			return makeSingleCalendar(frame: frame, with: events)
 		case .rangeSelection:
-			return makeRangeCalendar(frame: frame)
+			return makeRangeCalendar(frame: frame, with: events)
 		}
 	}
 	
-	private func makeSingleCalendar(frame: CGRect) -> HPCalendarView {
+	private func makeSingleCalendar(frame: CGRect, with events: [HPEvent]) -> HPCalendarView {
 		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
 		
-		let calendarManager = HPSingleSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy")
+		let calendarManager = HPSingleSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy", events: events)
 		
 		let viewModel = HPCalendarViewModel(calendarManager: calendarManager)
 		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)
 		
-		calendarManager.onSelectedDate = { [weak self] date in
+		calendarManager.onSelectedDate = { [weak self] result in
 			guard let self = self else { return }
-			self.singleDelegate?.calendar(didSelectDate: date)
+			self.singleDelegate?.calendar(didSelectDate: result)
 		}
 		
 		calendarManager.onReloadCalendar = { [viewModel] in
@@ -54,19 +54,19 @@ public final class HPCalendar {
 		return calendarView
 	}
 	
-	private func makeRangeCalendar(frame: CGRect) -> HPCalendarView {
+	private func makeRangeCalendar(frame: CGRect, with events: [HPEvent]) -> HPCalendarView {
 		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
 
-		let calendarManager = HPRangeSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy")
+		let calendarManager = HPRangeSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy", events: events)
 
 		let viewModel = HPCalendarViewModel(calendarManager: calendarManager)
 		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)
 
-		calendarManager.onSelectedDate = { [weak self] startDate, endDate in
+		calendarManager.onSelectedDate = { [weak self] result in
 			guard let self = self else { return }
-			self.rangeDelegate?.calendar(didSelectDateRange: (startDate, endDate))
+			self.rangeDelegate?.calendar(didSelectDateRange: result)
 		}
 
 		calendarManager.onReloadCalendar = { [viewModel] in
