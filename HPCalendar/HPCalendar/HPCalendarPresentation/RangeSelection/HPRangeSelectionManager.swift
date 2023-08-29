@@ -73,7 +73,7 @@ class HPRangeSelectionManager: HPCalendarManager {
 		} else if let start = startDate, date < start {
 			selectedDate.startDate = date
 		} else {
-			selectedDate.endDate = date
+			selectedDate.endDate = getLastSecondOfDay(for: date)
 		}
 	}
 	
@@ -87,6 +87,15 @@ class HPRangeSelectionManager: HPCalendarManager {
 		}
 				
 		return false
+	}
+	
+	private func getLastSecondOfDay(for date: Date) -> Date? {
+		var components = calendar.dateComponents([.year, .month, .day], from: date)
+		components.hour = 23
+		components.minute = 59
+		components.second = 59
+		
+		return calendar.date(from: components)
 	}
 	
 	init(calendar: Calendar, dayLoader: HPDayLoader, headerTextFormate: String, events: [HPEvent]) {
