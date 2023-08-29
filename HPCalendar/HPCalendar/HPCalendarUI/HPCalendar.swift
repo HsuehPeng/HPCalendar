@@ -40,7 +40,7 @@ public final class HPCalendar {
 		
 		let calendarManager = HPSingleSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy", events: events)
 		
-		let viewModel = HPCalendarViewModel(calendarManager: calendarManager)
+		let viewModel = HPCalendarViewModel(calendarManager: calendarManager, days: calendarManager.loadDays())
 		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)
 		
 		calendarManager.onSelectedDate = { [weak self] result in
@@ -61,7 +61,7 @@ public final class HPCalendar {
 
 		let calendarManager = HPRangeSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy", events: events)
 
-		let viewModel = HPCalendarViewModel(calendarManager: calendarManager)
+		let viewModel = HPCalendarViewModel(calendarManager: calendarManager, days: calendarManager.loadDays())
 		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)
 
 		calendarManager.onSelectedDate = { [weak self] result in

@@ -64,7 +64,7 @@ final class HPCalendarViewModelTests: XCTestCase {
 	private func makeSut(file: StaticString = #filePath, line: UInt = #line) -> (HPCalendarViewModel, HPCalendarManagerSpy) {
 		let calendarManager = HPCalendarManagerSpy()
 		
-		let viewModel = HPCalendarViewModel(calendarManager: calendarManager)
+		let viewModel = HPCalendarViewModel(calendarManager: calendarManager, days: calendarManager.loadDays())
 		
 		viewModel.onReload = { [calendarManager] in
 			calendarManager.messages.append(.onReload)

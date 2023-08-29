@@ -6,8 +6,6 @@
 //
 
 protocol HPCalendarManager {
-	func loadDays() -> [HPSelectionDay]
-	
 	func calendarHeaderText() -> String
 	
 	func setNextBaseDate()

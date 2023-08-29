@@ -36,8 +36,8 @@ class HPCalendarViewModel {
 		onReload?()
 	}
 	
-	init(calendarManager: HPCalendarManager) {
+	init(calendarManager: HPCalendarManager, days: [HPSelectionDay]) {
 		self.calendarManager = calendarManager
-		self.days = calendarManager.loadDays()
+		self.days = days
 	}
 }
