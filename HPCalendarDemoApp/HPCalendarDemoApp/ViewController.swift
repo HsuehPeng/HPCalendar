@@ -16,15 +16,11 @@ struct DemoEvent: HPEvent {
 
 class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalendarDelegate {
 	func calendar(didSelectDate result: SingleSelectionResult) {
-		if let demoEvent = result.events.first as? DemoEvent {
-			print(result)
-		}
+		print(result)
 	}
 	
 	func calendar(didSelectDateRange result: RangeSelectionResult) {
-		if let demoEvent = result.events.first as? DemoEvent {
-			print(result)
-		}
+		print(result)
 	}
 	
 	let calendar = HPCalendar()

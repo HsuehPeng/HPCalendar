@@ -28,9 +28,9 @@ final class HPRangeSelectionManagerTests: XCTestCase {
 	func test_loadDays_returnCorrectHPSelectionDay() {
 		let sut = makeSut()
 		let testedHPSelectionDays = [
-			HPSelectionDay(date: sut.baseDate, number: "1", isWithInMonth: true, isToday: true, isSelected: false),
-			HPSelectionDay(date: addOneDay(on: sut.baseDate), number: "2", isWithInMonth: true, isToday: false, isSelected: false),
-			HPSelectionDay(date: addOneMonth(on: sut.baseDate), number: "3", isWithInMonth: false, isToday: false, isSelected: false)
+			HPSelectionDay(date: sut.baseDate, number: "1", isWithInMonth: true, isToday: true, isSelected: false, hasEvent: false),
+			HPSelectionDay(date: addOneDay(on: sut.baseDate), number: "2", isWithInMonth: true, isToday: false, isSelected: false, hasEvent: false),
+			HPSelectionDay(date: addOneMonth(on: sut.baseDate), number: "3", isWithInMonth: false, isToday: false, isSelected: false, hasEvent: false)
 		]
 		
 		let hpSelectionDays = sut.loadDays()
@@ -119,12 +119,12 @@ final class HPRangeSelectionManagerTests: XCTestCase {
 		sut.setSelectedDate(nextTwoDay)
 		
 		XCTAssertEqual(sut.selectedDate.startDate, today)
-		XCTAssertEqual(sut.selectedDate.endDate, nextTwoDay)
+		XCTAssertEqual(sut.selectedDate.endDate, getLastSecondOfDay(for: nextTwoDay))
 		
 		sut.setSelectedDate(nextDay)
 		
 		XCTAssertEqual(sut.selectedDate.startDate, today)
-		XCTAssertEqual(sut.selectedDate.endDate, nextDay)
+		XCTAssertEqual(sut.selectedDate.endDate, getLastSecondOfDay(for: nextDay))
 	}
 
 	// MARK: - Helpers
@@ -132,13 +132,13 @@ final class HPRangeSelectionManagerTests: XCTestCase {
 	private func makeSut() -> HPRangeSelectionManager {
 		let calendar = calendar
 		let dayLoader = HPDayLoaderSpy()
-		let sut = HPRangeSelectionManager(calendar: calendar, dayLoader: dayLoader, headerTextFormate: headerFormate)
+		let sut = HPRangeSelectionManager(calendar: calendar, dayLoader: dayLoader, headerTextFormate: headerFormate, events: [])
 		
 		sut.onReloadCalendar = { [weak self] in
 			self?.closureMessage.append(.reloadCalendar)
 		}
 		
-		sut.onSelectedDate = { [weak self] (_, _) in
+		sut.onSelectedDate = { [weak self] result in
 			self?.closureMessage.append(.selectedDate)
 		}
 		
@@ -183,6 +183,15 @@ final class HPRangeSelectionManagerTests: XCTestCase {
 	
 	private func minusOneDay(on date: Date) -> Date {
 		return calendar.date(byAdding: .day, value: -1, to: date)!
+	}
+	
+	private func getLastSecondOfDay(for date: Date) -> Date? {
+		var components = calendar.dateComponents([.year, .month, .day], from: date)
+		components.hour = 23
+		components.minute = 59
+		components.second = 59
+		
+		return calendar.date(from: components)
 	}
 	
 	private class HPDayLoaderSpy: HPDayLoader {

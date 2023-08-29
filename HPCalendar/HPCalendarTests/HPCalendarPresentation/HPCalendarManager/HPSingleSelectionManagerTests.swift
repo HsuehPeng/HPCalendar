@@ -25,7 +25,7 @@ final class HPSingleSelectionManagerTests: XCTestCase {
 		XCTAssertEqual(closureMessage, [.reloadCalendar])
 	}
 	
-	func test_loadDays_returnCorrectHPSelectionDay() {
+	func test_loadDays_returnCorrectHPSelectionDay() { //
 		let sut = makeSut()
 		let testedHPSelectionDays = [
 			HPSelectionDay(date: sut.baseDate, number: "1", isWithInMonth: true, isToday: true, isSelected: false, hasEvent: false),
@@ -94,13 +94,13 @@ final class HPSingleSelectionManagerTests: XCTestCase {
 	private func makeSut() -> HPSingleSelectionManager {
 		let calendar = calendar
 		let dayLoader = HPDayLoaderSpy()
-		let sut = HPSingleSelectionManager(calendar: calendar, dayLoader: dayLoader, headerTextFormate: headerFormate)
+		let sut = HPSingleSelectionManager(calendar: calendar, dayLoader: dayLoader, headerTextFormate: headerFormate, events: [])
 		
 		sut.onReloadCalendar = { [weak self] in
 			self?.closureMessage.append(.reloadCalendar)
 		}
 		
-		sut.onSelectedDate = { [weak self] date in
+		sut.onSelectedDate = { [weak self] result in
 			self?.closureMessage.append(.selectedDate)
 		}
 		
