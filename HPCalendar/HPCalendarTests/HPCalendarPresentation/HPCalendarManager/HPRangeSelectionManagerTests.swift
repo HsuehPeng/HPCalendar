@@ -25,7 +25,7 @@ final class HPRangeSelectionManagerTests: XCTestCase {
 		XCTAssertEqual(closureMessage, [.reloadCalendar])
 	}
 	
-	func test_loadDays_returnCorrectHPSelectionDay() {
+	func test_loadDays_returnCorrectHPSelectionDay() { //
 		let sut = makeSut()
 		let testedHPSelectionDays = [
 			HPSelectionDay(date: sut.baseDate, number: "1", isWithInMonth: true, isToday: true, isSelected: false, hasEvent: false),

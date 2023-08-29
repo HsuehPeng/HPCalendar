@@ -37,6 +37,15 @@ extension HPCalendarManager {
 		return calendar.date(from: dayComponents) ?? date
 	}
 	
+	private func getLastSecondOfDay(for date: Date, with calendar: Calendar) -> Date {
+		var components = calendar.dateComponents([.year, .month, .day], from: date)
+		components.hour = 23
+		components.minute = 59
+		components.second = 59
+		
+		return calendar.date(from: components) ?? date
+	}
+	
 	func isSameDay(date1: Date, date2: Date, with calendar: Calendar) -> Bool {
 		let components1 = calendar.dateComponents([.year, .month, .day], from: date1)
 		let components2 = calendar.dateComponents([.year, .month, .day], from: date2)
