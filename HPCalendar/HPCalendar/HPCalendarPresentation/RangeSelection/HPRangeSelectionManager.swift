@@ -59,7 +59,7 @@ class HPRangeSelectionManager: HPCalendarManager {
 	}
 	
 	func setPreviousBaseDate() {
-		baseDate = minusTimeUnit(byminusing: .month, to: baseDate, with: calendar)
+		baseDate = minusTimeUnit(byMinusing: .month, to: baseDate, with: calendar)
 	}
 	
 	func setSelectedDate(_ date: Date) {
@@ -73,7 +73,7 @@ class HPRangeSelectionManager: HPCalendarManager {
 		} else if let start = startDate, date < start {
 			selectedDate.startDate = date
 		} else {
-			selectedDate.endDate = getFirstSecondOfDate(from: date, with: calendar)
+			selectedDate.endDate = getLastSecondOfDay(for: date, with: calendar)
 		}
 	}
 	

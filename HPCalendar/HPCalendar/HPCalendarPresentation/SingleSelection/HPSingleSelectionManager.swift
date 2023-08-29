@@ -57,7 +57,7 @@ class HPSingleSelectionManager: HPCalendarManager {
 	}
 	
 	func setPreviousBaseDate() {
-		baseDate = minusTimeUnit(byminusing: .month, to: baseDate, with: calendar)
+		baseDate = minusTimeUnit(byMinusing: .month, to: baseDate, with: calendar)
 	}
 	
 	func setSelectedDate(_ date: Date) {
