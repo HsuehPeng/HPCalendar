@@ -5,7 +5,7 @@
 //  Created by Hsueh Peng Tseng on 2023/8/21.
 //
 
-import Foundation
+import UIKit
 
 public protocol HPRangeCalendarDelegate: AnyObject {
 	func calendar(didSelectDateRange result: RangeSelectionResult)
@@ -33,6 +33,10 @@ public final class HPCalendar {
 		}
 	}
 	
+	public init() {}
+}
+
+extension HPCalendar {
 	private func makeSingleCalendar(frame: CGRect, with events: [HPEvent]) -> HPCalendarView {
 		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
@@ -74,6 +78,4 @@ public final class HPCalendar {
 		}
 		return calendarView
 	}
-	
-	public init() {}
 }
