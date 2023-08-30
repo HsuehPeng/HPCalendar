@@ -1,28 +1,14 @@
 //
-//  ViewController.swift
+//  File.swift
 //  HPCalendarDemoApp
 //
-//  Created by Hsueh Peng Tseng on 2023/8/21.
+//  Created by Hsueh Peng Tseng on 2023/8/30.
 //
 
 import UIKit
 import HPCalendar
 
-struct DemoEvent: HPEvent {
-	let title: String
-	let date: Date
-	let duration: Int
-}
-
-class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalendarDelegate {
-	func calendar(didSelectDate result: SingleSelectionResult) {
-		print(result)
-	}
-	
-	func calendar(didSelectDateRange result: RangeSelectionResult) {
-		print(result)
-	}
-	
+class RangeSelectionCalendarViewController: UIViewController, HPRangeCalendarDelegate {
 	var calendar: Calendar {
 		var calendar = Calendar(identifier: .gregorian)
 		calendar.locale = Locale(identifier: "en_US")
@@ -42,8 +28,8 @@ class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalenda
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		
-		hpcalendar.singleDelegate = self
+				
+		view.backgroundColor = .white
 		hpcalendar.rangeDelegate = self
 		setupUI()
 	}
@@ -59,7 +45,11 @@ class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalenda
 		])
 		
 	}
-
+	
+	// MARK: - HPRangeCalendarDelegate
+	
+	func calendar(didSelectDateRange result: RangeSelectionResult) {
+		print(result)
+	}
 
 }
-
