@@ -80,13 +80,12 @@ class HPCalendarCell: UICollectionViewCell {
 		NSLayoutConstraint.activate([
 			dateLabel.centerXAnchor.constraint(equalTo: selectionView.centerXAnchor),
 			dateLabel.centerYAnchor.constraint(equalTo: selectionView.centerYAnchor),
-			dateLabel.widthAnchor.constraint(equalTo: selectionView.widthAnchor, multiplier: 0.6),
-			dateLabel.heightAnchor.constraint(equalTo: selectionView.heightAnchor, multiplier: 0.6)
 		])
 		
 		NSLayoutConstraint.activate([
 			eventDot.centerXAnchor.constraint(equalTo: dateLabel.centerXAnchor),
-			eventDot.topAnchor.constraint(equalTo: selectionView.topAnchor),
+//			eventDot.topAnchor.constraint(greaterThanOrEqualTo: selectionView.topAnchor),
+			eventDot.bottomAnchor.constraint(equalTo: dateLabel.topAnchor, constant: -2),
 			eventDot.widthAnchor.constraint(equalToConstant: 5),
 			eventDot.heightAnchor.constraint(equalToConstant: 5)
 		])

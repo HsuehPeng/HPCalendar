@@ -32,7 +32,7 @@ class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalenda
 	
 	lazy var hpcalendar = HPCalendar(calendar: calendar)
 	
-	lazy var calendarView = hpcalendar.makeCalendar(frame: CGRect(x: 0, y: 200, width: 350, height: 320), calendarType: .rangeSelection, with: [
+	lazy var calendarView = hpcalendar.makeCalendar(frame: .zero, calendarType: .rangeSelection, with: [
 		DemoEvent(title: "", date: Date(), duration: 1),
 		DemoEvent(title: "", date: Date().addingTimeInterval(86400), duration: 2),
 		DemoEvent(title: "", date: Date().addingTimeInterval(604800), duration: 3),
@@ -42,9 +42,22 @@ class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalenda
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
+		
 		hpcalendar.singleDelegate = self
 		hpcalendar.rangeDelegate = self
+		setupUI()
+	}
+	
+	private func setupUI() {
 		view.addSubview(calendarView)
+		calendarView.translatesAutoresizingMaskIntoConstraints = false
+		NSLayoutConstraint.activate([
+			calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+			calendarView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+			calendarView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+			calendarView.heightAnchor.constraint(equalToConstant: 350)
+		])
+		
 	}
 
 
