@@ -24,6 +24,8 @@ public final class HPCalendar {
 		case rangeSelection
 	}
 	
+	let calendar: Calendar
+	
 	public func makeCalendar(frame: CGRect, calendarType: CalendarType, with events: [HPEvent] = []) -> HPCalendarView {
 		switch calendarType {
 		case .singleSelection:
@@ -33,16 +35,17 @@ public final class HPCalendar {
 		}
 	}
 	
-	public init() {}
+	public init(calendar: Calendar) {
+		self.calendar = calendar
+	}
 }
 
 extension HPCalendar {
 	private func makeSingleCalendar(frame: CGRect, with events: [HPEvent]) -> HPCalendarView {
-		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
 		
-		let calendarManager = HPSingleSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy", events: events)
+		let calendarManager = HPSingleSelectionManager(calendar: calendar, dayLoader: hpdayLoader, events: events)
 		
 		let viewModel = HPCalendarViewModel(calendarManager: calendarManager, days: calendarManager.loadDays())
 		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)
@@ -59,11 +62,10 @@ extension HPCalendar {
 	}
 	
 	private func makeRangeCalendar(frame: CGRect, with events: [HPEvent]) -> HPCalendarView {
-		let calendar = Calendar.current
 		let metaDataProvider = MetaDataProvider(calendar: calendar)
 		let hpdayLoader = NativeHPDayLoader(calendar: calendar, metaDataProvider: metaDataProvider)
 
-		let calendarManager = HPRangeSelectionManager(calendar: calendar, dayLoader: hpdayLoader, headerTextFormate: "MMMM yyyy", events: events)
+		let calendarManager = HPRangeSelectionManager(calendar: calendar, dayLoader: hpdayLoader, events: events)
 
 		let viewModel = HPCalendarViewModel(calendarManager: calendarManager, days: calendarManager.loadDays())
 		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)

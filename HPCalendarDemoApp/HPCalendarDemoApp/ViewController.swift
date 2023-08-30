@@ -23,9 +23,16 @@ class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalenda
 		print(result)
 	}
 	
-	let calendar = HPCalendar()
+	var calendar: Calendar {
+		var calendar = Calendar(identifier: .gregorian)
+		calendar.locale = Locale(identifier: "en_US")
+		calendar.timeZone = .gmt
+		return calendar
+	}
 	
-	lazy var calendarView = calendar.makeCalendar(frame: CGRect(x: 0, y: 200, width: 350, height: 320), calendarType: .rangeSelection, with: [
+	lazy var hpcalendar = HPCalendar(calendar: calendar)
+	
+	lazy var calendarView = hpcalendar.makeCalendar(frame: CGRect(x: 0, y: 200, width: 350, height: 320), calendarType: .rangeSelection, with: [
 		DemoEvent(title: "", date: Date(), duration: 1),
 		DemoEvent(title: "", date: Date().addingTimeInterval(86400), duration: 2),
 		DemoEvent(title: "", date: Date().addingTimeInterval(604800), duration: 3),
@@ -35,8 +42,8 @@ class ViewController: UIViewController, HPSingleCalendarDelegate, HPRangeCalenda
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
-		calendar.singleDelegate = self
-		calendar.rangeDelegate = self
+		hpcalendar.singleDelegate = self
+		hpcalendar.rangeDelegate = self
 		view.addSubview(calendarView)
 	}
 

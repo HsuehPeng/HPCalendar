@@ -132,7 +132,7 @@ final class HPRangeSelectionManagerTests: XCTestCase {
 	private func makeSut() -> HPRangeSelectionManager {
 		let calendar = calendar
 		let dayLoader = HPDayLoaderSpy()
-		let sut = HPRangeSelectionManager(calendar: calendar, dayLoader: dayLoader, headerTextFormate: headerFormate, events: [])
+		let sut = HPRangeSelectionManager(calendar: calendar, dayLoader: dayLoader, events: [])
 		
 		sut.onReloadCalendar = { [weak self] in
 			self?.closureMessage.append(.reloadCalendar)
@@ -155,7 +155,7 @@ final class HPRangeSelectionManagerTests: XCTestCase {
 	
 	private var closureMessage: [ClosureMessage] = []
 	
-	private let headerFormate = "mm"
+	private let headerFormate = HPCalendarPolicy.headerTextFormate
 	
 	private let today = Date()
 	

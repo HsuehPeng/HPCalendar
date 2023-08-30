@@ -15,9 +15,7 @@ class HPRangeSelectionManager: HPCalendarManager {
 			onReloadCalendar?()
 		}
 	}
-	
-	private let headerTextFormate: String
-	
+		
 	var onSelectedDate: ((RangeSelectionResult) -> Void)?
 	var onReloadCalendar: (() -> Void)?
 	
@@ -51,7 +49,7 @@ class HPRangeSelectionManager: HPCalendarManager {
 	}
 	
 	func calendarHeaderText() -> String {
-		return transformToFormattedDate(from: baseDate, by: headerTextFormate)
+		return formattedHeaderText(calendar: calendar, date: baseDate)
 	}
 	
 	func setNextBaseDate() {
@@ -89,10 +87,9 @@ class HPRangeSelectionManager: HPCalendarManager {
 		return false
 	}
 	
-	init(calendar: Calendar, dayLoader: HPDayLoader, headerTextFormate: String, events: [HPEvent]) {
+	init(calendar: Calendar, dayLoader: HPDayLoader, events: [HPEvent]) {
 		self.calendar = calendar
 		self.dayLoader = dayLoader
-		self.headerTextFormate = headerTextFormate
 		self.events = events
 	}
 }

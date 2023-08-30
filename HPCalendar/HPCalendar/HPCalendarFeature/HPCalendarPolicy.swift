@@ -7,4 +7,6 @@
 
 final class HPCalendarPolicy {
 	static let numbersOfCell = 42
+	static let headerTextFormate = "MMMM yyyy"
+
 }

@@ -94,7 +94,7 @@ final class HPSingleSelectionManagerTests: XCTestCase {
 	private func makeSut() -> HPSingleSelectionManager {
 		let calendar = calendar
 		let dayLoader = HPDayLoaderSpy()
-		let sut = HPSingleSelectionManager(calendar: calendar, dayLoader: dayLoader, headerTextFormate: headerFormate, events: [])
+		let sut = HPSingleSelectionManager(calendar: calendar, dayLoader: dayLoader, events: [])
 		
 		sut.onReloadCalendar = { [weak self] in
 			self?.closureMessage.append(.reloadCalendar)
@@ -117,7 +117,7 @@ final class HPSingleSelectionManagerTests: XCTestCase {
 	
 	private var closureMessage: [ClosureMessage] = []
 	
-	private let headerFormate = "mm"
+	private let headerFormate = HPCalendarPolicy.headerTextFormate
 	
 	private let today = Date()
 	

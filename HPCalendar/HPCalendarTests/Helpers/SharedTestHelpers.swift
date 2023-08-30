@@ -10,5 +10,6 @@ import Foundation
 func makeTestCalendar() -> Calendar {
 	var calendar = Calendar(identifier: .gregorian)
 	calendar.timeZone = .gmt
+	calendar.locale = Locale(identifier: "en_US")
 	return calendar
 }

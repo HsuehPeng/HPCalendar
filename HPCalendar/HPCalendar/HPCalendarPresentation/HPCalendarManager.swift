@@ -24,15 +24,17 @@ extension HPCalendarManager {
 		return calendar.date(byAdding: component, value: -1, to: date) ?? date
 	}
 	
-	func transformToFormattedDate(from date: Date, by formate: String) -> String {
-		let formatter = DateFormatter()
-		formatter.dateFormat = formate
-		return formatter.string(from: date)
-	}
-	
 	func getFirstSecondOfDate(for date: Date, with calendar: Calendar) -> Date {
 		let dayComponents = calendar.dateComponents([.year, .month, .day], from: date)
 		return calendar.date(from: dayComponents) ?? date
+	}
+	
+	func formattedHeaderText(calendar: Calendar, date: Date) -> String {
+		let dateFormatter = DateFormatter()
+		dateFormatter.calendar = calendar
+		dateFormatter.locale = calendar.locale
+		dateFormatter.setLocalizedDateFormatFromTemplate(HPCalendarPolicy.headerTextFormate)
+		return dateFormatter.string(from: date)
 	}
 	
 	func getLastSecondOfDay(for date: Date, with calendar: Calendar) -> Date {
