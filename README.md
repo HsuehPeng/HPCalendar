@@ -91,6 +91,7 @@ NSLayoutConstraint.activate([
 Not supported yet
 
 ## Architecture
-In progress
+<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/e844ecde-8dac-4f3d-87e7-39326c11864f" width="600" height="600" />
+
 
 
