@@ -1,6 +1,9 @@
 # HPCalendar
 HPCalendar is an intuitive tool that enable users to effortlessly choose either a single date or a date range. Moreover, it seamlessly integrates customizable events conforming to the HPEvent protocol, allowing users to organize events.
 
+<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/2becda5a-de6c-483d-9605-d4b27177dfdb" width="500" height="1100" />
+<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/7abc22f2-ad93-4bb1-bb92-d7da62abeed3" width="500" height="1100" />
+
 ## Installation
 #### Cocoapods
 ```
