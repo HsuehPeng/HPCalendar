@@ -55,12 +55,27 @@ class HPCalendarCell: UICollectionViewCell {
 		fatalError("init(coder:) has not been implemented")
 	}
 	
+	// MARK: - Helpers
+	
+	private func dateLabelColor(for colorState: HPCalendarCellViewModel.DateTextColorState) -> UIColor {
+		switch colorState {
+		case .inMonth:
+			return HPCalendarColorConstant.withinMonthTextColor.toUIColor()
+		case .notInMonth:
+			return HPCalendarColorConstant.notWithinMonthTextColor.toUIColor()
+		case .selected:
+			return HPCalendarColorConstant.selectedTextColor.toUIColor()
+		case .today:
+			return HPCalendarColorConstant.todayTextColor.toUIColor()
+		}
+	}
+	
 	// MARK: - UI
 	
 	private func configureUI() {
 		guard let viewModel = viewModel else { return }
 		dateLabel.text = viewModel.dateNumber
-		dateLabel.textColor = viewModel.dateTextColor.toUIColor()
+		dateLabel.textColor = dateLabelColor(for: viewModel.dateTextColorState)
 		selectionView.isHidden = viewModel.isSelectionViewHidden
 		eventDot.isHidden = viewModel.isEventDotHidden
 	}

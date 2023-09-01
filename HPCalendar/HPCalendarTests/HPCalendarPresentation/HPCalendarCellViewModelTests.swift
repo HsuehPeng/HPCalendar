@@ -17,46 +17,46 @@ final class HPCalendarCellViewModelTests: XCTestCase {
 		XCTAssertEqual(sut.dateNumber, selectionDay.number)
 	}
 	
-	func test_dateTextColor_renderCorrectTextColorWhenDayIsWithInMonthButNotTodayAndNotSelected() {
+	func test_dateTextColor_renderCorrectTextColorStateWhenDayIsWithInMonthButNotTodayAndNotSelected() {
 		let selectionDay = makeHPSelectionDay(isWithInMonth: true)
 		let sut = makeSut(selectionDay)
 		
-		XCTAssertEqual(sut.dateTextColor, HPCalendarColorConstant.withinMonthTextColor)
+		XCTAssertEqual(sut.dateTextColorState, .inMonth)
 	}
 	
-	func test_dateTextColor_renderCorrectTextColorWhenDayIsWithInMonthAndIsTodayAndNotSelected() {
+	func test_dateTextColor_renderCorrectTextColorStateWhenDayIsWithInMonthAndIsTodayAndNotSelected() {
 		let selectionDay = makeHPSelectionDay(isWithInMonth: true, isToday: true)
 		let sut = makeSut(selectionDay)
 		
-		XCTAssertEqual(sut.dateTextColor, HPCalendarColorConstant.todayTextColor)
+		XCTAssertEqual(sut.dateTextColorState, .today)
 	}
 	
-	func test_dateTextColor_renderCorrectTextColorWhenDayIsWithInMonthAndIsTodayAndIsSelected() {
+	func test_dateTextColor_renderCorrectTextColorStateWhenDayIsWithInMonthAndIsTodayAndIsSelected() {
 		let selectionDay = makeHPSelectionDay(isWithInMonth: true, isToday: true, isSelected: true)
 		let sut = makeSut(selectionDay)
 		
-		XCTAssertEqual(sut.dateTextColor, HPCalendarColorConstant.selectedTextColor)
+		XCTAssertEqual(sut.dateTextColorState, .selected)
 	}
 	
-	func test_dateTextColor_renderCorrectTextColorWhenDayIsWithInMonthButIsNotTodayAndIsSelected() {
+	func test_dateTextColor_renderCorrectTextColorStateWhenDayIsWithInMonthButIsNotTodayAndIsSelected() {
 		let selectionDay = makeHPSelectionDay(isWithInMonth: true, isSelected: true)
 		let sut = makeSut(selectionDay)
 		
-		XCTAssertEqual(sut.dateTextColor, HPCalendarColorConstant.selectedTextColor)
+		XCTAssertEqual(sut.dateTextColorState, .selected)
 	}
 	
-	func test_dateTextColor_renderCorrectTextColorWhenDayIsNotWithInMonthButNotTodayAndNotSelected() {
+	func test_dateTextColor_renderCorrectTextColorStateWhenDayIsNotWithInMonthButNotTodayAndNotSelected() {
 		let selectionDay = makeHPSelectionDay()
 		let sut = makeSut(selectionDay)
 		
-		XCTAssertEqual(sut.dateTextColor, HPCalendarColorConstant.notWithinMonthTextColor)
+		XCTAssertEqual(sut.dateTextColorState, .notInMonth)
 	}
 	
-	func test_dateTextColor_renderCorrectTextColorWhenDayIsNotWithInMonthButAccidentallyIsTodayAndIsSelected() {
+	func test_dateTextColor_renderCorrectTextColorStateWhenDayIsNotWithInMonthButAccidentallyIsTodayAndIsSelected() {
 		let selectionDay = makeHPSelectionDay(isToday: true)
 		let sut = makeSut(selectionDay)
 		
-		XCTAssertEqual(sut.dateTextColor, HPCalendarColorConstant.notWithinMonthTextColor)
+		XCTAssertEqual(sut.dateTextColorState, .notInMonth)
 	}
 	
 	func test_isSelectionViewHidden_validateCorrectSelectionViewHiddenState() {

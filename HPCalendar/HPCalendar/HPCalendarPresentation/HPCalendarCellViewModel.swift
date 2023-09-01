@@ -12,25 +12,32 @@ class HPCalendarCellViewModel {
 		return day.number
 	}
 	
-	var dateTextColor: RGBColor {
-		var rgbColor: RGBColor
+	enum DateTextColorState {
+		case selected
+		case today
+		case notInMonth
+		case inMonth
+	}
+	
+	var dateTextColorState: DateTextColorState {
+		var colorState: DateTextColorState
 		
 		if day.isWithInMonth {
-			rgbColor = HPCalendarColorConstant.withinMonthTextColor
+			colorState = .inMonth
 		} else {
-			rgbColor = HPCalendarColorConstant.notWithinMonthTextColor
-			return rgbColor
+			colorState = .notInMonth
+			return colorState
 		}
 		
 		if day.isToday {
-			rgbColor = HPCalendarColorConstant.todayTextColor
+			colorState = .today
 		}
 		
 		if day.isSelected {
-			rgbColor = HPCalendarColorConstant.selectedTextColor
+			colorState = .selected
 		}
 		
-		return rgbColor
+		return colorState
 	}
 	
 	var isSelectionViewHidden: Bool {
