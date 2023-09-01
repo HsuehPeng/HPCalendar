@@ -234,10 +234,10 @@
 			isa = PBXGroup;
 			children = (
 				B82EEF032A949F8900488E1C /* HPCalendar.xcassets */,
-				B82EEE602A934F1000488E1C /* Helpers */,
-				B8033C072A9755A20019F6AC /* SharedUI */,
 				B82EEE5A2A92162600488E1C /* HPCalendarDefaultColorConstant.swift */,
 				B843CBCB2AA1C26F00C5DC1E /* HPCalendarAppearance.swift */,
+				B82EEE602A934F1000488E1C /* Helpers */,
+				B8033C072A9755A20019F6AC /* SharedUI */,
 				B82EEE5C2A92713B00488E1C /* HPCalendar.swift */,
 			);
 			path = HPCalendarUI;
