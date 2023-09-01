@@ -10,6 +10,6 @@ import UIKit
 public class HPCalendarAppearance {
 	public var calendarHeaderColor: UIColor = .clear
 	public var calendarBackgroundColor: UIColor = .clear
-	public var selectinoColor: UIColor = HPCalendarColorConstant.calendarCellSelectionColor
-	public var eventDotColor: UIColor = HPCalendarColorConstant.eventDotColor
+	public var selectinoColor: UIColor = HPCalendarDefaultColorConstant.calendarCellSelectionColor
+	public var eventDotColor: UIColor = HPCalendarDefaultColorConstant.eventDotColor
 }
