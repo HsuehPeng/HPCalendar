@@ -44,7 +44,7 @@ class SingleSelectionCalendarViewController: UIViewController, HPSingleCalendarD
 	override func viewDidLoad() {
 		super.viewDidLoad()
 				
-		view.backgroundColor = .white
+		view.backgroundColor = UIColor(red: 0.98, green: 0.95, blue: 0.89, alpha: 1.00)
 		hpcalendar.singleDelegate = self
 		setupUI()
 	}

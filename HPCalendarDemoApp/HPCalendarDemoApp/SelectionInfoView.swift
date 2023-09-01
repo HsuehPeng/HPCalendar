@@ -24,7 +24,7 @@ class SelectionInfoView: UIView {
 	
 	override init(frame: CGRect) {
 		super.init(frame: frame)
-		backgroundColor = .lightGray
+		backgroundColor = UIColor(red: 0.81, green: 0.87, blue: 0.74, alpha: 1.00)
 		setupUI()
 	}
 	
@@ -37,16 +37,16 @@ class SelectionInfoView: UIView {
 		self.addSubview(eventCountLabel)
 
 		NSLayoutConstraint.activate([
-			dateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 4),
+			dateLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 8),
 			dateLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
 			dateLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
 		])
 		
 		NSLayoutConstraint.activate([
-			eventCountLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 4),
+			eventCountLabel.topAnchor.constraint(equalTo: dateLabel.bottomAnchor, constant: 16),
 			eventCountLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 16),
 			eventCountLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -16),
-			eventCountLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -4)
+			eventCountLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -8)
 		])
 		
 	}
