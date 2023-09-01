@@ -24,7 +24,22 @@ class RangeSelectionCalendarViewController: UIViewController, HPRangeCalendarDel
 		DemoEvent(title: "", date: Date().addingTimeInterval(2629743), duration: 4),
 		DemoEvent(title: "", date: Date().addingTimeInterval(2829743), duration: 5),
 	])
-
+	
+	private let selectionInfoView: SelectionInfoView = {
+		let view = SelectionInfoView()
+		view.translatesAutoresizingMaskIntoConstraints = false
+		view.dateLabel.text = "Date Range: "
+		view.eventCountLabel.text = "Events Count: "
+		return view
+	}()
+	
+	private var dateFormatter: DateFormatter {
+		let dateFormatter = DateFormatter()
+		dateFormatter.dateFormat = "MM-dd-yyyy HH:mm"
+		dateFormatter.timeZone = .gmt
+		return dateFormatter
+	}
+	
 	override func viewDidLoad() {
 		super.viewDidLoad()
 				
@@ -35,6 +50,8 @@ class RangeSelectionCalendarViewController: UIViewController, HPRangeCalendarDel
 	
 	private func setupUI() {
 		view.addSubview(calendarView)
+		view.addSubview(selectionInfoView)
+
 		calendarView.translatesAutoresizingMaskIntoConstraints = false
 		NSLayoutConstraint.activate([
 			calendarView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
@@ -43,12 +60,26 @@ class RangeSelectionCalendarViewController: UIViewController, HPRangeCalendarDel
 			calendarView.heightAnchor.constraint(equalToConstant: 350)
 		])
 		
+		NSLayoutConstraint.activate([
+			selectionInfoView.topAnchor.constraint(equalTo: calendarView.bottomAnchor, constant: 50),
+			selectionInfoView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0),
+			selectionInfoView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0),
+		])
+		
 	}
 	
 	// MARK: - HPRangeCalendarDelegate
 	
 	func calendar(didSelectDateRange result: RangeSelectionResult) {
 		print(result)
+		
+		if let startDate = result.startDate, let endDate = result.endDate {
+			selectionInfoView.dateLabel.text = "Date Range: \(dateFormatter.string(from: startDate)) ~ \(dateFormatter.string(from: endDate))"
+			selectionInfoView.eventCountLabel.text = "Events Count: \(result.events.count.description)"
+		} else {
+			selectionInfoView.dateLabel.text = "Date Range: nil"
+			selectionInfoView.eventCountLabel.text = "Events Count: \(result.events.count.description)"
+		}
 	}
 
 }

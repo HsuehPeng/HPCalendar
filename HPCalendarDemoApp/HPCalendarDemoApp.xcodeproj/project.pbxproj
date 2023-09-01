@@ -14,6 +14,7 @@
 		B82EEEF72A93671F00488E1C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B82EEEF52A93671F00488E1C /* LaunchScreen.storyboard */; };
 		B82EEF002A93677E00488E1C /* HPCalendar.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B82EEEFF2A93677E00488E1C /* HPCalendar.framework */; };
 		B82EEF012A93677E00488E1C /* HPCalendar.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B82EEEFF2A93677E00488E1C /* HPCalendar.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B843CBD42AA1CF1800C5DC1E /* SelectionInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B843CBD32AA1CF1800C5DC1E /* SelectionInfoView.swift */; };
 		B8CC015C2A9F359E009FCEDC /* RangeSelectionCalendarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC015B2A9F359E009FCEDC /* RangeSelectionCalendarViewController.swift */; };
 		B8CC015E2A9F3A5B009FCEDC /* DemoEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8CC015D2A9F3A5B009FCEDC /* DemoEvent.swift */; };
 /* End PBXBuildFile section */
@@ -41,6 +42,7 @@
 		B82EEEF62A93671F00488E1C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B82EEEF82A93671F00488E1C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B82EEEFF2A93677E00488E1C /* HPCalendar.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = HPCalendar.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B843CBD32AA1CF1800C5DC1E /* SelectionInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionInfoView.swift; sourceTree = "<group>"; };
 		B8CC015B2A9F359E009FCEDC /* RangeSelectionCalendarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RangeSelectionCalendarViewController.swift; sourceTree = "<group>"; };
 		B8CC015D2A9F3A5B009FCEDC /* DemoEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEvent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -82,6 +84,7 @@
 				B8CC015D2A9F3A5B009FCEDC /* DemoEvent.swift */,
 				B82EEEEE2A93671E00488E1C /* SingleSelectionCalendarViewController.swift */,
 				B8CC015B2A9F359E009FCEDC /* RangeSelectionCalendarViewController.swift */,
+				B843CBD32AA1CF1800C5DC1E /* SelectionInfoView.swift */,
 				B82EEEF32A93671F00488E1C /* Assets.xcassets */,
 				B82EEEF52A93671F00488E1C /* LaunchScreen.storyboard */,
 				B82EEEF82A93671F00488E1C /* Info.plist */,
@@ -168,6 +171,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B843CBD42AA1CF1800C5DC1E /* SelectionInfoView.swift in Sources */,
 				B82EEEEF2A93671E00488E1C /* SingleSelectionCalendarViewController.swift in Sources */,
 				B8CC015C2A9F359E009FCEDC /* RangeSelectionCalendarViewController.swift in Sources */,
 				B82EEEEB2A93671E00488E1C /* AppDelegate.swift in Sources */,
