@@ -15,7 +15,7 @@ class HPCalendarCell: UICollectionViewCell {
 	let selectionView: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.backgroundColor = HPCalendarColorConstant.calendarCellSelectionColor.toUIColor()
+		view.backgroundColor = HPCalendarColorConstant.calendarCellSelectionColor
 		view.layer.cornerRadius = 8
 		view.isHidden = true
 		return view
@@ -32,7 +32,7 @@ class HPCalendarCell: UICollectionViewCell {
 	let eventDot: UIView = {
 		let view = UIView()
 		view.translatesAutoresizingMaskIntoConstraints = false
-		view.backgroundColor = HPCalendarColorConstant.eventDotColor.toUIColor()
+		view.backgroundColor = HPCalendarColorConstant.eventDotColor
 		view.layer.cornerRadius = 2.5
 		view.isHidden = true
 		return view
@@ -60,13 +60,13 @@ class HPCalendarCell: UICollectionViewCell {
 	private func dateLabelColor(for colorState: HPCalendarCellViewModel.DateTextColorState) -> UIColor {
 		switch colorState {
 		case .inMonth:
-			return HPCalendarColorConstant.withinMonthTextColor.toUIColor()
+			return HPCalendarColorConstant.withinMonthTextColor
 		case .notInMonth:
-			return HPCalendarColorConstant.notWithinMonthTextColor.toUIColor()
+			return HPCalendarColorConstant.notWithinMonthTextColor
 		case .selected:
-			return HPCalendarColorConstant.selectedTextColor.toUIColor()
+			return HPCalendarColorConstant.selectedTextColor
 		case .today:
-			return HPCalendarColorConstant.todayTextColor.toUIColor()
+			return HPCalendarColorConstant.todayTextColor
 		}
 	}
 	

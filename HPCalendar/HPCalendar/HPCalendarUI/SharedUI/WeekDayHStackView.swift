@@ -34,7 +34,7 @@ class WeekDayHStackView: UIStackView {
 		label.text = weekDay
 		label.font = UIFont.systemFont(ofSize: 13, weight: .medium)
 		label.textAlignment = .center
-		label.textColor = HPCalendarColorConstant.withinMonthTextColor.toUIColor()
+		label.textColor = HPCalendarColorConstant.withinMonthTextColor
 		label.translatesAutoresizingMaskIntoConstraints = false
 		return label
 	}
