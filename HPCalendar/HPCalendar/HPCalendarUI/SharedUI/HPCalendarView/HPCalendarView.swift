@@ -38,6 +38,8 @@ public class HPCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
 		collectionView.backgroundColor = .clear
 		return collectionView
 	}()
+	
+	private let uiConfig: HPCalendarViewUIConfiguration
 		
 	private var viewModel: HPCalendarViewModel {
 		didSet {
@@ -47,11 +49,13 @@ public class HPCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
 	
 	// MARK: - LifeCycle
 	
-	init(frame: CGRect, viewModel: HPCalendarViewModel) {
+	init(frame: CGRect, viewModel: HPCalendarViewModel, uiConfig: HPCalendarViewUIConfiguration) {
 		self.viewModel = viewModel
+		self.uiConfig = uiConfig
 		super.init(frame: frame)
 		
 		setupUI()
+		configureUIColor()
 		headerView.dateLabel.text = viewModel.headerText
 		configureCollectionView()
 		bindViewModel()
@@ -100,6 +104,8 @@ public class HPCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
 		let day = viewModel.days[indexPath.item]
 		let vm = HPCalendarCellViewModel(day: day)
 		cell.viewModel = vm
+		cell.eventDot.backgroundColor = uiConfig.eventDotColor
+		cell.selectionView.backgroundColor = uiConfig.selectinoColor
 		return cell
 	}
 	
@@ -134,5 +140,10 @@ public class HPCalendarView: UIView, UICollectionViewDataSource, UICollectionVie
 			collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
 			collectionView.bottomAnchor.constraint(equalTo: self.bottomAnchor)
 		])
+	}
+	
+	private func configureUIColor() {
+		self.collectionView.backgroundColor = uiConfig.calendarBackgroundColor
+		self.headerView.backgroundColor = uiConfig.calendarHeaderColor
 	}
 }

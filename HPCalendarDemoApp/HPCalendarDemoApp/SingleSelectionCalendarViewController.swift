@@ -9,14 +9,13 @@ import UIKit
 import HPCalendar
 
 class SingleSelectionCalendarViewController: UIViewController, HPSingleCalendarDelegate {
-	var calendar: Calendar {
+	let hpcalendar: HPCalendar = {
 		var calendar = Calendar(identifier: .gregorian)
 		calendar.locale = Locale(identifier: "en_US")
 		calendar.timeZone = .gmt
-		return calendar
-	}
-	
-	lazy var hpcalendar = HPCalendar(calendar: calendar)
+		let hpCalendar = HPCalendar(calendar: calendar)
+		return hpCalendar
+	}()
 	
 	lazy var calendarView = hpcalendar.makeCalendar(frame: .zero, calendarType: .singleSelection, with: [
 		DemoEvent(title: "", date: Date(), duration: 1),

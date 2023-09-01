@@ -18,7 +18,8 @@ public protocol HPSingleCalendarDelegate: AnyObject {
 public final class HPCalendar {
 	public weak var singleDelegate: HPSingleCalendarDelegate?
 	public weak var rangeDelegate: HPRangeCalendarDelegate?
-	
+	public let appearance: HPCalendarAppearance = HPCalendarAppearance()
+
 	public enum CalendarType {
 		case singleSelection
 		case rangeSelection
@@ -48,7 +49,14 @@ extension HPCalendar {
 		let calendarManager = HPSingleSelectionManager(calendar: calendar, dayLoader: hpdayLoader, events: events)
 		
 		let viewModel = HPCalendarViewModel(calendarManager: calendarManager, days: calendarManager.loadDays())
-		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)
+		
+		let calendarViewUIConfiguration = HPCalendarViewUIConfiguration(
+			calendarHeaderColor: appearance.calendarHeaderColor,
+			calendarBackgroundColor: appearance.calendarBackgroundColor,
+			selectinoColor: appearance.selectinoColor,
+			eventDotColor: appearance.eventDotColor
+		)
+		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel, uiConfig: calendarViewUIConfiguration)
 		
 		calendarManager.onSelectedDate = { [weak self] result in
 			guard let self = self else { return }
@@ -68,7 +76,14 @@ extension HPCalendar {
 		let calendarManager = HPRangeSelectionManager(calendar: calendar, dayLoader: hpdayLoader, events: events)
 
 		let viewModel = HPCalendarViewModel(calendarManager: calendarManager, days: calendarManager.loadDays())
-		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel)
+		
+		let calendarViewUIConfiguration = HPCalendarViewUIConfiguration(
+			calendarHeaderColor: appearance.calendarHeaderColor,
+			calendarBackgroundColor: appearance.calendarBackgroundColor,
+			selectinoColor: appearance.selectinoColor,
+			eventDotColor: appearance.eventDotColor
+		)
+		let calendarView = HPCalendarView(frame: frame, viewModel: viewModel, uiConfig: calendarViewUIConfiguration)
 
 		calendarManager.onSelectedDate = { [weak self] result in
 			guard let self = self else { return }

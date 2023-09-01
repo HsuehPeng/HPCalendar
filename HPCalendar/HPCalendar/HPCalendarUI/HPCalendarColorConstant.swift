@@ -5,8 +5,6 @@
 //  Created by Hsueh Peng Tseng on 2023/8/20.
 //
 
-import UIKit
-
 final class HPCalendarColorConstant {
 	static let withinMonthTextColor = RGBColor(red: 0.07, green: 0.07, blue: 0.07)
 	static let notWithinMonthTextColor = RGBColor(red: 0.61, green: 0.64, blue: 0.67)
