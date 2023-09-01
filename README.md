@@ -22,17 +22,14 @@ In progress
 #### Initialization
 To create an HPCalendar, you must begin by initializing a Swift Calendar type. The locale you assign to this calendar will directly influence the format in which dates are displayed within the HPCalendar.
 ```Swift
-var calendar: Calendar {
-  var calendar = Calendar(identifier: .gregorian)
-  calendar.locale = Locale(identifier: "en_US")
-  calendar.timeZone = .gmt
-  return calendar
-}
-```
-
-After initializing a Swift Calendar type, you can then create a instance of HPCalendar.
-```Swift
-let hpcalendar = HPCalendar(calendar: calendar)
+let hpcalendar: HPCalendar = {
+    var calendar = Calendar(identifier: .gregorian)
+    calendar.locale = Locale(identifier: "en_US")
+    calendar.timeZone = .gmt
+    // After initializing a Swift Calendar type, you can then create a instance of HPCalendar.
+    let hpCalendar = HPCalendar(calendar: calendar)
+    return hpCalendar
+}()
 ```
 
 Once you create an instance of HPCalendar, you can use it to make a HPCalendarView. Within this view, you have the option to make either a singleSelection or rangeSelection HPCalendar.
@@ -91,10 +88,13 @@ NSLayoutConstraint.activate([
 ```
 
 ## UIConfiguration
-Not supported yet
+If you wish to customize the appearance of the HPCalendar, you can specify certain properties. More options will be available in the future!
+```Swift
+hpCalendar.appearance.calendarBackgroundColor = .green
+hpCalendar.appearance.calendarHeaderColor = .green
+hpCalendar.appearance.selectinoColor = .green
+hpCalendar.appearance.eventDotColor = .green
+```
 
 ## Architecture
-<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/e844ecde-8dac-4f3d-87e7-39326c11864f" width="600" height="600" />
-
-
-
+<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/ec675e75-5841-4836-9531-53d32c09686a" width="600" height="600" />
