@@ -18,11 +18,12 @@ class SingleSelectionCalendarViewController: UIViewController, HPSingleCalendarD
 	}()
 	
 	lazy var calendarView = hpcalendar.makeCalendar(frame: .zero, calendarType: .singleSelection, with: [
-		DemoEvent(title: "", date: Date(), duration: 1),
-		DemoEvent(title: "", date: Date().addingTimeInterval(86400), duration: 2),
-		DemoEvent(title: "", date: Date().addingTimeInterval(604800), duration: 3),
-		DemoEvent(title: "", date: Date().addingTimeInterval(2629743), duration: 4),
-		DemoEvent(title: "", date: Date().addingTimeInterval(2829743), duration: 5),
+		DemoEvent(title: "First", date: Date(), duration: 1),
+		DemoEvent(title: "Second", date: Date().addingTimeInterval(1), duration: 1),
+		DemoEvent(title: "Third", date: Date().addingTimeInterval(86400), duration: 2),
+		DemoEvent(title: "Fourth", date: Date().addingTimeInterval(604800), duration: 3),
+		DemoEvent(title: "Fifth", date: Date().addingTimeInterval(2629743), duration: 4),
+		DemoEvent(title: "Sixth", date: Date().addingTimeInterval(2829743), duration: 5),
 	])
 	
 	private let selectionInfoView: SelectionInfoView = {
@@ -80,7 +81,6 @@ class SingleSelectionCalendarViewController: UIViewController, HPSingleCalendarD
 			selectionInfoView.dateLabel.text = "Date: nil"
 			selectionInfoView.eventCountLabel.text = "Events Count: \(result.events.count.description)"
 		}
-
 	}
 	
 }
