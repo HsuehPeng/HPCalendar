@@ -1,8 +1,7 @@
 # HPCalendar
 HPCalendar is an intuitive tool that enable users to effortlessly choose either a single date or a date range. Moreover, it seamlessly integrates customizable events conforming to the HPEvent protocol, allowing users to organize events.
 
-<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/2becda5a-de6c-483d-9605-d4b27177dfdb" width="300" height="630" />
-<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/7abc22f2-ad93-4bb1-bb92-d7da62abeed3" width="300" height="630" />
+<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/477b13ca-bb94-413b-bff3-725c45aa90cf" width="300" height="630" />
 
 ## Installation
 #### Cocoapods
@@ -16,6 +15,10 @@ In progress
 ```
 
 ## Usage
+
+<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/2becda5a-de6c-483d-9605-d4b27177dfdb" width="300" height="630" />
+<img src="https://github.com/HsuehPeng/HPCalendar/assets/94298439/7abc22f2-ad93-4bb1-bb92-d7da62abeed3" width="300" height="630" />
+
 #### Initialization
 To create an HPCalendar, you must begin by initializing a Swift Calendar type. The locale you assign to this calendar will directly influence the format in which dates are displayed within the HPCalendar.
 ```Swift
