@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		B8033BF52A95FEAF0019F6AC /* HPRangeSelectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BF42A95FEAF0019F6AC /* HPRangeSelectionManager.swift */; };
 		B8033BF72A95FEE50019F6AC /* HPSelectionDay.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BF62A95FEE50019F6AC /* HPSelectionDay.swift */; };
-		B8033BFE2A973DF50019F6AC /* RGBColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BFD2A973DF50019F6AC /* RGBColor+Extension.swift */; };
-		B8033C002A9741BA0019F6AC /* RGBColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033BFF2A9741BA0019F6AC /* RGBColor.swift */; };
 		B8033C042A9742100019F6AC /* HPCalendarCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C032A9742100019F6AC /* HPCalendarCellViewModel.swift */; };
 		B8033C092A9755B90019F6AC /* WeekDayHStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C082A9755B90019F6AC /* WeekDayHStackView.swift */; };
 		B8033C0B2A9887700019F6AC /* HPCalendarManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B8033C0A2A9887700019F6AC /* HPCalendarManager.swift */; };
@@ -61,8 +59,6 @@
 /* Begin PBXFileReference section */
 		B8033BF42A95FEAF0019F6AC /* HPRangeSelectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPRangeSelectionManager.swift; sourceTree = "<group>"; };
 		B8033BF62A95FEE50019F6AC /* HPSelectionDay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPSelectionDay.swift; sourceTree = "<group>"; };
-		B8033BFD2A973DF50019F6AC /* RGBColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RGBColor+Extension.swift"; sourceTree = "<group>"; };
-		B8033BFF2A9741BA0019F6AC /* RGBColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RGBColor.swift; sourceTree = "<group>"; };
 		B8033C032A9742100019F6AC /* HPCalendarCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCalendarCellViewModel.swift; sourceTree = "<group>"; };
 		B8033C082A9755B90019F6AC /* WeekDayHStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeekDayHStackView.swift; sourceTree = "<group>"; };
 		B8033C0A2A9887700019F6AC /* HPCalendarManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HPCalendarManager.swift; sourceTree = "<group>"; };
@@ -230,7 +226,6 @@
 			isa = PBXGroup;
 			children = (
 				B82EEE612A934F2100488E1C /* UIStackView+Extension.swift */,
-				B8033BFD2A973DF50019F6AC /* RGBColor+Extension.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -243,7 +238,6 @@
 				B8033C072A9755A20019F6AC /* SharedUI */,
 				B82EEE5A2A92162600488E1C /* HPCalendarColorConstant.swift */,
 				B843CBCB2AA1C26F00C5DC1E /* HPCalendarAppearance.swift */,
-				B8033BFF2A9741BA0019F6AC /* RGBColor.swift */,
 				B82EEE5C2A92713B00488E1C /* HPCalendar.swift */,
 			);
 			path = HPCalendarUI;
@@ -423,7 +417,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8033BFE2A973DF50019F6AC /* RGBColor+Extension.swift in Sources */,
 				B823B6BA2A8CE8A80043DC9F /* NativeHPDayLoader.swift in Sources */,
 				B82EEE622A934F2100488E1C /* UIStackView+Extension.swift in Sources */,
 				B8033C092A9755B90019F6AC /* WeekDayHStackView.swift in Sources */,
@@ -433,7 +426,6 @@
 				B843CBCC2AA1C26F00C5DC1E /* HPCalendarAppearance.swift in Sources */,
 				B83D2B2C2A8DF7350078E177 /* HPCalendarView.swift in Sources */,
 				B843CBCE2AA1C8C600C5DC1E /* HPCalendarViewUIConfiguration.swift in Sources */,
-				B8033C002A9741BA0019F6AC /* RGBColor.swift in Sources */,
 				B83D2B372A8E06C30078E177 /* HPCalendarHeaderView.swift in Sources */,
 				B82EEE582A9207EB00488E1C /* HPCalendarPolicy.swift in Sources */,
 				B83D2B2E2A8DF7560078E177 /* HPCalendarCell.swift in Sources */,
