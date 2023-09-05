@@ -10,6 +10,12 @@ import XCTest
 
 final class MetaDataProviderTests: XCTestCase {
 	
+	func test_numbersOfDaysShownInPage_provideCorrectNumbersOfDaysShownInPage() {
+		let sut = makeSut()
+		
+		XCTAssertEqual(sut.numbersOfDaysShownInPage, numbersOfDaysShownInPage)
+	}
+	
 	func test_getFirstDateOfMonth_generateFirstDateOfMonthByGivenDate() {
 		let sut = makeSut()
 
@@ -68,6 +74,8 @@ final class MetaDataProviderTests: XCTestCase {
 		
 		return sut
 	}
+	
+	let numbersOfDaysShownInPage = HPCalendarPolicy.numbersOfCell
 	
 	private let testingDates = [Date(timeIntervalSince1970: 1673827200), // 2023/01/16
 								Date(timeIntervalSince1970: 1676505600), // 2023/02/16
